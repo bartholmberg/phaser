@@ -21,6 +21,7 @@
 *.app
 .vs/
 phaser_core_lib.dir/
+ZERO_CHECK/
 phaser_core_driver.dir/
 *.vcxproj.*
 *.vcxproj

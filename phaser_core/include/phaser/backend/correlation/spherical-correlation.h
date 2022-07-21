@@ -2,7 +2,7 @@
 #define PHASER_BACKEND_CORRELATION_SPHERICAL_CORRELATION_H_
 
 #include <array>
-#include <fftw3/fftw3.h>
+#include <fftw3.h>
 #include <memory>
 #include <string>
 #include <vector>
