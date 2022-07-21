@@ -10,24 +10,25 @@ find_package(OpenMP REQUIRED)
 
 include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-std=c++14" COMPILER_SUPPORTS_CXX14)
-if(COMPILER_SUPPORTS_CXX14)
-  set(CMAKE_CXX_STANDARD 14)
-  set(CMAKE_CXX_FLAGS         "-Wall -Wextra -msse -msse2 -msse3 -msse4 -O3 -DNDEBUG")
-  set(CMAKE_CXX_FLAGS_DEBUG   "-O0 -g")
-  set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG")
-else()
-  message(FATAL_ERROR "The compiler does not support C++14.")
-endif()
+#if(COMPILER_SUPPORTS_CXX14)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_FLAGS         "-Wall  -msse -msse2 -msse3 -msse4 -O3 -DNDEBUG")
+set(CMAKE_CXX_FLAGS_DEBUG   "-O0 -g")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG")
+message(STATUS, "Set compiler C++14")
+#else()
+#  message(FATAL_ERROR "The compiler does not support C++14.")
+#endif()
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
 set(OpenMP_LIBS gomp)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-find_package(catkin_simple REQUIRED)
-catkin_simple(ALL_DEPS_REQUIRED)
+#find_package(catkin_simple REQUIRED)
+#catkin_simple(ALL_DEPS_REQUIRED)
 
-cs_add_library(${PROJECT_NAME}_lib
+add_library(${PROJECT_NAME}_lib
    lib/SOFT/s2_legendreTransforms.c
    lib/SOFT/makeweights.c
    lib/SOFT/s2_primitive.c
@@ -94,27 +95,27 @@ if(BUILD_TYPE MATCHES CUDA)
     ${PROJECT_NAME}_lib ${PROJECT_NAME}_cuda_lib
     ${CUDA_LIBRARIES} ${CUDA_CUFFT_LIBRARIES} ${OpenMP_LIBS})
 else()
-  cs_add_executable(${PROJECT_NAME}_driver test/driver.cc)
+  add_executable(${PROJECT_NAME}_driver test/driver.cc)
   target_link_libraries(${PROJECT_NAME}_driver
     ${PROJECT_NAME}_lib ${OpenMP_LIBS})
 endif()
 
 # Sanity check.
-catkin_add_gtest(test_sanity_check test/sanity-check/sanity-check-test.cc)
-target_link_libraries(test_sanity_check
-  ${PROJECT_NAME}_lib )
+#catkin_add_gtest(test_sanity_check test/sanity-check/sanity-check-test.cc)
+#target_link_libraries(test_sanity_check
+#  ${PROJECT_NAME}_lib )
 
-catkin_add_gtest(test_laplace_pyramid
-  test/fusion/laplace-pyramid-test.cc)
-target_link_libraries(test_laplace_pyramid ${PROJECT_NAME}_lib)
+#catkin_add_gtest(test_laplace_pyramid
+#  test/fusion/laplace-pyramid-test.cc)
+#target_link_libraries(test_laplace_pyramid ${PROJECT_NAME}_lib)
 
-catkin_add_gtest(test_pyramid_struct
-  test/fusion/pyramid-struct-test.cc)
-target_link_libraries(test_pyramid_struct ${PROJECT_NAME}_lib)
+#(test_pyramid_struct
+#  test/fusion/pyramid-struct-test.cc)
+#target_link_libraries(test_pyramid_struct ${PROJECT_NAME}_lib)
 
-catkin_add_gtest(test_spatial_correlation
-  test/translation-alignment/spatial-correlation-test.cc)
-target_link_libraries(test_spatial_correlation ${PROJECT_NAME}_lib)
+#catkin_add_gtest(test_spatial_correlation
+#  test/translation-alignment/spatial-correlation-test.cc)
+#target_link_libraries(test_spatial_correlation ${PROJECT_NAME}_lib)
 
-cs_install()
-cs_export()
+#cs_install()
+#cs_export()

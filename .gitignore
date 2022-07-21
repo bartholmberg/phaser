@@ -19,7 +19,12 @@
 *.exe
 *.out
 *.app
-
+.vs/
+phaser_core_lib.dir/
+phaser_core_driver.dir/
+*.vcxproj.*
+*.vcxproj
+*Cmake*
 # Temporary editor files.
 *~
 *.orig

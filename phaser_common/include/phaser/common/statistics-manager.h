@@ -2,7 +2,7 @@
 
 #include <map>
 #include <vector>
-
+#include <string>
 namespace common {
 
 class StatisticsManager {
