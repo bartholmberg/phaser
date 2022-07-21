@@ -3,7 +3,7 @@
 
 #include <array>
 #include <cstdint>
-#include <fftw3/fftw3.h>
+#include <fftw3.h>
 #include <string>
 #include <utility>
 #include <vector>

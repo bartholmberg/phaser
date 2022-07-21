@@ -73,11 +73,11 @@ std::vector<complex_t> LaplacePyramid::fuseChannels(
     coefficients[i] = reinterpret_cast<complex_t*>(channels[i]);
   }
 
-  for (uint32_t i = 0u; i < n_levels; ++i) {
+  for (int i = 0; i < n_levels; ++i) {
     std::vector<PyramidLevel> pyramid_level(n_channels);
 #pragma omp parallel for num_threads(n_channels) \
     shared(pyramid_level, coefficients)
-    for (uint32_t j = 0u; j < n_channels; ++j) {
+    for (int j = 0; j < n_channels; ++j) {
       VLOG(2) << "Level " << i << " and channel " << j;
       pyramid_level[j] = reduce(coefficients[j], py_struct, i);
       coefficients[j] = pyramid_level[j].first.data();
@@ -113,7 +113,7 @@ std::vector<complex_t> LaplacePyramid::fuseLevelByMaxCoeff(
 
   std::vector<complex_t> fused(n_laplace);
 #pragma omp parallel for num_threads(4) shared(fused)
-  for (uint32_t i = 0u; i < n_laplace; ++i) {
+  for (int i = 0; i < n_laplace; ++i) {
     const uint32_t max_channel = findMaxCoeffForChannels(levels_per_channel, i);
     const complex_t& max_coeff = levels_per_channel[max_channel].second[i];
     fused[i][0] = max_coeff[0];
@@ -128,7 +128,7 @@ std::vector<complex_t> LaplacePyramid::fuseLastLowPassLayer(
   const uint32_t n_coeffs = levels_per_channel[0].first.size();
   std::vector<complex_t> fused(n_coeffs);
 #pragma omp parallel for num_threads(4) shared(fused)
-  for (uint32_t i = 0; i < n_coeffs; ++i) {
+  for (int i = 0; i < n_coeffs; ++i) {
     std::array<double, 2> avg = averageCoeffForChannels(levels_per_channel, i);
     fused[i][0] = avg[0];
     fused[i][1] = avg[1];
