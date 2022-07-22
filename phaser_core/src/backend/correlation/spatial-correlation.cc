@@ -109,19 +109,24 @@ void SpatialCorrelation::complexMulVecUsingIndices(
         zero_padding_ != 0u ? computeZeroPaddedIndex(i) : i;
     const uint32_t padded_j =
         zero_padding_ != 0u ? computeZeroPaddedIndex(j) : j;
-
-    vec_F_real[0] = F[i][0];
-    vec_F_real[1] = F[j][0];
-    vec_F_img[0] = F[i][1];
-    vec_F_img[1] = F[j][1];
-    vec_G_real[0] = G[i][0];
-    vec_G_real[1] = G[j][0];
-    neg_vec_G_img[0] = -G[i][1];
-    neg_vec_G_img[1] = -G[j][1];
-    vec_C_real[0] = C[i][0];
-    vec_C_real[1] = C[j][0];
-    vec_C_img[0] = C[i][1];
-    vec_C_img[1] = C[j][1];
+    vec_F_real = _mm_set_pd( F[i][0], F[j][0] );
+    //vec_F_real[0] = F[i][0]
+    //vec_F_real[1] = F[j][0];
+    vec_F_img = _mm_set_pd( F[i][1], F[j][1] );
+    //vec_F_img[0] = F[i][1];
+    //vec_F_img[1] = F[j][1];
+    vec_F_real = _mm_set_pd( G[i][0], G[j][0] );
+    //vec_G_real[0] = G[i][0];
+    //vec_G_real[1] = G[j][0];
+    neg_vec_G_img = _mm_set_pd( -G[i][1], -G[j][1] );
+    //neg_vec_G_img[0] = -G[i][1];
+    //neg_vec_G_img[1] = -G[j][1];
+    vec_C_real = _mm_set_pd( C[i][0], C[j][0] );
+    //vec_C_real[0] = C[i][0];
+    //vec_C_real[1] = C[j][0];
+    vec_C_img = _mm_set_pd(C[i][1], C[j][1]);
+    //vec_C_img[0] = C[i][1];
+    //vec_C_img[1] = C[j][1];
 
     // Perform complex multiplication.
     vec_C_real = _mm_sub_pd(
@@ -132,10 +137,11 @@ void SpatialCorrelation::complexMulVecUsingIndices(
         _mm_mul_pd(vec_F_img, vec_G_real));
 
     // Write the memory back to C.
-    C[padded_i][0] = vec_C_real[0];
-    C[padded_i][1] = vec_C_img[0];
-    C[padded_j][0] = vec_C_real[1];
-    C[padded_j][1] = vec_C_img[1];
+    C[padded_i][0] = *vec_C_real.m128d_f64;
+    //C[padded_i][0] = vec_C_real[0];
+    C[padded_i][1] = *vec_C_img.m128d_f64;
+    C[padded_j][0] = *vec_C_real.m128d_f64;
+    C[padded_j][1] = *vec_C_img.m128d_f64;
   }
 }
 
@@ -146,7 +152,7 @@ void SpatialCorrelation::complexMulSeqUsingIndices(
   VLOG(3) << "Performing correlation using: " << indices.size() << " samples.";
   const uint32_t n_points = indices.size();
 #pragma omp parallel for num_threads(2)
-  for (uint32_t i = 0u; i < n_points; ++i) {
+  for (int i = 0; i < n_points; ++i) {
     const uint32_t idx = indices[i];
     const uint32_t padded_idx =
         zero_padding_ != 0u ? computeZeroPaddedIndex(idx) : idx;
