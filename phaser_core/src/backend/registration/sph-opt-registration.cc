@@ -1,7 +1,7 @@
 #include "phaser/backend/registration/sph-opt-registration.h"
 
 #include <algorithm>
-#include <fftw3/fftw3.h>
+#include <fftw3.h>
 #include <glog/logging.h>
 #include <iostream>
 

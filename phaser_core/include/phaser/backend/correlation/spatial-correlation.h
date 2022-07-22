@@ -2,7 +2,7 @@
 #define PHASER_BACKEND_CORRELATION_SPATIAL_CORRELATION_H_
 
 #include <complex>
-#include <fftw3/fftw3.h>
+#include <fftw3.h>
 #include <memory>
 #include <vector>
 

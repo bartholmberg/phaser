@@ -113,7 +113,7 @@ std::vector<complex_t> LaplacePyramid::fuseLevelByMaxCoeff(
 
   std::vector<complex_t> fused(n_laplace);
 #pragma omp parallel for num_threads(4) shared(fused)
-  for (int i = 0; i < n_laplace; ++i) {
+  for ( int i = 0; i < n_laplace; ++i) {
     const uint32_t max_channel = findMaxCoeffForChannels(levels_per_channel, i);
     const complex_t& max_coeff = levels_per_channel[max_channel].second[i];
     fused[i][0] = max_coeff[0];
