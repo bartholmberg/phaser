@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{567F4049-B663-345F-9B00-31AEF7546DD1}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>phaser_common_lib</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\repo\phaser\phaser_common\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">phaser_common_lib.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">phaser_common_lib</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\repo\phaser\phaser_common\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">phaser_common_lib.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">phaser_common_lib</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\repo\phaser\phaser_common\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">phaser_common_lib.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">phaser_common_lib</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\repo\phaser\phaser_common\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">phaser_common_lib.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">phaser_common_lib</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <OpenMPSupport>true</OpenMPSupport>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <OpenMPSupport>true</OpenMPSupport>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <OpenMPSupport>true</OpenMPSupport>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <OpenMPSupport>true</OpenMPSupport>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);_USE_MATH_DEFINES;GLOG_NO_ABBREVIATED_SEVERITIES;WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <AdditionalIncludeDirectories>C:\repo\phaser\fftw3;C:\opt\ros\noetic\x64\include;C:\repo\vcpkg\packages\nlopt_x64-windows\include;c:\repo\phaser\phaser_common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4267;4464;4365;4710;4514;5045;4820;4355;5027;5026;5246;4244;4626;5219;4625;4242;4668;4018</DisableSpecificWarnings>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\repo\phaser\phaser_common\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/repo/phaser/phaser_common/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+C:\CMake\bin\cmake.exe -SC:/repo/phaser/phaser_common -BC:/repo/phaser/phaser_common --check-stamp-file C:/repo/phaser/phaser_common/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\CMake\share\cmake-3.22\Modules\CMakeCCompiler.cmake.in;C:\CMake\share\cmake-3.22\Modules\CMakeCCompilerABI.c;C:\CMake\share\cmake-3.22\Modules\CMakeCInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCXXCompiler.cmake.in;C:\CMake\share\cmake-3.22\Modules\CMakeCXXCompilerABI.cpp;C:\CMake\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCompilerIdDetection.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineCCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineCXXCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompileFeatures.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompilerABI.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompilerId.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineRCCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeFindBinUtils.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeParseImplicitLinkInfo.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeParseLibraryArchitecture.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeRCCompiler.cmake.in;C:\CMake\share\cmake-3.22\Modules\CMakeRCInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeTestCCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeTestCXXCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeTestCompilerCommon.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeTestRCCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CheckCXXCompilerFlag.cmake;C:\CMake\share\cmake-3.22\Modules\CheckCXXSourceCompiles.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\GNU-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\HP-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-C.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\TI-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\XL-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\zOS-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CompilerId\VS-10.vcxproj.in;C:\CMake\share\cmake-3.22\Modules\FindOpenMP.cmake;C:\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\CMake\share\cmake-3.22\Modules\Internal\CheckCompilerFlag.cmake;C:\CMake\share\cmake-3.22\Modules\Internal\CheckSourceCompiles.cmake;C:\CMake\share\cmake-3.22\Modules\Internal\FeatureTesting.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-Determine-CXX.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-C.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\repo\phaser\phaser_common\CMakeFiles\3.22.1\CMakeCCompiler.cmake;C:\repo\phaser\phaser_common\CMakeFiles\3.22.1\CMakeCXXCompiler.cmake;C:\repo\phaser\phaser_common\CMakeFiles\3.22.1\CMakeRCCompiler.cmake;C:\repo\phaser\phaser_common\CMakeFiles\3.22.1\CMakeSystem.cmake;C:\repo\phaser\phaser_common\CMakeFiles\FindOpenMP\OpenMPCheckVersion.c;C:\repo\phaser\phaser_common\CMakeFiles\FindOpenMP\OpenMPCheckVersion.cpp;C:\repo\phaser\phaser_common\CMakeFiles\FindOpenMP\OpenMPTryFlag.c;C:\repo\phaser\phaser_common\CMakeFiles\FindOpenMP\OpenMPTryFlag.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\repo\phaser\phaser_common\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/repo/phaser/phaser_common/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+C:\CMake\bin\cmake.exe -SC:/repo/phaser/phaser_common -BC:/repo/phaser/phaser_common --check-stamp-file C:/repo/phaser/phaser_common/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\CMake\share\cmake-3.22\Modules\CMakeCCompiler.cmake.in;C:\CMake\share\cmake-3.22\Modules\CMakeCCompilerABI.c;C:\CMake\share\cmake-3.22\Modules\CMakeCInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCXXCompiler.cmake.in;C:\CMake\share\cmake-3.22\Modules\CMakeCXXCompilerABI.cpp;C:\CMake\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCompilerIdDetection.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineCCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineCXXCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompileFeatures.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompilerABI.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompilerId.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineRCCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeFindBinUtils.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeParseImplicitLinkInfo.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeParseLibraryArchitecture.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeRCCompiler.cmake.in;C:\CMake\share\cmake-3.22\Modules\CMakeRCInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeTestCCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeTestCXXCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeTestCompilerCommon.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeTestRCCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CheckCXXCompilerFlag.cmake;C:\CMake\share\cmake-3.22\Modules\CheckCXXSourceCompiles.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\GNU-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\HP-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-C.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\TI-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\XL-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\zOS-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CompilerId\VS-10.vcxproj.in;C:\CMake\share\cmake-3.22\Modules\FindOpenMP.cmake;C:\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\CMake\share\cmake-3.22\Modules\Internal\CheckCompilerFlag.cmake;C:\CMake\share\cmake-3.22\Modules\Internal\CheckSourceCompiles.cmake;C:\CMake\share\cmake-3.22\Modules\Internal\FeatureTesting.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-Determine-CXX.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-C.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\repo\phaser\phaser_common\CMakeFiles\3.22.1\CMakeCCompiler.cmake;C:\repo\phaser\phaser_common\CMakeFiles\3.22.1\CMakeCXXCompiler.cmake;C:\repo\phaser\phaser_common\CMakeFiles\3.22.1\CMakeRCCompiler.cmake;C:\repo\phaser\phaser_common\CMakeFiles\3.22.1\CMakeSystem.cmake;C:\repo\phaser\phaser_common\CMakeFiles\FindOpenMP\OpenMPCheckVersion.c;C:\repo\phaser\phaser_common\CMakeFiles\FindOpenMP\OpenMPCheckVersion.cpp;C:\repo\phaser\phaser_common\CMakeFiles\FindOpenMP\OpenMPTryFlag.c;C:\repo\phaser\phaser_common\CMakeFiles\FindOpenMP\OpenMPTryFlag.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\repo\phaser\phaser_common\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/repo/phaser/phaser_common/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+C:\CMake\bin\cmake.exe -SC:/repo/phaser/phaser_common -BC:/repo/phaser/phaser_common --check-stamp-file C:/repo/phaser/phaser_common/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\CMake\share\cmake-3.22\Modules\CMakeCCompiler.cmake.in;C:\CMake\share\cmake-3.22\Modules\CMakeCCompilerABI.c;C:\CMake\share\cmake-3.22\Modules\CMakeCInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCXXCompiler.cmake.in;C:\CMake\share\cmake-3.22\Modules\CMakeCXXCompilerABI.cpp;C:\CMake\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCompilerIdDetection.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineCCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineCXXCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompileFeatures.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompilerABI.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompilerId.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineRCCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeFindBinUtils.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeParseImplicitLinkInfo.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeParseLibraryArchitecture.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeRCCompiler.cmake.in;C:\CMake\share\cmake-3.22\Modules\CMakeRCInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeTestCCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeTestCXXCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeTestCompilerCommon.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeTestRCCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CheckCXXCompilerFlag.cmake;C:\CMake\share\cmake-3.22\Modules\CheckCXXSourceCompiles.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\GNU-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\HP-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-C.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\TI-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\XL-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\zOS-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CompilerId\VS-10.vcxproj.in;C:\CMake\share\cmake-3.22\Modules\FindOpenMP.cmake;C:\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\CMake\share\cmake-3.22\Modules\Internal\CheckCompilerFlag.cmake;C:\CMake\share\cmake-3.22\Modules\Internal\CheckSourceCompiles.cmake;C:\CMake\share\cmake-3.22\Modules\Internal\FeatureTesting.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-Determine-CXX.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-C.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\repo\phaser\phaser_common\CMakeFiles\3.22.1\CMakeCCompiler.cmake;C:\repo\phaser\phaser_common\CMakeFiles\3.22.1\CMakeCXXCompiler.cmake;C:\repo\phaser\phaser_common\CMakeFiles\3.22.1\CMakeRCCompiler.cmake;C:\repo\phaser\phaser_common\CMakeFiles\3.22.1\CMakeSystem.cmake;C:\repo\phaser\phaser_common\CMakeFiles\FindOpenMP\OpenMPCheckVersion.c;C:\repo\phaser\phaser_common\CMakeFiles\FindOpenMP\OpenMPCheckVersion.cpp;C:\repo\phaser\phaser_common\CMakeFiles\FindOpenMP\OpenMPTryFlag.c;C:\repo\phaser\phaser_common\CMakeFiles\FindOpenMP\OpenMPTryFlag.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\repo\phaser\phaser_common\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/repo/phaser/phaser_common/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+C:\CMake\bin\cmake.exe -SC:/repo/phaser/phaser_common -BC:/repo/phaser/phaser_common --check-stamp-file C:/repo/phaser/phaser_common/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\CMake\share\cmake-3.22\Modules\CMakeCCompiler.cmake.in;C:\CMake\share\cmake-3.22\Modules\CMakeCCompilerABI.c;C:\CMake\share\cmake-3.22\Modules\CMakeCInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCXXCompiler.cmake.in;C:\CMake\share\cmake-3.22\Modules\CMakeCXXCompilerABI.cpp;C:\CMake\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCompilerIdDetection.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineCCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineCXXCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompileFeatures.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompilerABI.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineCompilerId.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineRCCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeFindBinUtils.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeParseImplicitLinkInfo.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeParseLibraryArchitecture.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeRCCompiler.cmake.in;C:\CMake\share\cmake-3.22\Modules\CMakeRCInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeTestCCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeTestCXXCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeTestCompilerCommon.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeTestRCCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CheckCXXCompilerFlag.cmake;C:\CMake\share\cmake-3.22\Modules\CheckCXXSourceCompiles.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\GNU-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\HP-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-C.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\TI-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\XL-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\zOS-C-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\CMake\share\cmake-3.22\Modules\CompilerId\VS-10.vcxproj.in;C:\CMake\share\cmake-3.22\Modules\FindOpenMP.cmake;C:\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\CMake\share\cmake-3.22\Modules\Internal\CheckCompilerFlag.cmake;C:\CMake\share\cmake-3.22\Modules\Internal\CheckSourceCompiles.cmake;C:\CMake\share\cmake-3.22\Modules\Internal\FeatureTesting.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-Determine-CXX.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-C.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\repo\phaser\phaser_common\CMakeFiles\3.22.1\CMakeCCompiler.cmake;C:\repo\phaser\phaser_common\CMakeFiles\3.22.1\CMakeCXXCompiler.cmake;C:\repo\phaser\phaser_common\CMakeFiles\3.22.1\CMakeRCCompiler.cmake;C:\repo\phaser\phaser_common\CMakeFiles\3.22.1\CMakeSystem.cmake;C:\repo\phaser\phaser_common\CMakeFiles\FindOpenMP\OpenMPCheckVersion.c;C:\repo\phaser\phaser_common\CMakeFiles\FindOpenMP\OpenMPCheckVersion.cpp;C:\repo\phaser\phaser_common\CMakeFiles\FindOpenMP\OpenMPTryFlag.c;C:\repo\phaser\phaser_common\CMakeFiles\FindOpenMP\OpenMPTryFlag.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\repo\phaser\phaser_common\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\model\point-cloud.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\model\ply-point-cloud.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\model\function-value.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\model\registration-result.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\model\gmm-parameters.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\model\state.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\data\datasource-ros.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\data\datasource-ply.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\data\file-system-helper.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\data\ply-helper.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\spherical-projection.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\spherical-sampler.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\rotation-utils.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\translation-utils.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\statistics-manager.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\metric-utils.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\point-cloud-utils.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\gflags-interface.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\math-utils.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\dual-quaternion.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\thread-pool.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\base-worker.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\test-worker.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\signal-utils.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\core-gflags.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\test\testing-entrypoint.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\distribution\gaussian.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\distribution\gaussian-mixture.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\distribution\bingham.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\distribution\bingham-mle.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\distribution\bingham-mixture.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\distribution\bingham-normalization-constant.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\distribution\bingham-objective.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\distribution\bingham-opt-mle.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\lib\tinyply\tinyply.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\repo\phaser\phaser_common\ZERO_CHECK.vcxproj">
+      <Project>{72E6246E-6544-3C62-A619-BC8371BD0D68}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

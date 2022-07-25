@@ -1,7 +1,7 @@
 #ifndef PHASER_DISTRIBUTION_BINGHAM_OPT_MLE_H_
 #define PHASER_DISTRIBUTION_BINGHAM_OPT_MLE_H_
 
-#define _USE_MATH_DEFINES
+//#define _USE_MATH_DEFINES
 
 #include <Eigen/Dense>
 

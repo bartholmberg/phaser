@@ -6,6 +6,7 @@
 #include <glog/logging.h>
 #include <iostream>
 #include <vector>
+#include <numeric>
 
 #include "phaser/common/math-utils.h"
 #include "phaser/distribution/bingham-mle.h"

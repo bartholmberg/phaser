@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0CC6EC1E-6577-377D-914A-7A72553310AF}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>phaser_core_driver</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\repo\phaser\phaser_core\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">phaser_core_driver.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">phaser_core_driver</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\repo\phaser\phaser_core\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">phaser_core_driver.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">phaser_core_driver</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\repo\phaser\phaser_core\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">phaser_core_driver.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">phaser_core_driver</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\repo\phaser\phaser_core\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">phaser_core_driver.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">phaser_core_driver</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions) -msse -msse2 -msse3 -msse4 -O3 -O0 -g</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <OpenMPSupport>true</OpenMPSupport>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>EnableAllWarnings</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);NDEBUG;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;NDEBUG;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>Debug\phaser_core_lib.lib;gomp.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/repo/phaser/phaser_core/Debug/phaser_core_driver.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/repo/phaser/phaser_core/Debug/phaser_core_driver.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions) -msse -msse2 -msse3 -msse4 -O3 -O3</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <OpenMPSupport>true</OpenMPSupport>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>EnableAllWarnings</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);NDEBUG;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>Release\phaser_core_lib.lib;gomp.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/repo/phaser/phaser_core/Release/phaser_core_driver.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/repo/phaser/phaser_core/Release/phaser_core_driver.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions) -msse -msse2 -msse3 -msse4 -O3</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <OpenMPSupport>true</OpenMPSupport>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>EnableAllWarnings</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);NDEBUG;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>MinSizeRel\phaser_core_lib.lib;gomp.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/repo/phaser/phaser_core/MinSizeRel/phaser_core_driver.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/repo/phaser/phaser_core/MinSizeRel/phaser_core_driver.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions) -msse -msse2 -msse3 -msse4 -O3</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <OpenMPSupport>true</OpenMPSupport>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>EnableAllWarnings</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);NDEBUG;GLOG_NO_ABBREVIATED_SEVERITIES;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>RelWithDebInfo\phaser_core_lib.lib;gomp.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/repo/phaser/phaser_core/RelWithDebInfo/phaser_core_driver.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/repo/phaser/phaser_core/RelWithDebInfo/phaser_core_driver.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\repo\phaser\phaser_core\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/repo/phaser/phaser_core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+C:\CMake\bin\cmake.exe -SC:/repo/phaser/phaser_core -BC:/repo/phaser/phaser_core --check-stamp-file C:/repo/phaser/phaser_core/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\CMake\share\cmake-3.22\Modules\CMakeCInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeParseImplicitLinkInfo.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeRCInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\CMake\share\cmake-3.22\Modules\CheckCXXCompilerFlag.cmake;C:\CMake\share\cmake-3.22\Modules\CheckCXXSourceCompiles.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-C.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;C:\CMake\share\cmake-3.22\Modules\FindOpenMP.cmake;C:\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\CMake\share\cmake-3.22\Modules\Internal\CheckCompilerFlag.cmake;C:\CMake\share\cmake-3.22\Modules\Internal\CheckSourceCompiles.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-C.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\repo\phaser\phaser_core\CMakeFiles\3.22.1\CMakeCCompiler.cmake;C:\repo\phaser\phaser_core\CMakeFiles\3.22.1\CMakeCXXCompiler.cmake;C:\repo\phaser\phaser_core\CMakeFiles\3.22.1\CMakeRCCompiler.cmake;C:\repo\phaser\phaser_core\CMakeFiles\3.22.1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\repo\phaser\phaser_core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/repo/phaser/phaser_core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+C:\CMake\bin\cmake.exe -SC:/repo/phaser/phaser_core -BC:/repo/phaser/phaser_core --check-stamp-file C:/repo/phaser/phaser_core/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\CMake\share\cmake-3.22\Modules\CMakeCInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeParseImplicitLinkInfo.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeRCInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\CMake\share\cmake-3.22\Modules\CheckCXXCompilerFlag.cmake;C:\CMake\share\cmake-3.22\Modules\CheckCXXSourceCompiles.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-C.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;C:\CMake\share\cmake-3.22\Modules\FindOpenMP.cmake;C:\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\CMake\share\cmake-3.22\Modules\Internal\CheckCompilerFlag.cmake;C:\CMake\share\cmake-3.22\Modules\Internal\CheckSourceCompiles.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-C.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\repo\phaser\phaser_core\CMakeFiles\3.22.1\CMakeCCompiler.cmake;C:\repo\phaser\phaser_core\CMakeFiles\3.22.1\CMakeCXXCompiler.cmake;C:\repo\phaser\phaser_core\CMakeFiles\3.22.1\CMakeRCCompiler.cmake;C:\repo\phaser\phaser_core\CMakeFiles\3.22.1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\repo\phaser\phaser_core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/repo/phaser/phaser_core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+C:\CMake\bin\cmake.exe -SC:/repo/phaser/phaser_core -BC:/repo/phaser/phaser_core --check-stamp-file C:/repo/phaser/phaser_core/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\CMake\share\cmake-3.22\Modules\CMakeCInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeParseImplicitLinkInfo.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeRCInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\CMake\share\cmake-3.22\Modules\CheckCXXCompilerFlag.cmake;C:\CMake\share\cmake-3.22\Modules\CheckCXXSourceCompiles.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-C.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;C:\CMake\share\cmake-3.22\Modules\FindOpenMP.cmake;C:\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\CMake\share\cmake-3.22\Modules\Internal\CheckCompilerFlag.cmake;C:\CMake\share\cmake-3.22\Modules\Internal\CheckSourceCompiles.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-C.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\repo\phaser\phaser_core\CMakeFiles\3.22.1\CMakeCCompiler.cmake;C:\repo\phaser\phaser_core\CMakeFiles\3.22.1\CMakeCXXCompiler.cmake;C:\repo\phaser\phaser_core\CMakeFiles\3.22.1\CMakeRCCompiler.cmake;C:\repo\phaser\phaser_core\CMakeFiles\3.22.1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\repo\phaser\phaser_core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/repo/phaser/phaser_core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+C:\CMake\bin\cmake.exe -SC:/repo/phaser/phaser_core -BC:/repo/phaser/phaser_core --check-stamp-file C:/repo/phaser/phaser_core/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\CMake\share\cmake-3.22\Modules\CMakeCInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeParseImplicitLinkInfo.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeRCInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\CMake\share\cmake-3.22\Modules\CheckCXXCompilerFlag.cmake;C:\CMake\share\cmake-3.22\Modules\CheckCXXSourceCompiles.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-C.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;C:\CMake\share\cmake-3.22\Modules\FindOpenMP.cmake;C:\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\CMake\share\cmake-3.22\Modules\Internal\CheckCompilerFlag.cmake;C:\CMake\share\cmake-3.22\Modules\Internal\CheckSourceCompiles.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-C.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\repo\phaser\phaser_core\CMakeFiles\3.22.1\CMakeCCompiler.cmake;C:\repo\phaser\phaser_core\CMakeFiles\3.22.1\CMakeCXXCompiler.cmake;C:\repo\phaser\phaser_core\CMakeFiles\3.22.1\CMakeRCCompiler.cmake;C:\repo\phaser\phaser_core\CMakeFiles\3.22.1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\repo\phaser\phaser_core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\repo\phaser\phaser_core\test\driver.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\repo\phaser\phaser_core\ZERO_CHECK.vcxproj">
+      <Project>{6FC651B0-7941-34A3-9106-3A238779BE6E}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\repo\phaser\phaser_core\phaser_core_lib.vcxproj">
+      <Project>{1A9AAFDD-0F38-33EF-893B-A0F4FD165A75}</Project>
+      <Name>phaser_core_lib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

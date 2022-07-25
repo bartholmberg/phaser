@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\model\point-cloud.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\model\ply-point-cloud.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\model\function-value.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\model\registration-result.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\model\gmm-parameters.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\model\state.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\data\datasource-ros.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\data\datasource-ply.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\data\file-system-helper.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\data\ply-helper.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\spherical-projection.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\spherical-sampler.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\rotation-utils.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\translation-utils.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\statistics-manager.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\metric-utils.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\point-cloud-utils.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\gflags-interface.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\math-utils.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\dual-quaternion.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\thread-pool.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\base-worker.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\test-worker.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\signal-utils.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\core-gflags.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\test\testing-entrypoint.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\distribution\gaussian.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\distribution\gaussian-mixture.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\distribution\bingham.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\distribution\bingham-mle.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\distribution\bingham-mixture.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\distribution\bingham-normalization-constant.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\distribution\bingham-objective.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\distribution\bingham-opt-mle.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_common\lib\tinyply\tinyply.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\repo\phaser\phaser_common\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{172F7FD9-7108-3979-AC08-5095BEB84946}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

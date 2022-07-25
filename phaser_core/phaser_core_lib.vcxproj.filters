@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\repo\phaser\phaser_core\lib\SOFT\s2_legendreTransforms.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\lib\SOFT\makeweights.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\lib\SOFT\s2_primitive.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\lib\SOFT\makeWigner.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\lib\SOFT\utils_so3.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\lib\SOFT\s2_semi_memo.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\lib\SOFT\utils_vec_cx.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\lib\SOFT\so3_correlate_fftw.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\lib\SOFT\s2_cospmls.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\lib\SOFT\soft_fftw.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\lib\SOFT\wignerTransforms_fftw.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\controller\cloud-controller.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\registration\base-registration.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\registration\sph-registration.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\registration\sph-opt-registration.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\registration\mock\sph-registration-mock-rotated.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\registration\mock\sph-registration-mock-cutted.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\registration\mock\sph-registration-mock-translated.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\registration\mock\sph-registration-mock-transformed.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\correlation\spherical-correlation.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\correlation\spherical-correlation-low-pass.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\correlation\spherical-correlation-laplace.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\correlation\spatial-correlation.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\correlation\spatial-correlation-low-pass.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\correlation\spatial-correlation-laplace.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\correlation\spherical-intensity-worker.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\correlation\spherical-range-worker.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\correlation\spherical-combined-worker.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\uncertainty\base-eval.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\uncertainty\z-score-eval.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\uncertainty\z-score-peak-extraction.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\uncertainty\gaussian-peak-based-eval.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\uncertainty\gmm-peak-based-eval.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\uncertainty\bingham-peak-based-eval.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\uncertainty\bmm-peak-based-eval.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\uncertainty\peak-based-eval.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\uncertainty\phase-correlation-eval.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\uncertainty\signal-analysis.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\alignment\phase-aligner.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\fusion\laplace-pyramid.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\fusion\pyramid-struct.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\repo\phaser\phaser_core\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{99FE7D56-73DA-3CDD-97B4-267C0EA31177}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

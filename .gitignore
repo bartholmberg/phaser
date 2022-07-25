@@ -25,8 +25,8 @@ phaser_common_lib.dir/
 RelWithDebInfo/
 ZERO_CHECK/
 phaser_core_driver.dir/
-*.vcxproj.*
-*.vcxproj
+#*.vcxproj.*
+#*.vcxproj
 *Cmake*
 # Temporary editor files.
 *~
@@ -64,3 +64,4 @@ CMakeLists.txt.user
 
 # Registered PLY
 registered.ply
+!*.sln

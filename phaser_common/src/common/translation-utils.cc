@@ -2,7 +2,7 @@
 
 #include <cmath>
 #include <glog/logging.h>
-
+#include <array>
 namespace common {
 
 void TranslationUtils::TranslateXYZ(
@@ -53,6 +53,7 @@ double TranslationUtils::ComputeTranslationFromIndex(
 
 std::array<uint32_t, 3> TranslationUtils::Ind2sub(
     const uint32_t lin_index, const uint32_t n_voxels) {
+
   return Ind2sub(lin_index, n_voxels, n_voxels);
 }
 
