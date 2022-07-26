@@ -1,5 +1,7 @@
 # Compiled Object files.
 *.slo
+*.log
+*.tlog
 *.lo
 *.o
 *.obj

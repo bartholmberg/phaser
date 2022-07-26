@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\repo\phaser\phaser_pre\src\cloud-pre-processor.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_pre\src\common\pre-processor-gflags.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_pre\src\common\sse-mathfun.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_pre\src\common\sse-mathfun-extension.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_pre\src\model\projection-result.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_pre\src\model\cluster-result.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_pre\src\model\segmentation-result.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_pre\src\model\ground-removal-result.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_pre\src\model\feature-extraction-result.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_pre\src\model\smoothness-result.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_pre\src\model\occlusion-result.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_pre\src\model\gradient-result.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_pre\src\commands\voxel-grid-cmd.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_pre\src\commands\pass-through-gnd-filter-cmd.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_pre\src\commands\segment-cloud-cmd.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_pre\src\algorithm\image-projection.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_pre\src\algorithm\angle-based-ground-removal.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_pre\src\algorithm\cluster-points.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_pre\src\algorithm\cloud-segmentation.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_pre\src\algorithm\extract-loam-features.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_pre\src\algorithm\calc-smoothness.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_pre\src\algorithm\mark-occluded.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repo\phaser\phaser_pre\src\algorithm\image-gradient.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\repo\phaser\phaser_pre\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{DCE05303-7EF4-3981-86B0-93CEF02D45C3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
