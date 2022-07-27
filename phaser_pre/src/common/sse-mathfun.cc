@@ -32,7 +32,7 @@
 #include "phaser_pre/common/sse-mathfun.h"
 
 #include <xmmintrin.h>
-
+#define USE_SSE2
 namespace preproc {
 
 _PS_CONST(1, 1.0f);

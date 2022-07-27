@@ -110,23 +110,23 @@ void SpatialCorrelation::complexMulVecUsingIndices(
     const uint32_t padded_j =
         zero_padding_ != 0u ? computeZeroPaddedIndex(j) : j;
     vec_F_real = _mm_set_pd( F[i][0], F[j][0] );
-    //vec_F_real[0] = F[i][0]
-    //vec_F_real[1] = F[j][0];
+    vec_F_real.m128d_f64[0] = F[i][0];
+    vec_F_real.m128d_f64[1] = F[j][0];
     vec_F_img = _mm_set_pd( F[i][1], F[j][1] );
-    //vec_F_img[0] = F[i][1];
-    //vec_F_img[1] = F[j][1];
+    vec_F_img.m128d_f64[0] = F[i][1];
+    vec_F_img.m128d_f64[1] = F[j][1];
     vec_F_real = _mm_set_pd( G[i][0], G[j][0] );
-    //vec_G_real[0] = G[i][0];
-    //vec_G_real[1] = G[j][0];
+    vec_G_real.m128d_f64[0] = G[i][0];
+    vec_G_real.m128d_f64[1] = G[j][0];
     neg_vec_G_img = _mm_set_pd( -G[i][1], -G[j][1] );
-    //neg_vec_G_img[0] = -G[i][1];
-    //neg_vec_G_img[1] = -G[j][1];
+    neg_vec_G_img.m128d_f64[0] = -G[i][1];
+    neg_vec_G_img.m128d_f64[1] = -G[j][1];
     vec_C_real = _mm_set_pd( C[i][0], C[j][0] );
-    //vec_C_real[0] = C[i][0];
-    //vec_C_real[1] = C[j][0];
+    vec_C_real.m128d_f64[0] = C[i][0];
+    vec_C_real.m128d_f64[1] = C[j][0];
     vec_C_img = _mm_set_pd(C[i][1], C[j][1]);
-    //vec_C_img[0] = C[i][1];
-    //vec_C_img[1] = C[j][1];
+    vec_C_img.m128d_f64[0] = C[i][1];
+    vec_C_img.m128d_f64[1] = C[j][1];
 
     // Perform complex multiplication.
     vec_C_real = _mm_sub_pd(

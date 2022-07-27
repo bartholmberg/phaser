@@ -71,26 +71,26 @@ ProjectionResult ImageProjection::projectPointCloud(
     const auto& point2 = input_cloud->points[i + 1];
     const auto& point3 = input_cloud->points[i + 2];
     const auto& point4 = input_cloud->points[i + 3];
-    lowerVecXY[0] = point1.x;
-    lowerVecXY[1] = point1.y;
-    lowerVecXY[2] = point2.x;
-    lowerVecXY[3] = point2.y;
-    upperVecXY[0] = point3.x;
-    upperVecXY[1] = point3.y;
-    upperVecXY[2] = point4.x;
-    upperVecXY[3] = point4.y;
-    vecX[0] = point1.x;
-    vecX[1] = point2.x;
-    vecX[2] = point3.x;
-    vecX[3] = point4.x;
-    vecY[0] = point1.y;
-    vecY[1] = point2.y;
-    vecY[2] = point3.y;
-    vecY[3] = point4.y;
-    vecZ[0] = point1.z;
-    vecZ[1] = point2.z;
-    vecZ[2] = point3.z;
-    vecZ[3] = point4.z;
+    lowerVecXY.m128_f32[0] = point1.x;
+    lowerVecXY.m128_f32[1] = point1.y;
+    lowerVecXY.m128_f32[2] = point2.x;
+    lowerVecXY.m128_f32[3] = point2.y;
+    upperVecXY.m128_f32[0] = point3.x;
+    upperVecXY.m128_f32[1] = point3.y;
+    upperVecXY.m128_f32[2] = point4.x;
+    upperVecXY.m128_f32[3] = point4.y;
+    vecX.m128_f32[0] = point1.x;
+    vecX.m128_f32[1] = point2.x;
+    vecX.m128_f32[2] = point3.x;
+    vecX.m128_f32[3] = point4.x;
+    vecY.m128_f32[0] = point1.y;
+    vecY.m128_f32[1] = point2.y;
+    vecY.m128_f32[2] = point3.y;
+    vecY.m128_f32[3] = point4.y;
+    vecZ.m128_f32[0] = point1.z;
+    vecZ.m128_f32[1] = point2.z;
+    vecZ.m128_f32[2] = point3.z;
+    vecZ.m128_f32[3] = point4.z;
 
     // Compute the vertical angle alpha, i.e.
     // alpha = atan2(z, sqrt(x^2 + y^2)).
@@ -132,36 +132,44 @@ ProjectionResult ImageProjection::projectPointCloud(
     index = _mm_add_ps(columnIdn, _mm_mul_ps(rowIdn, settings.horizon_scan_ps));
 
     if (cond & 0x000F) {
-      range_mat.at<float>(rowIdn[0], columnIdn[0]) = range[0];
-      signal_mat.at<float>(rowIdn[0], columnIdn[0]) = point1.intensity;
-      full_cloud->points[index[0]] = point1;
+      range_mat.at<float>(rowIdn.m128_f32[0], columnIdn.m128_f32[0]) =
+          range.m128_f32[0];
+      signal_mat.at<float>(rowIdn.m128_f32[0], columnIdn.m128_f32[0]) =
+          point1.intensity;
+      full_cloud->points[index.m128_f32[0]] = point1;
       // full_cloud->points[index[0]].intensity = intensity[0];
-      full_info_cloud->points[index[0]].x = range[0];
-      full_info_cloud->points[index[0]].y = point1.intensity;
+      full_info_cloud->points[index.m128_f32[0]].x = range.m128_f32[0];
+      full_info_cloud->points[index.m128_f32[0]].y = point1.intensity;
     }
     if (cond & 0x00F0) {
-      range_mat.at<float>(rowIdn[1], columnIdn[1]) = range[1];
-      signal_mat.at<float>(rowIdn[1], columnIdn[1]) = point2.intensity;
-      full_cloud->points[index[1]] = point2;
+      range_mat.at<float>(rowIdn.m128_f32[1], columnIdn.m128_f32[1]) =
+          range.m128_f32[1];
+      signal_mat.at<float>(rowIdn.m128_f32[1], columnIdn.m128_f32[1]) =
+          point2.intensity;
+      full_cloud->points[index.m128_f32[1]] = point2;
       // full_cloud->points[index[1]].intensity = intensity[1];
-      full_info_cloud->points[index[1]].x = range[1];
-      full_info_cloud->points[index[1]].y = point2.intensity;
+      full_info_cloud->points[index.m128_f32[1]].x = range.m128_f32[1];
+      full_info_cloud->points[index.m128_f32[1]].y = point2.intensity;
     }
     if (cond & 0x0F00) {
-      range_mat.at<float>(rowIdn[2], columnIdn[2]) = range[2];
-      signal_mat.at<float>(rowIdn[2], columnIdn[2]) = point3.intensity;
-      full_cloud->points[index[2]] = point3;
+      range_mat.at<float>(rowIdn.m128_f32[2], columnIdn.m128_f32[2]) =
+          range.m128_f32[2];
+      signal_mat.at<float>(rowIdn.m128_f32[2], columnIdn.m128_f32[2]) =
+          point3.intensity;
+      full_cloud->points[index.m128_f32[2]] = point3;
       // full_cloud->points[index[2]].intensity = intensity[2];
-      full_info_cloud->points[index[2]].x = range[2];
-      full_info_cloud->points[index[2]].y = point3.intensity;
+      full_info_cloud->points[index.m128_f32[2]].x = range.m128_f32[2];
+      full_info_cloud->points[index.m128_f32[2]].y = point3.intensity;
     }
     if (cond & 0xF000) {
-      range_mat.at<float>(rowIdn[3], columnIdn[3]) = range[3];
-      signal_mat.at<float>(rowIdn[3], columnIdn[3]) = point4.intensity;
-      full_cloud->points[index[3]] = point4;
+      range_mat.at<float>(rowIdn.m128_f32[3], columnIdn.m128_f32[3]) =
+          range.m128_f32[3];
+      signal_mat.at<float>(rowIdn.m128_f32[3], columnIdn.m128_f32[3]) =
+          point4.intensity;
+      full_cloud->points[index.m128_f32[3]] = point4;
       // full_cloud->points[index[3]].intensity = intensity[3];
-      full_info_cloud->points[index[3]].intensity = range[3];
-      full_info_cloud->points[index[3]].y = point4.intensity;
+      full_info_cloud->points[index.m128_f32[3]].intensity = range.m128_f32[3];
+      full_info_cloud->points[index.m128_f32[3]].y = point4.intensity;
     }
   }
 

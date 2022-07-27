@@ -35,37 +35,37 @@ GroundRemovalResult AngleBasedGroundRemoval::removeGround(
       __m128 vecZShifted = _mm_setzero_ps();
 
       idx = j + (i)*settings_.Horizon_SCAN;
-      vecXY[0] = cloud->points[idx].x;
-      vecXY[1] = cloud->points[idx].y;
-      vecZ[0] = cloud->points[idx].z;
+      vecXY.m128_f32[0] = cloud->points[idx].x;
+      vecXY.m128_f32[1] = cloud->points[idx].y;
+      vecZ.m128_f32[0] = cloud->points[idx].z;
 
       idx = j + (i + 1) * settings_.Horizon_SCAN;
-      vecXY[2] = cloud->points[idx].x;
-      vecXY[3] = cloud->points[idx].y;
-      vecZ[1] = cloud->points[idx].z;
-      vecXYShifted[0] = cloud->points[idx].x;
-      vecXYShifted[1] = cloud->points[idx].y;
-      vecZShifted[0] = cloud->points[idx].z;
+      vecXY.m128_f32[2] = cloud->points[idx].x;
+      vecXY.m128_f32[3] = cloud->points[idx].y;
+      vecZ.m128_f32[1] = cloud->points[idx].z;
+      vecXYShifted.m128_f32[0] = cloud->points[idx].x;
+      vecXYShifted.m128_f32[1] = cloud->points[idx].y;
+      vecZShifted.m128_f32[0] = cloud->points[idx].z;
 
       idx = j + (i + 2) * settings_.Horizon_SCAN;
-      vecXY2[0] = cloud->points[idx].x;
-      vecXY2[1] = cloud->points[idx].y;
-      vecXYShifted[2] = cloud->points[idx].x;
-      vecXYShifted[3] = cloud->points[idx].y;
-      vecZShifted[1] = cloud->points[idx].z;
+      vecXY2.m128_f32[0] = cloud->points[idx].x;
+      vecXY2.m128_f32[1] = cloud->points[idx].y;
+      vecXYShifted.m128_f32[2] = cloud->points[idx].x;
+      vecXYShifted.m128_f32[3] = cloud->points[idx].y;
+      vecZShifted.m128_f32[1] = cloud->points[idx].z;
 
       idx = j + (i + 3) * settings_.Horizon_SCAN;
-      vecXY2[2] = cloud->points[idx].x;
-      vecXY2[3] = cloud->points[idx].y;
-      vecZ[3] = cloud->points[idx].z;
-      vecXYShifted2[0] = cloud->points[idx].x;
-      vecXYShifted2[1] = cloud->points[idx].y;
-      vecZShifted[2] = cloud->points[idx].z;
+      vecXY2.m128_f32[2] = cloud->points[idx].x;
+      vecXY2.m128_f32[3] = cloud->points[idx].y;
+      vecZ.m128_f32[3] = cloud->points[idx].z;
+      vecXYShifted2.m128_f32[0] = cloud->points[idx].x;
+      vecXYShifted2.m128_f32[1] = cloud->points[idx].y;
+      vecZShifted.m128_f32[2] = cloud->points[idx].z;
 
       idx = j + (i + 4) * settings_.Horizon_SCAN;
-      vecXYShifted2[2] = cloud->points[idx].x;
-      vecXYShifted2[3] = cloud->points[idx].y;
-      vecZShifted[3] = cloud->points[idx].z;
+      vecXYShifted2.m128_f32[2] = cloud->points[idx].x;
+      vecXYShifted2.m128_f32[3] = cloud->points[idx].y;
+      vecZShifted.m128_f32[3] = cloud->points[idx].z;
 
       // Calculate the difference between lower and upper bound.
       const __m128 diff = _mm_sub_ps(vecXYShifted, vecXY);

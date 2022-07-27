@@ -33,7 +33,7 @@
 #define PHASER_PRE_COMMON_SSE_MATHFUN_H_
 
 #include <xmmintrin.h>
-
+#define __attribute__(x)
 namespace preproc {
 
 #define ALIGN16_BEG
