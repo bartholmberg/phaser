@@ -221,7 +221,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>EnableAllWarnings</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);NDEBUG;GLOG_NO_ABBREVIATED_SEVERITIES;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);NDEBUG;GLOG_NO_ABBREVIATED_SEVERITIES;GFLAGS_DLL_DEFINE_FLAG;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <AdditionalIncludeDirectories>C:\repo\phaser\phaser_pre\include;C:\repo\phaser\fftw3;c:\repo\phaser\phaser_common\include;c:\repo\phaser\phaser_core\include;C:\opt\ros\noetic\x64\include</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4577;4267;4464;4365;4710;4514;5045;4820;4355;5027;5026;5246;4244;4626;5219;4625;4242;4668;4018</DisableSpecificWarnings>

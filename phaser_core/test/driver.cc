@@ -7,10 +7,17 @@
 
 #include "phaser/backend/registration/sph-opt-registration.h"
 #include "phaser/controller/cloud-controller.h"
+#include "phaser/common/core-gflags.h"
+// BAH- why doesn't this work if moved to core-gflags.h
 
-DEFINE_string(target_cloud, "", "Defines the path to the target cloud.");
-DEFINE_string(source_cloud, "", "Defines the path to the source cloud.");
-DEFINE_string(reg_cloud, "", "Defines the path to the registered cloud.");
+DECLARE_string(target_cloud, "", "Defines the path to the target cloud");
+DECLARE_string(source_cloud, "", "Defines the path to the source cloud");
+DECLARE_string(reg_cloud, "", "Defines the path to the registered cloud");
+// 
+// 
+//DEFINE_string(target_cloud, "", "Defines the path to the target cloud.");
+//DEFINE_string(source_cloud, "", "Defines the path to the source cloud.");
+//DEFINE_string(reg_cloud, "", "Defines the path to the registered cloud.");
 
 static model::PointCloudPtr readPointCloud(const std::string& path_to_ply) {
   CHECK(!path_to_ply.empty());
@@ -44,6 +51,7 @@ static void registerCloud(
   writePointCloud(reg_cloud, result.getRegisteredCloud());
 }
 
+//namespace phaser_core {
 int main(int argc, char** argv) {
   ros::init(argc, argv, "phaser_core_driver");
   google::ParseCommandLineFlags(&argc, &argv, true);
@@ -51,7 +59,9 @@ int main(int argc, char** argv) {
   google::InstallFailureSignalHandler();
 
   VLOG(1) << "=== PHASER CORE DRIVER =====================";
-  registerCloud(FLAGS_target_cloud, FLAGS_source_cloud, FLAGS_reg_cloud);
+  registerCloud(
+      FLAGS_target_cloud, FLAGS_source_cloud, FLAGS_reg_cloud);
 
   return 0;
 }
+//}  // namespace phaser_core

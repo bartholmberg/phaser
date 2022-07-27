@@ -20,8 +20,8 @@ namespace phaser_core {
 
 SphOptRegistration::SphOptRegistration()
     : BaseRegistration("SphOptRegistration"),
-      bandwidth_(phaser_core::FLAGS_phaser_core_spherical_bandwidth),
-      sampler_(phaser_core::FLAGS_phaser_core_spherical_bandwidth) {
+      bandwidth_(FLAGS_phaser_core_spherical_bandwidth),
+      sampler_(FLAGS_phaser_core_spherical_bandwidth) {
   BaseEvalPtr rot_eval = std::make_unique<BinghamPeakBasedEval>();
   BaseEvalPtr pos_eval = std::make_unique<GaussianPeakBasedEval>();
   correlation_eval_ = std::make_unique<PhaseCorrelationEval>(
