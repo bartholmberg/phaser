@@ -22,6 +22,8 @@
 *.out
 *.app
 .vs/
+RelWithDebInfo/
+Debug/
 phaser_core_lib.dir/
 phaser_common_lib.dir/
 RelWithDebInfo/
@@ -65,3 +67,4 @@ CMakeLists.txt.user
 .cquery_cache
 
 
+phaser_core/RelWithDebInfo/phaser_core_lib.pdb
