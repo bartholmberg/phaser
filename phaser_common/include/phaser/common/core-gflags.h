@@ -7,7 +7,9 @@
 namespace phaser_core {
 
 // Spherical correlation.
+
 DECLARE_int32(phaser_core_spherical_bandwidth);
+
 DECLARE_int32(phaser_core_spherical_zero_padding);
 DECLARE_int32(phaser_core_spherical_low_pass_lower_bound);
 DECLARE_int32(phaser_core_spherical_low_pass_upper_bound);

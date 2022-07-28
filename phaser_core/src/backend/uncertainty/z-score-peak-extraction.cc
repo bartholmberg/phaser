@@ -9,18 +9,18 @@
 
 #include "phaser/backend/uncertainty/signal-analysis.h"
 
-DEFINE_double(
+DECLARE_double(
     z_score_lag_percentile, 0.05,
     "The window used for smoothing the function.");
-DEFINE_int32(
+DECLARE_int32(
     z_score_lag_max, 20, "The window used for smoothing the function.");
-DEFINE_double(
+DECLARE_double(
     z_score_threshold, 4.33,
     "Defines the number of n-std requires to include a signal.");
-DEFINE_double(
+DECLARE_double(
     z_score_influence, 0.05,
     "The influence of the current data point to the lag mean.");
-DEFINE_double(
+DECLARE_double(
     z_score_filter_threshold, 0.405,
     "Removes all correlation input below this value.");
 
