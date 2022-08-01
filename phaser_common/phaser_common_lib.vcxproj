@@ -189,6 +189,7 @@
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <AdditionalIncludeDirectories>C:\repo\phaser\fftw3;C:\opt\ros\noetic\x64\include;C:\repo\vcpkg\packages\nlopt_x64-windows\include;c:\repo\phaser\phaser_common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4267;4464;4365;4710;4514;5045;4820;4355;5027;5026;5246;4244;4626;5219;4625;4242;4668;4018</DisableSpecificWarnings>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>

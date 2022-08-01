@@ -225,6 +225,7 @@
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <AdditionalIncludeDirectories>C:\repo\phaser\phaser_pre\include;C:\repo\phaser\fftw3;c:\repo\phaser\phaser_common\include;c:\repo\phaser\phaser_core\include;C:\opt\ros\noetic\x64\include</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4577;4267;4464;4365;4710;4514;5045;4820;4355;5027;5026;5246;4244;4626;5219;4625;4242;4668;4018</DisableSpecificWarnings>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
@@ -240,7 +241,7 @@
     <Link>
       <AdditionalDependencies>RelWithDebInfo\phaser_core_lib.lib;RelWithDebInfo\phaser_common_lib.lib;RelWithDebInfo\phaser_pre_lib.lib;roscpp.lib;roslib.lib;libfftw3-3.lib;libfftw3f-3.lib;libfftw3l-3.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\repo\phaser\phaser_pre;C:\repo\phaser\phaser_common;C:\opt\ros\noetic\x64\Lib;c:\repo\phaser\fftw3;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64 /IGNORE:4217</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImportLibrary>C:/repo/phaser/phaser_core/RelWithDebInfo/phaser_core_driver.lib</ImportLibrary>

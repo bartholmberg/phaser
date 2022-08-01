@@ -1,23 +1,24 @@
 #include "phaser/common/data/file-system-helper.h"
 
-#include <boost/filesystem.hpp>
+//#include <boost/filesystem.hpp>
+#include <filesystem>
 #include <glog/logging.h>
 
 namespace data {
 
 void FileSystemHelper::readDirectory(
     const std::string& directory, std::vector<std::string>* files) {
-  boost::filesystem::path p(directory);
-  if (!boost::filesystem::exists(p)) {
+  std::filesystem::path p(directory);
+  if (!std::filesystem::exists(p)) {
     LOG(FATAL) << "PLY directory does not exist!";
   }
 
-  boost::filesystem::directory_iterator start(p);
-  boost::filesystem::directory_iterator end;
+  std::filesystem::directory_iterator start(p);
+  std::filesystem::directory_iterator end;
   std::transform(
       start, end, std::back_inserter(*files),
-      [](const boost::filesystem::directory_entry& entry) {
-        return entry.path().leaf().string();
+      [](const std::filesystem::directory_entry& entry) {
+        return entry.path().filename().string();
       });
   std::sort(files->begin(), files->end());
 }
