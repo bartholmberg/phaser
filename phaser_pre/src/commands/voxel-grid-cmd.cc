@@ -11,7 +11,8 @@ namespace preproc {
 void VoxelGridCmd::execute(model::PointCloudPtr cloud) {
   CHECK_NOTNULL(cloud);
   VLOG(1) << "[PreProcessing] Performing voxel grid filtering...";
-  common::PointCloud_tPtr input_cloud = cloud->getRawCloud();
+  // BAH, Having troubline linking these get**Cloud() routines
+  common::PointCloud_tPtr input_cloud;//= cloud->getRawCloud();
   CHECK_NOTNULL(input_cloud);
 
   voxel_grid_filter_.setInputCloud(input_cloud);

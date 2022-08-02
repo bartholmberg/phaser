@@ -1,7 +1,7 @@
 #include "phaser_pre/common/pre-processor-gflags.h"
 
-namespace preproc {
-
+//namespace preproc {
+/*
 DEFINE_bool(
     phaser_pre_enable_voxel_grid_downsampling, false,
     "Enable downsampling with a voxel grid.");
@@ -13,5 +13,5 @@ DEFINE_bool(
 DEFINE_bool(
     phaser_pre_enable_geometric_cloud_segmentation, false,
     "Enable geometric segmentation of the cloud.");
-
-}  // namespace preproc
+*/
+//}  // namespace preproc

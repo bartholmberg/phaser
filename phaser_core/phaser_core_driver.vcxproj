@@ -239,9 +239,9 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>RelWithDebInfo\phaser_core_lib.lib;RelWithDebInfo\phaser_common_lib.lib;RelWithDebInfo\phaser_pre_lib.lib;roscpp.lib;roslib.lib;libfftw3-3.lib;libfftw3f-3.lib;libfftw3l-3.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>RelWithDebInfo\phaser_core_lib.lib;RelWithDebInfo\phaser_common_lib.lib;RelWithDebInfo\phaser_pre_lib.lib;pcl_io.lib;pcl_io_ply.lib;pcl_common.lib;pcl_features.lib;pcl_filters.lib;pcl_octree.lib;pcl_keypoints.lib;pcl_outofcore.lib;pcl_kdtree.lib;roscpp.lib;roslib.lib;libfftw3-3.lib;libfftw3f-3.lib;libfftw3l-3.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\repo\phaser\phaser_pre;C:\repo\phaser\phaser_common;C:\opt\ros\noetic\x64\Lib;c:\repo\phaser\fftw3;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalOptions>%(AdditionalOptions) /machine:x64 /IGNORE:4217</AdditionalOptions>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64 /IGNORE:4217 /ENTRY:WinMainCRTStartup</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImportLibrary>C:/repo/phaser/phaser_core/RelWithDebInfo/phaser_core_driver.lib</ImportLibrary>

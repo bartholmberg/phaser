@@ -14,7 +14,8 @@ ImageProjection::ImageProjection() {}
 ProjectionResult ImageProjection::projectPointCloudSequential(
     model::PointCloudPtr cloud) {
   const std::size_t n_points = cloud->size();
-  common::PointCloud_tPtr input_cloud = cloud->getRawCloud();
+  // BAH, Having troubline linking these get**Cloud() routines
+  common::PointCloud_tPtr input_cloud;//= cloud->getRawCloud();
   common::PointCloud_tPtr full_cloud(new common::PointCloud_t);
   common::PointCloud_tPtr full_info_cloud(new common::PointCloud_t);
 
@@ -64,7 +65,7 @@ ProjectionResult ImageProjection::projectPointCloud(
   __m128 index = _mm_setzero_ps();
   uint32_t cond = 0;
   std::size_t i = 0;
-  common::PointCloud_tPtr input_cloud = cloud->getRawCloud();
+  common::PointCloud_tPtr input_cloud;//= cloud->getRawCloud();
 
   for (; i < n_points_vec; i += 4) {
     const auto& point1 = input_cloud->points[i];
