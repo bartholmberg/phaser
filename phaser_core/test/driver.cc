@@ -20,20 +20,22 @@ DEFINE_string(target_cloud, "", "Defines the path to the target cloud.");
 DEFINE_string(source_cloud, "", "Defines the path to the source cloud.");
 DEFINE_string(reg_cloud, "", "Defines the path to the registered cloud.");
 
-// BAH, TBD:set these values to good defaults, 
+// BAH, TBD:set these values to good defaults,
 //          similarly(not identical) named inputs _spherical_bandwidth
 //          in phaser core lib source, why?
 DEFINE_int32(phaser_core_spherical_bandwidth, 0, "spherical bandwidth");
-DEFINE_int32(phaser_core_spherical_zero_padding,0,"zero pad");
-DEFINE_int32(phaser_core_spherical_low_pass_lower_bound,0,"low pass - lower band");
-DEFINE_int32(phaser_core_spherical_low_pass_upper_bound,0, "low pass - upper band");
+DEFINE_int32(phaser_core_spherical_zero_padding, 0, "zero pad");
+DEFINE_int32(
+    phaser_core_spherical_low_pass_lower_bound, 0, "low pass - lower band");
+DEFINE_int32(
+    phaser_core_spherical_low_pass_upper_bound, 0, "low pass - upper band");
 
-DEFINE_int32(phaser_core_spatial_n_voxels,0,"");
-DEFINE_int32(phaser_core_spatial_discretize_lower,0,"");
-DEFINE_int32(phaser_core_spatial_discretize_upper,0,"");
-DEFINE_int32(phaser_core_spatial_zero_padding,0,"");
-DEFINE_int32(phaser_core_spatial_low_pass_lower_bound,0,"");
-DEFINE_int32(phaser_core_spatial_low_pass_upper_bound,0,"");
+DEFINE_int32(phaser_core_spatial_n_voxels, 0, "");
+DEFINE_int32(phaser_core_spatial_discretize_lower, 0, "");
+DEFINE_int32(phaser_core_spatial_discretize_upper, 0, "");
+DEFINE_int32(phaser_core_spatial_zero_padding, 0, "");
+DEFINE_int32(phaser_core_spatial_low_pass_lower_bound, 0, "");
+DEFINE_int32(phaser_core_spatial_low_pass_upper_bound, 0, "");
 
 static model::PointCloudPtr readPointCloud(const std::string& path_to_ply) {
   CHECK(!path_to_ply.empty());
@@ -67,7 +69,8 @@ static void registerCloud(
   writePointCloud(reg_cloud, result.getRegisteredCloud());
 }
 
-
+}  // namespace phaser_core
+   // namespace phaser_core
 int main(int argc, char** argv) {
   ros::init(argc, argv, "phaser_core_driver");
   google::ParseCommandLineFlags(&argc, &argv, true);
@@ -75,9 +78,9 @@ int main(int argc, char** argv) {
   google::InstallFailureSignalHandler();
 
   VLOG(1) << "=== PHASER CORE DRIVER =====================";
-  registerCloud(
-      FLAGS_target_cloud, FLAGS_source_cloud, FLAGS_reg_cloud);
+  phaser_core::registerCloud(
+      phaser_core::FLAGS_target_cloud, phaser_core::FLAGS_source_cloud,
+      phaser_core::FLAGS_reg_cloud);
 
   return 0;
 }
-}  // namespace phaser_core
