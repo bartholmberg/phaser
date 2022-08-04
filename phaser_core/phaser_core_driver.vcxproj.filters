@@ -13,4 +13,7 @@
       <UniqueIdentifier>{99FE7D56-73DA-3CDD-97B4-267C0EA31177}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\phaser_share\run_phaser_core_driver" />
+  </ItemGroup>
 </Project>

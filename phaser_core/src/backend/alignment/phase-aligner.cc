@@ -82,7 +82,7 @@ void PhaseAligner::discretizePointcloud(
   Eigen::MatrixXf data;
   // BAH, remove until after init testing
   //data = cloud.getRawCloud()->getMatrixXfMap();
-
+  auto data2 = cloud.getRawCloud();
 
   // Discretize the point cloud using an cartesian grid.
   VLOG(1) << "Performing histogram counts.";
