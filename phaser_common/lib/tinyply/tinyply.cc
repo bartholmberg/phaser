@@ -134,7 +134,7 @@ void PlyFile::read_property_binary(
   is.read(src.data(), PropertyTable[t].stride);
 
   if (isBigEndian) {
-    LOG(FATAL) << "Big endian PLY detected, but not supported.";
+    LOG(INFO) << "Big endian PLY detected, but not supported.";
   }
 
   switch (t) {

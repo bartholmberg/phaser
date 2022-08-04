@@ -39,8 +39,14 @@ DEFINE_int32(phaser_core_spatial_low_pass_upper_bound, 0, "");
 
 static model::PointCloudPtr readPointCloud(const std::string& path_to_ply) {
   CHECK(!path_to_ply.empty());
-  LOG(INFO) << "Reading point cloud from " << path_to_ply;
-  model::PointCloudPtr cloud = std::make_shared<model::PointCloud>(path_to_ply);
+  //auto tmp ="C:\\repo\\phaser\\phaser_test_data\\test_clouds\\os0\\target_1.ply";
+  std::string tmp ="C:\\repo\\phaser\\phaser_test_data\\test_clouds\\os0\\target_1.ply";
+
+  //tmp ="C:\\repo\\phaser\\phaser_core\\RelWithDebInfo\\target1.ply";
+  auto tmp2 = path_to_ply;
+  //LOG(INFO) << "Reading point cloud from " << tmp;
+  std::cout << "Reading point cloud from " << path_to_ply;
+  model::PointCloudPtr cloud = std::make_shared<model::PointCloud>(tmp);
   return cloud;
 }
 

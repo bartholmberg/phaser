@@ -53,7 +53,7 @@ model::PlyPointCloud PlyHelper::readPlyFromFile(const std::string& filename) {
       "vertex", {FLAGS_phaser_ply_range_str}, ply_cloud.getRange());
   LOG_IF(WARNING, range_point_count <= 0) << "No range channel found.";
 
-  VLOG(3) << "Found: " << xyz_point_count << " xyz points, "
+  std::cout << "Found: " << xyz_point_count << " xyz points, "
           << intensity_point_count << " intensity points, " << refl_point_count
           << " reflectivity points, " << ambient_point_count
           << " ambient points, 0"  // << range_point_count
