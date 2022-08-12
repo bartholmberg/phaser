@@ -51,7 +51,7 @@ model::PlyPointCloud PlyHelper::readPlyFromFile(const std::string& filename) {
 
   const int range_point_count = ply_file.request_properties_from_element(
       "vertex", {FLAGS_phaser_ply_range_str}, ply_cloud.getRange());
-  LOG_IF(WARNING, range_point_count <= 0) << "No range channel found.";
+  //LOG_IF(WARNING, range_point_count <= 0) << "No range channel found.";
 
   std::cout << "Found: " << xyz_point_count << " xyz points, "
           << intensity_point_count << " intensity points, " << refl_point_count
