@@ -7,11 +7,6 @@ competitive with vendor-tuned libraries.  (See our web page
 http://fftw.org/ for extensive benchmarks.)  To achieve this
 performance, FFTW uses novel code-generation and runtime
 self-optimization techniques (along with many other tricks).
-# In addition to DLL's also need to create some .libs  
-# see for instructions : http://www.fftw.org/install/windows.html
-
-
-
 
 The doc/ directory contains the manual in texinfo, PDF, info, and HTML
 formats.  Frequently asked questions and answers can be found in the
