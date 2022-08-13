@@ -4,7 +4,7 @@
 #include <glog/logging.h>
 
 #include "tinyply/tinyply.h"
-
+#include <crtdbg.h>
 DEFINE_string(
     phaser_ply_intensity_str, "intensity",
     "Defines the name of the intensity field in the PLY.");
@@ -28,29 +28,30 @@ model::PlyPointCloud PlyHelper::readPlyFromFile(const std::string& filename) {
   if (!in_stream.is_open()) {
     LOG(ERROR) << "Unable to open ply file: " << filename;
   }
-  model::PlyPointCloud ply_cloud;
-  tinyply::PlyFile ply_file(in_stream);
+  // take these off the stack
+  model::PlyPointCloud* ply_cloud = new model::PlyPointCloud;
+  tinyply::PlyFile* ply_file = new tinyply::PlyFile(in_stream);
   VLOG(3) << "Reading all points.";
-  const int xyz_point_count = ply_file.request_properties_from_element(
-      "vertex", {"x", "y", "z"}, ply_cloud.getXYZPoints());
+  const int xyz_point_count = ply_file->request_properties_from_element(
+      "vertex", {"x", "y", "z"}, ply_cloud->getXYZPoints());
   CHECK_GT(xyz_point_count, 0);
 
-  const int intensity_point_count = ply_file.request_properties_from_element(
-      "vertex", {FLAGS_phaser_ply_intensity_str}, ply_cloud.getIntentsities());
+  const int intensity_point_count = ply_file->request_properties_from_element(
+      "vertex", {FLAGS_phaser_ply_intensity_str}, ply_cloud->getIntentsities());
   CHECK_GT(intensity_point_count, 0);
   VLOG(3) << "Found: " << intensity_point_count;
 
-  const int refl_point_count = ply_file.request_properties_from_element(
+  const int refl_point_count = ply_file->request_properties_from_element(
       "vertex", {FLAGS_phaser_ply_reflectivity_str},
-      ply_cloud.getReflectivities());
+      ply_cloud->getReflectivities());
   LOG_IF(WARNING, refl_point_count <= 0) << "No reflectivity channel found.";
 
-  const int ambient_point_count = ply_file.request_properties_from_element(
-      "vertex", {FLAGS_phaser_ply_ambient_str}, ply_cloud.getAmbientPoints());
+  const int ambient_point_count = ply_file->request_properties_from_element(
+      "vertex", {FLAGS_phaser_ply_ambient_str}, ply_cloud->getAmbientPoints());
   LOG_IF(WARNING, ambient_point_count <= 0) << "No ambient channel found.";
 
-  const int range_point_count = ply_file.request_properties_from_element(
-      "vertex", {FLAGS_phaser_ply_range_str}, ply_cloud.getRange());
+  const int range_point_count = ply_file->request_properties_from_element(
+      "vertex", {FLAGS_phaser_ply_range_str}, ply_cloud->getRange());
   //LOG_IF(WARNING, range_point_count <= 0) << "No range channel found.";
 
   std::cout << "Found: " << xyz_point_count << " xyz points, "
@@ -59,9 +60,9 @@ model::PlyPointCloud PlyHelper::readPlyFromFile(const std::string& filename) {
           << " ambient points, 0"  // << range_point_count
           << " range points for reading.";
 
-  ply_file.read(in_stream);
+  ply_file->read(in_stream);
   in_stream.close();
-  return ply_cloud;
+  return std::move(*ply_cloud);
 }
 
 }  // namespace data
