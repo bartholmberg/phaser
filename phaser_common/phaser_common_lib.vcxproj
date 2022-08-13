@@ -179,16 +179,15 @@
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <OpenMPSupport>true</OpenMPSupport>
-      <Optimization>Disabled</Optimization>
+      <Optimization>MaxSpeed</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);_USE_MATH_DEFINES;GLOG_NO_ABBREVIATED_SEVERITIES;WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_USE_MATH_DEFINES;GLOG_NO_ABBREVIATED_SEVERITIES;NDEBUG;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <AdditionalIncludeDirectories>C:\repo\phaser\fftw3;C:\opt\ros\noetic\x64\include;C:\repo\vcpkg\packages\nlopt_x64-windows\include;c:\repo\phaser\phaser_common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <DisableSpecificWarnings>4267;4464;4365;4710;4514;5045;4820;4355;5027;5026;5246;4244;4626;5219;4625;4242;4668;4018</DisableSpecificWarnings>
+      <AdditionalIncludeDirectories>..\fftw3;..\..\googletest\googletest\include;..\phaser_common\include\;C:\opt\ros\noetic\x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <ResourceCompile>
