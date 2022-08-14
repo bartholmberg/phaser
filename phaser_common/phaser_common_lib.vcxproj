@@ -214,7 +214,7 @@
       <UseUtf8Encoding>Always</UseUtf8Encoding>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/repo/phaser/phaser_common/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/repo/phaser/phaser_common -BC:/repo/phaser/phaser_common --check-stamp-file C:/repo/phaser/phaser_common/CMakeFiles/generate.stamp
+C:\CMake\bin\cmake.exe -SC:/repo/phaser/phaser_common -BC:/repo/phaser/phaser_common --check-stamp-file C:/repo/phaser/phaser_common/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -227,7 +227,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/repo/phaser/phaser_common/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/repo/phaser/phaser_common -BC:/repo/phaser/phaser_common --check-stamp-file C:/repo/phaser/phaser_common/CMakeFiles/generate.stamp
+C:\CMake\bin\cmake.exe -SC:/repo/phaser/phaser_common -BC:/repo/phaser/phaser_common --check-stamp-file C:/repo/phaser/phaser_common/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -240,7 +240,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/repo/phaser/phaser_common/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/repo/phaser/phaser_common -BC:/repo/phaser/phaser_common --check-stamp-file C:/repo/phaser/phaser_common/CMakeFiles/generate.stamp
+C:\CMake\bin\cmake.exe -SC:/repo/phaser/phaser_common -BC:/repo/phaser/phaser_common --check-stamp-file C:/repo/phaser/phaser_common/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -253,7 +253,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/repo/phaser/phaser_common/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/repo/phaser/phaser_common -BC:/repo/phaser/phaser_common --check-stamp-file C:/repo/phaser/phaser_common/CMakeFiles/generate.stamp
+C:\CMake\bin\cmake.exe -SC:/repo/phaser/phaser_common -BC:/repo/phaser/phaser_common --check-stamp-file C:/repo/phaser/phaser_common/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
