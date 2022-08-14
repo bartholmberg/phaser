@@ -28,6 +28,7 @@ void SphericalSampler::sampleUniformly(
 
 std::vector<common::Point_t> SphericalSampler::create2BwGrid(
     const std::size_t bw) {
+  std::cout << "bw arg for grid: " << bw << std::endl;
   std::vector<common::Point_t> sample_angles;
   const std::size_t grid = 2 * bw - 1;
   for (std::size_t i = 0u; i <= grid; ++i) {

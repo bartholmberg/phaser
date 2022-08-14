@@ -23,19 +23,19 @@ DEFINE_string(reg_cloud, "", "Defines the path to the registered cloud.");
 // BAH, TBD:set these values to good defaults,
 //          similarly(not identical) named inputs _spherical_bandwidth
 //          in phaser core lib source, why?
-DEFINE_int32(phaser_core_spherical_bandwidth, 0, "spherical bandwidth");
-DEFINE_int32(phaser_core_spherical_zero_padding, 0, "zero pad");
+DEFINE_int32(phaser_core_spherical_bandwidth, 150, "spherical bandwidth");
+DEFINE_int32(phaser_core_spherical_zero_padding, 10, "zero pad");
 DEFINE_int32(
     phaser_core_spherical_low_pass_lower_bound, 0, "low pass - lower band");
 DEFINE_int32(
-    phaser_core_spherical_low_pass_upper_bound, 0, "low pass - upper band");
+    phaser_core_spherical_low_pass_upper_bound, 10000, "low pass - upper band");
 
-DEFINE_int32(phaser_core_spatial_n_voxels, 0, "");
-DEFINE_int32(phaser_core_spatial_discretize_lower, 0, "");
-DEFINE_int32(phaser_core_spatial_discretize_upper, 0, "");
+DEFINE_int32(phaser_core_spatial_n_voxels, 201, "");
+DEFINE_int32(phaser_core_spatial_discretize_lower, -50, "");
+DEFINE_int32(phaser_core_spatial_discretize_upper, 50, "");
 DEFINE_int32(phaser_core_spatial_zero_padding, 0, "");
-DEFINE_int32(phaser_core_spatial_low_pass_lower_bound, 0, "");
-DEFINE_int32(phaser_core_spatial_low_pass_upper_bound, 0, "");
+DEFINE_int32(phaser_core_spatial_low_pass_lower_bound, 85, "");
+DEFINE_int32(phaser_core_spatial_low_pass_upper_bound, 115, "");
 
 static model::PointCloudPtr readPointCloud(const std::string& path_to_ply) {
   CHECK(!path_to_ply.empty());
