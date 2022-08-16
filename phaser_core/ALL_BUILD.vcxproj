@@ -103,6 +103,9 @@
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
     <CustomBuild Include="C:\repo\phaser\phaser_core\CMakeLists.txt">
@@ -164,6 +167,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\phaser_common\phaser_common_lib.vcxproj">
+      <Project>{567f4049-b663-345f-9b00-31aef7546dd1}</Project>
+    </ProjectReference>
     <ProjectReference Include="C:\repo\phaser\phaser_core\ZERO_CHECK.vcxproj">
       <Project>{6FC651B0-7941-34A3-9106-3A238779BE6E}</Project>
       <Name>ZERO_CHECK</Name>
