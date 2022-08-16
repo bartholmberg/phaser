@@ -107,9 +107,9 @@ std::vector<SphericalCorrelation> SphOptRegistration::correlatePointcloud(
   // Sample the sphere at the grid points.
   std::vector<model::FunctionValue> f_values;
   std::vector<model::FunctionValue> h_values;
+  auto temp = 1;
   sampler_.sampleUniformly(*target, &f_values);
   sampler_.sampleUniformly(*source, &h_values);
-
   // Create workers for the spherical correlation.
   // SphericalIntensityWorkerPtr corr_intensity_worker = CHECK_NOTNULL(
   // std::make_shared<SphericalIntensityWorker>(f_values, h_values));
@@ -128,7 +128,9 @@ std::vector<SphericalCorrelation> SphOptRegistration::correlatePointcloud(
                  .count()
           << "ms";
   corr_combined_worker->shutdown();
-  return {corr_combined_worker->getCorrelationObject()};
+
+  std::vector<SphericalCorrelation> tmpOut = {corr_combined_worker->getCorrelationObject()};
+  return tmpOut;
 }
 
 void SphOptRegistration::setBandwith(const int bandwith) {

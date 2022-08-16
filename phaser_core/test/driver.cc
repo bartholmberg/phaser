@@ -65,6 +65,8 @@ static void registerCloud(
   model::PointCloudPtr source_cloud = readPointCloud(source);
   CHECK_NOTNULL(target_cloud);
   CHECK_NOTNULL(source_cloud);
+  auto tptr = target_cloud->getRawCloud();
+  std::cout << "\n register cloud" <<std ::endl;
   CHECK(!reg_cloud.empty());
 
   auto ctrl = std::make_unique<phaser_core::CloudController>("sph-opt");
