@@ -73,8 +73,9 @@ model::PlyPointCloud PlyHelper::readPlyFromFile(const std::string& filename) {
   ply_file.read(in_stream);
   // add destructor for ply_file and call it here
   in_stream.close();
-  //return std::move(*ply_cloud);
-  return std::move(ply_cloud);
+  
+  //return ply_cloud;
+  return ply_cloud;
 }
 
 }  // namespace data
