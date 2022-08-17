@@ -9,7 +9,7 @@ namespace data {
 
 class PlyHelper {
  public:
-  model::PlyPointCloud readPlyFromFile(const std::string& filename);
+  model::PlyPointCloud *readPlyFromFile(const std::string& filename);
 };
 
 }  // namespace data
