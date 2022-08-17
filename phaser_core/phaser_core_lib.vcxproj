@@ -174,8 +174,7 @@
       <AdditionalOptions>%(AdditionalOptions) -msse -msse2 -msse3 -msse4 -O3</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <ExceptionHandling>
-      </ExceptionHandling>
+      <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
       <OpenMPSupport>true</OpenMPSupport>
       <Optimization>Disabled</Optimization>

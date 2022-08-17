@@ -248,7 +248,8 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/repo/phaser/phaser_core/RelWithDebInfo/phaser_core_driver.lib</ImportLibrary>
+      <ImportLibrary>
+      </ImportLibrary>
       <ProgramDataBaseFile>C:/repo/phaser/phaser_core/RelWithDebInfo/phaser_core_driver.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>

@@ -170,6 +170,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ProjectReference Include="..\phaser_common\phaser_common_lib.vcxproj">
       <Project>{567f4049-b663-345f-9b00-31aef7546dd1}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\phaser_pre\phaser_pre_lib.vcxproj">
+      <Project>{b5232dd7-4cce-34d1-a2f9-9982b3278c1f}</Project>
+    </ProjectReference>
     <ProjectReference Include="C:\repo\phaser\phaser_core\ZERO_CHECK.vcxproj">
       <Project>{6FC651B0-7941-34A3-9106-3A238779BE6E}</Project>
       <Name>ZERO_CHECK</Name>
