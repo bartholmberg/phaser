@@ -4,10 +4,11 @@
 #include <pcl/io/ply_io.h>
 #include <pcl/point_types.h>
 #include <ros/ros.h>
-
+#include <filesystem>
 #include "phaser/backend/registration/sph-opt-registration.h"
 #include "phaser/controller/cloud-controller.h"
 #include "phaser/common/core-gflags.h"
+
 // BAH- why doesn't this work if moved to core-gflags.h
 
 //DECLARE_string(target_cloud, "", "Defines the path to the target cloud");
@@ -84,8 +85,15 @@ int main(int argc, char** argv) {
   google::ParseCommandLineFlags(&argc, &argv, true);
   google::InitGoogleLogging(argv[0]);
   google::InstallFailureSignalHandler();
-
-  VLOG(1) << "=== PHASER CORE DRIVER =====================";
+  std::cout << std::filesystem::current_path() << std::endl;
+  //std::string tmpName("C:\\repo\\phaser\\phaser_test_data\\test_clouds\\os0\\target_1.ply");
+  std::string tmpName( "..\\phaser_test_data\\test_clouds\\os0\\source_1.ply");
+  std::ifstream in_stream(tmpName);
+  // in_stream.open("target_1.ply");
+  if (!in_stream.is_open()) {
+    std::cout << "\n Unable to open ply file: " << tmpName;
+  }
+  std::cout << "=== PHASER CORE DRIVER =====================" << std::endl;
   phaser_core::registerCloud(
       phaser_core::FLAGS_target_cloud, phaser_core::FLAGS_source_cloud,
       phaser_core::FLAGS_reg_cloud);

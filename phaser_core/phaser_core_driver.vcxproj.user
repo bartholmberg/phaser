@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
-    <LocalDebuggerCommandArguments>--target_cloud="..\..\phaser_test_data\test_clouds\os0\target_1.ply" --source_cloud="..\..\phaser_test_data\test_clouds\os0\source_1.ply"   --reg_cloud="registered.ply" </LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>--target_cloud="..\phaser_test_data\test_clouds\os0\target_1.ply" --source_cloud="..\phaser_test_data\test_clouds\os0\source_1.ply"   --reg_cloud="registered.ply" </LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

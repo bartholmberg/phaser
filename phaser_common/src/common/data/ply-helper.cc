@@ -24,10 +24,18 @@ DEFINE_string(
 namespace data {
 
 model::PlyPointCloud PlyHelper::readPlyFromFile(const std::string& filename) {
+
+  //std::string tmpName("C:\\repo\\phaser\\phaser_test_data\\test_clouds\\os0\\target_1.ply");
+  //std::string tmpName(filename);
+
+  std::string tmpName("..\\phaser_test_data\\test_clouds\\os0\\target_1.ply");
+  //std::string tmpName("test.ply");
   std::ifstream in_stream(filename);
+  //in_stream.open("target_1.ply");
   if (!in_stream.is_open()) {
-    LOG(ERROR) << "Unable to open ply file: " << filename;
+    std::cout << "\n Unable to open ply file: " << tmpName;
   }
+  std::cout << tmpName << std::endl;
   // take these off the stack
   //model::PlyPointCloud* ply_cloud = new model::PlyPointCloud;
   model::PlyPointCloud ply_cloud;
