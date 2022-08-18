@@ -207,7 +207,6 @@ void SphericalCorrelation::initializeAll(const uint32_t bw) {
 
 void SphericalCorrelation::performSphericalTransforms(
     const std::vector<double>& f1, const std::vector<double>& f2) {
-  std::cout << "Performing spherical transformations for input."<<std::endl;
   CHECK_NOTNULL(tmp_coef_[0]);
   CHECK_NOTNULL(tmp_coef_[1]);
   CHECK_NOTNULL(sig_coef_[0]);
@@ -218,8 +217,8 @@ void SphericalCorrelation::performSphericalTransforms(
   CHECK_NOTNULL(dct_plan_);
   CHECK_NOTNULL(fft_plan_);
   CHECK_NOTNULL(weights_);
-
-  VLOG(2) << "Performing SFT of the first signal.";
+  std::cout << "SphericalCorrelation::performSphericalTransforms" << std::endl;
+  std::cout << "Performing SFT of the first signal." << std::endl;
   for (uint32_t i = 0u; i < howmany_; ++i) {
     tmp_coef_[0][i] = f1[i];
     tmp_coef_[1][i] = 0.;
