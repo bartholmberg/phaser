@@ -107,23 +107,23 @@ vector<SphericalCorrelation> *SphOptRegistration::correlatePointcloud(
   target->initialize_kd_tree();
 
   // Sample the sphere at the grid points.
-  //vector<model::FunctionValue>* f_values =new vector<model::FunctionValue>;
-  //vector<model::FunctionValue>* h_values  = new vector < model::FunctionValue>;
-  vector<model::FunctionValue> f_values;
-  vector<model::FunctionValue> h_values;
+  vector<model::FunctionValue>* f_values =new vector<model::FunctionValue>;
+  vector<model::FunctionValue>* h_values  = new vector < model::FunctionValue>;
+  //vector<model::FunctionValue> f_values;
+  //vector<model::FunctionValue> h_values;
 
   auto temp = 1;
-  sampler_.sampleUniformly(*target, &f_values);
-  sampler_.sampleUniformly(*source, &h_values);
-  //sampler_.sampleUniformly(*target, f_values);
-  //sampler_.sampleUniformly(*source, h_values);
+  //sampler_.sampleUniformly(*target, &f_values);
+  //sampler_.sampleUniformly(*source, &h_values);
+  sampler_.sampleUniformly(*target, f_values);
+  sampler_.sampleUniformly(*source, h_values);
   // Create workers for the spherical correlation.
   // SphericalIntensityWorkerPtr corr_intensity_worker = CHECK_NOTNULL(
   // std::make_shared<SphericalIntensityWorker>(f_values, h_values));
   // SphericalRangeWorkerPtr corr_range_worker =
   // CHECK_NOTNULL(std::make_shared<SphericalRangeWorker>(f_values, h_values));
   SphericalCombinedWorkerPtr corr_combined_worker = CHECK_NOTNULL(
-      std::make_shared<SphericalCombinedWorker>(f_values, h_values));
+      std::make_shared<SphericalCombinedWorker>(*f_values, *h_values));
 
   // Add workers to pool and execute them.
   auto start = std::chrono::high_resolution_clock::now();
