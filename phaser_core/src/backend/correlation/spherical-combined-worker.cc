@@ -18,7 +18,8 @@ SphericalCombinedWorker::SphericalCombinedWorker(
 
 void SphericalCombinedWorker::run() {
   CHECK_NOTNULL(sph_corr_);
-  VLOG(1) << "[SphericalCombinedWorker] Estimating rotation...";
+  std::cout << "[SphericalCombinedWorker::run] Estimating rotation..." << std::endl;
+  ;
 
   // Get the intensities.
   SampledSignal f_intensities;

@@ -35,9 +35,9 @@ model::RegistrationResult SphOptRegistration::registerPointCloud(
     model::PointCloudPtr cloud_prev, model::PointCloudPtr cloud_cur) {
   CHECK(cloud_prev);
   CHECK(cloud_cur);
-  VLOG(1) << "=== Registering point cloud ====================================";
-  VLOG(1) << "Cloud1: " << cloud_prev->getPlyReadDirectory();
-  VLOG(1) << "Cloud2: " << cloud_cur->getPlyReadDirectory();
+  std::cout<< "=== Registering point cloud ==="<< std::endl;
+  std::cout << "Cloud1: " << cloud_prev->getPlyReadDirectory() << std::endl;
+  std::cout << "Cloud2: " << cloud_cur->getPlyReadDirectory() << std::endl;
   cloud_prev->initialize_kd_tree();
 
   // Register the point cloud.
@@ -105,7 +105,7 @@ vector<SphericalCorrelation> *SphOptRegistration::correlatePointcloud(
     model::PointCloudPtr target, model::PointCloudPtr source) {
   source->initialize_kd_tree();
   target->initialize_kd_tree();
-
+  std::cout << "SphOptRegistration::correlatePointcloud" << std::endl;
   // Sample the sphere at the grid points.
   vector<model::FunctionValue>* f_values =new vector<model::FunctionValue>;
   vector<model::FunctionValue>* h_values  = new vector < model::FunctionValue>;
@@ -136,10 +136,10 @@ vector<SphericalCorrelation> *SphOptRegistration::correlatePointcloud(
           << "ms\n";
   
   int* b = new int(1);
-  //std::vector<SphericalCorrelation>* tmpOut =new std::vector<SphericalCorrelation>{corr_combined_worker->getCorrelationObject()};
-  vector<SphericalCorrelation> tmpOut {corr_combined_worker->getCorrelationObject()};
+  vector<SphericalCorrelation>* tmpOut =new std::vector<SphericalCorrelation>{corr_combined_worker->getCorrelationObject()};
+  //vector<SphericalCorrelation> tmpOut {corr_combined_worker->getCorrelationObject()};
   //corr_combined_worker->shutdown();
-  return &tmpOut;
+  return tmpOut;
 }
 
 void SphOptRegistration::setBandwith(const int bandwith) {

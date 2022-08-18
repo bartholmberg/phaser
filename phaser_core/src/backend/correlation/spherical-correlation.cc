@@ -120,7 +120,7 @@ uint32_t SphericalCorrelation::getBandwidth() const noexcept {
 }
 
 void SphericalCorrelation::initializeAll(const uint32_t bw) {
-  VLOG(2) << "Initializing spherical correlation with a " << bw << " bandwidth";
+  std::cout << "Initializing spherical correlation with a " << bw << " bandwidth"<<std::endl;
   const uint32_t bwp2 = bw * bw;
   const uint32_t bwp3 = bwp2 * bw;
 
@@ -207,7 +207,7 @@ void SphericalCorrelation::initializeAll(const uint32_t bw) {
 
 void SphericalCorrelation::performSphericalTransforms(
     const std::vector<double>& f1, const std::vector<double>& f2) {
-  VLOG(1) << "Performing spherical transformations for input.";
+  std::cout << "Performing spherical transformations for input."<<std::endl;
   CHECK_NOTNULL(tmp_coef_[0]);
   CHECK_NOTNULL(tmp_coef_[1]);
   CHECK_NOTNULL(sig_coef_[0]);
@@ -231,7 +231,7 @@ void SphericalCorrelation::performSphericalTransforms(
       seminaive_naive_table_, reinterpret_cast<double*>(workspace2_), 1, bw_,
       &dct_plan_, &fft_plan_, weights_);
 
-  VLOG(2) << "Performing SFT of the second signal.";
+  std::cout << "Performing SFT of the second signal." <<std::endl;
   // #pragma omp parallel for num_threads(2)
   for (uint32_t i = 0u; i < howmany_; ++i) {
     tmp_coef_[0][i] = f2[i];
@@ -251,7 +251,7 @@ void SphericalCorrelation::correlate() {
   CHECK_NOTNULL(pat_coef_[0]);
   CHECK_NOTNULL(pat_coef_[1]);
   CHECK_NOTNULL(so3_coef_);
-  VLOG(2) << "Performing correlation of the S^2 coefficients.";
+  std::cout << "SphericalCorrelation::correlate(),Performing correlation of the S^2 coefficients." << std::endl;
   so3CombineCoef_fftw(
       bw_, bw_out_, bw_ - 1, sig_coef_[0], sig_coef_[1], pat_coef_[0],
       pat_coef_[1], so3_coef_);

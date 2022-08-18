@@ -15,7 +15,8 @@ void SphericalCorrelationLaplace::correlateSampledSignals(
     const std::vector<SampledSignal>& f, const std::vector<SampledSignal>& g) {
   CHECK_EQ(f.size(), g.size());
   CHECK_GT(f.size(), 1u);
-  VLOG(1) << "--- Spherical laplace correlation [" << bw_ << " bw] -----";
+  std::cout << "[SphericalCombineWorker]correlate sampled signals"<< std::endl;
+  std::cout << "--- Spherical laplace correlation [" << bw_ << " bw] -----" << std::endl;
   std::vector<fftw_complex*> f_channels, g_channels;
   extractTransformedChannels(f, g, &f_channels, &g_channels);
 
