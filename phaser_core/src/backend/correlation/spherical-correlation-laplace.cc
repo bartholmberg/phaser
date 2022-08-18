@@ -35,8 +35,8 @@ void SphericalCorrelationLaplace::correlateSampledSignals(
   inverseTransform();
 
   VLOG(3) << "Deleting the created values.";
-  freeChannels(&f_channels);
-  freeChannels(&g_channels);
+  //freeChannels(&f_channels); BAH, these get freed the owner/caller now
+  //freeChannels(&g_channels); 
 }
 
 void SphericalCorrelationLaplace::extractTransformedChannels(

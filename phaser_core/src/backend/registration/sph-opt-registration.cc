@@ -50,9 +50,11 @@ model::RegistrationResult SphOptRegistration::estimateRotation(
     model::PointCloudPtr cloud_prev, model::PointCloudPtr cloud_cur) {
   VLOG(1) << "[SphOptRegistration] Estimating rotation...";
   // Correlate point cloud and get uncertainty measure.
-  std::vector<SphericalCorrelation> correlations =
+  std::vector<SphericalCorrelation>* correlations =
       correlatePointcloud(cloud_prev, cloud_cur);
-  SphericalCorrelation& corr = correlations[0];
+  auto corrTemp = *correlations;
+  //SphericalCorrelation& corr = correlations[0];
+  SphericalCorrelation& corr = corrTemp[0];
 
   common::BaseDistributionPtr rot =
       correlation_eval_->calcRotationUncertainty(corr);
@@ -61,8 +63,8 @@ model::RegistrationResult SphOptRegistration::estimateRotation(
   Eigen::VectorXd b_est =
       common::RotationUtils::ConvertQuaternionToXYZ(rot->getEstimate());
 
-  VLOG(2) << "Bingham q: " << rot->getEstimate().transpose();
-  VLOG(2) << "Bingham rotation: " << b_est.transpose();
+  std::cout << "Bingham q: " << rot->getEstimate().transpose();
+  std::cout  << "Bingham rotation: " << b_est.transpose();
   common::RotationUtils::RotateAroundXYZ(
       cloud_cur, b_est(0), b_est(1), b_est(2));
 
@@ -98,18 +100,23 @@ void SphOptRegistration::getStatistics(
     common::StatisticsManager* manager) const noexcept {
   BaseRegistration::getStatistics(manager);
 }
-
-std::vector<SphericalCorrelation> SphOptRegistration::correlatePointcloud(
+using std::vector;
+vector<SphericalCorrelation> *SphOptRegistration::correlatePointcloud(
     model::PointCloudPtr target, model::PointCloudPtr source) {
   source->initialize_kd_tree();
   target->initialize_kd_tree();
 
   // Sample the sphere at the grid points.
-  std::vector<model::FunctionValue> f_values;
-  std::vector<model::FunctionValue> h_values;
+  //vector<model::FunctionValue>* f_values =new vector<model::FunctionValue>;
+  //vector<model::FunctionValue>* h_values  = new vector < model::FunctionValue>;
+  vector<model::FunctionValue> f_values;
+  vector<model::FunctionValue> h_values;
+
   auto temp = 1;
   sampler_.sampleUniformly(*target, &f_values);
   sampler_.sampleUniformly(*source, &h_values);
+  //sampler_.sampleUniformly(*target, f_values);
+  //sampler_.sampleUniformly(*source, h_values);
   // Create workers for the spherical correlation.
   // SphericalIntensityWorkerPtr corr_intensity_worker = CHECK_NOTNULL(
   // std::make_shared<SphericalIntensityWorker>(f_values, h_values));
@@ -123,14 +130,16 @@ std::vector<SphericalCorrelation> SphOptRegistration::correlatePointcloud(
   th_pool_.add_worker(corr_combined_worker);
   th_pool_.run_and_wait_all();
   auto end = std::chrono::high_resolution_clock::now();
-  VLOG(1) << "Time for rot est: "
+  std::cout << "\nTime for rot est: "
           << std::chrono::duration_cast<std::chrono::milliseconds>(end - start)
                  .count()
-          << "ms";
-  corr_combined_worker->shutdown();
-
-  std::vector<SphericalCorrelation> tmpOut = {corr_combined_worker->getCorrelationObject()};
-  return tmpOut;
+          << "ms\n";
+  
+  int* b = new int(1);
+  //std::vector<SphericalCorrelation>* tmpOut =new std::vector<SphericalCorrelation>{corr_combined_worker->getCorrelationObject()};
+  vector<SphericalCorrelation> tmpOut {corr_combined_worker->getCorrelationObject()};
+  //corr_combined_worker->shutdown();
+  return &tmpOut;
 }
 
 void SphOptRegistration::setBandwith(const int bandwith) {

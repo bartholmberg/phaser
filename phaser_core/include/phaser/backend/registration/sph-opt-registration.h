@@ -39,7 +39,7 @@ class SphOptRegistration : public BaseRegistration {
   BaseEval& getPosEvaluation();
 
  protected:
-  std::vector<SphericalCorrelation> correlatePointcloud(
+  std::vector<SphericalCorrelation> *correlatePointcloud(
       model::PointCloudPtr target, model::PointCloudPtr source);
 
   const uint32_t bandwidth_;
