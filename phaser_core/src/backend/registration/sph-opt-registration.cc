@@ -100,6 +100,7 @@ void SphOptRegistration::getStatistics(
     common::StatisticsManager* manager) const noexcept {
   BaseRegistration::getStatistics(manager);
 }
+static int tcnt = 0;
 using std::vector;
 vector<SphericalCorrelation> *SphOptRegistration::correlatePointcloud(
     model::PointCloudPtr target, model::PointCloudPtr source) {
@@ -127,6 +128,7 @@ vector<SphericalCorrelation> *SphOptRegistration::correlatePointcloud(
 
   // Add workers to pool and execute them.
   auto start = std::chrono::high_resolution_clock::now();
+  std::cout << "--------------- add worker thread: corr_combined_worker. Count: "<< tcnt++ << std::endl;
   th_pool_.add_worker(corr_combined_worker);
   th_pool_.run_and_wait_all();
   auto end = std::chrono::high_resolution_clock::now();

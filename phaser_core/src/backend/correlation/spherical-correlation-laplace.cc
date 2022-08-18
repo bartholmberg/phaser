@@ -15,7 +15,7 @@ void SphericalCorrelationLaplace::correlateSampledSignals(
     const std::vector<SampledSignal>& f, const std::vector<SampledSignal>& g) {
   CHECK_EQ(f.size(), g.size());
   CHECK_GT(f.size(), 1u);
-  std::cout << "[SphericalCombineWorker]correlate sampled signals"<< std::endl;
+  std::cout << "[SphericalCombineWorker::run]correlate sampled signals"<< std::endl;
   std::cout << "--- Spherical laplace correlation [" << bw_ << " bw] -----" << std::endl;
   std::vector<fftw_complex*> f_channels, g_channels;
   extractTransformedChannels(f, g, &f_channels, &g_channels);
@@ -44,6 +44,7 @@ void SphericalCorrelationLaplace::extractTransformedChannels(
     const std::vector<SampledSignal>& fs, const std::vector<SampledSignal>& gs,
     std::vector<fftw_complex*>* f_channels,
     std::vector<fftw_complex*>* g_channels) {
+  std::cout << "[SphericalCombinedWorker::run] SphericalCorrelationLaplace::extractTransformedChannels"<< std::endl;
   CHECK_NOTNULL(f_channels);
   CHECK_NOTNULL(g_channels);
   const uint32_t n_channels = fs.size();
@@ -52,7 +53,7 @@ void SphericalCorrelationLaplace::extractTransformedChannels(
 
   const uint32_t full_bw = bw_ * bw_;
   for (uint32_t i = 0u; i < n_channels; ++i) {
-    VLOG(2) << "Performing SFT (" << i + 1 << "/" << n_channels << ")";
+    std::cout << "Performing SFT (" << i + 1 << "/" << n_channels << ")" <<std::endl;
     auto FiGi = performFFTandShift(fs[i], gs[i], full_bw);
     f_channels->emplace_back(FiGi.first);
     g_channels->emplace_back(FiGi.second);
@@ -62,6 +63,7 @@ void SphericalCorrelationLaplace::extractTransformedChannels(
 std::pair<fftw_complex*, fftw_complex*>
 SphericalCorrelationLaplace::performFFTandShift(
     const SampledSignal& f1, const SampledSignal& f2, const uint32_t n_coeffs) {
+  std::cout << "[SphericalCombinedWorker::run] SphericalCorrelationLaplace::performFFTandShift" << std::endl;
   performSphericalTransforms(f1, f2);
   shiftSignals(n_coeffs);
   return std::make_pair(
