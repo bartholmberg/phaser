@@ -29,11 +29,12 @@ ZERO_CHECK/
 phaser_core_driver.dir/
 #*.vcxproj.*
 #*.vcxproj
-*Cmake*
 # Temporary editor files.
 *~
 *.orig
-
+*.cmake
+CMakeFiles/
+CMakeCache.txt
 # Compiled python.
 tools/lint/autolintc
 *.pyc
