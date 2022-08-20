@@ -49,7 +49,7 @@ model::RegistrationResult SphOptRegistration::registerPointCloud(
 
 model::RegistrationResult SphOptRegistration::estimateRotation(
     model::PointCloudPtr cloud_prev, model::PointCloudPtr cloud_cur) {
-  VLOG(1) << "[SphOptRegistration] Estimating rotation...";
+  std::cout << "[SphOptRegistration] Estimating rotation..." << std::endl;
   // Correlate point cloud and get uncertainty measure.
   std::vector<SphericalCorrelation>* correlations =
       correlatePointcloud(cloud_prev, cloud_cur);
@@ -117,6 +117,9 @@ vector<SphericalCorrelation> *SphOptRegistration::correlatePointcloud(
   auto temp = 1;
   //sampler_.sampleUniformly(*target, &f_values);
   //sampler_.sampleUniformly(*source, &h_values);
+  std::cout << " sample uniformly bug" << std::endl;
+  // BAH: bug, sample uniformly seems to have a problem.  
+  //     f_values,h_values constant 1
   sampler_.sampleUniformly(*target, f_values);
   sampler_.sampleUniformly(*source, h_values);
   // Create workers for the spherical correlation.

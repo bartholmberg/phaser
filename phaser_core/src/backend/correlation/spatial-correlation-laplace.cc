@@ -3,7 +3,7 @@
 #include <glog/logging.h>
 
 #include "phaser/common/signal-utils.h"
-
+#include <iostream>
 namespace phaser_core {
 
 SpatialCorrelationLaplace::SpatialCorrelationLaplace(
@@ -31,8 +31,7 @@ double* SpatialCorrelationLaplace::correlateSignals(
       reinterpret_cast<fftw_complex*>(G_fused.data()), C_);
 
   // Perform the IFFT on the correlation tensor.
-  VLOG(1) << "Shifting back the signals. Performing IFFT on low passed filtered"
-             " correlation.";
+  std::cout << "\\Shifting back the signals. Performing IFFT on low passed filtered correlation." << std::endl;
   common::SignalUtils::IFFTShift(C_, total_n_voxels_);
   fftw_execute(c_plan_);
 
@@ -55,6 +54,7 @@ void SpatialCorrelationLaplace::extractTransformedChannels(
     const std::vector<Eigen::VectorXd*>& gs,
     std::vector<fftw_complex*>* f_channels,
     std::vector<fftw_complex*>* g_channels) {
+  std::cout << "\nSpatialCorrelationLaplace::extractTransformedChannels" << std::endl;
   CHECK_NOTNULL(f_channels);
   CHECK_NOTNULL(g_channels);
   const uint32_t n_channels = fs.size();

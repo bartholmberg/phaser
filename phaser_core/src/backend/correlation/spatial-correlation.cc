@@ -5,7 +5,7 @@
 #include <numeric>
 
 #include "phaser/common/signal-utils.h"
-
+#include <iostream>
 namespace phaser_core {
 
 SpatialCorrelation::SpatialCorrelation(
@@ -22,10 +22,10 @@ SpatialCorrelation::SpatialCorrelation(
                                         ratio_n_padding_per_dim;
   total_n_voxels_padded_ =
       static_cast<uint32_t>(total_n_voxels_ * total_n_padding_factor);
-  VLOG(1) << "Initializing spatial correlation with padding " << zero_padding
-          << " (ratio: " << ratio_n_padding_per_dim
-          << ", factor: " << total_n_padding_factor << ").";
-  VLOG(1) << "padded size: " << total_n_voxels_padded_;
+  std::cout << "Initializing spatial correlation with padding " << zero_padding
+            << " (ratio: " << ratio_n_padding_per_dim
+            << ", factor: " << total_n_padding_factor << ")." << std::endl;
+  std::cout << "padded size: " << total_n_voxels_padded_ << std::endl;
 
   const uint32_t n_fftw_size = sizeof(fftw_complex) * total_n_voxels_;
   F_ = static_cast<fftw_complex*>(fftw_malloc(n_fftw_size));

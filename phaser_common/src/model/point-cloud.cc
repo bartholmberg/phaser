@@ -100,8 +100,7 @@ void PointCloud::getNearestPoints(
   std::vector<float> pointNKNSquaredDistance(FLAGS_sampling_neighbors);
 
   const bool info_cloud_is_available = hasInfoCloud();
-  VLOG(2) << "Sampling using info cloud: " << std::boolalpha
-          << info_cloud_is_available << ".";
+  std::cout << "Sampling using info cloud: " << info_cloud_is_available << "." << std::endl;
   const uint32_t n_points = query_points.size();
   function_values->resize(n_points);
 
@@ -113,7 +112,7 @@ void PointCloud::getNearestPoints(
         query_point, FLAGS_sampling_neighbors, pointIdxNKNSearch,
         pointNKNSquaredDistance);
     if (kd_tree_res <= 0) {
-      VLOG(2) << "Unable to find nearest neighbor. Skipping point.";
+      std::cout << "Unable to find nearest neighbor. Skipping point." << std::endl;
       continue;
     }
     if (info_cloud_is_available) {
