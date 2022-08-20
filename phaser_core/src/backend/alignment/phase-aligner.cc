@@ -28,8 +28,7 @@ PhaseAligner::PhaseAligner()
           FLAGS_phaser_core_spatial_n_voxels,
           FLAGS_phaser_core_spatial_discretize_lower,
           FLAGS_phaser_core_spatial_discretize_upper)) {
-  VLOG(1) << "Initializing phase alignment with " << n_voxels_ << " voxels in ["
-          << lower_bound_ << ", " << upper_bound_ << "].";
+  std::cout << "Initializing phase alignment with " << n_voxels_ << " voxels in [" << lower_bound_ << ", " << upper_bound_ << "]." << std::endl;
   // Allocate memory for the function signals in the time domain.
   f_intensities_ = Eigen::VectorXd::Zero(total_n_voxels_);
   f_ranges_ = Eigen::VectorXd::Zero(total_n_voxels_);
@@ -138,15 +137,19 @@ std::vector<double> PhaseAligner::getCorrelation() const {
 }
 
 uint32_t PhaseAligner::getNumberOfVoxels() const noexcept {
-  return n_voxels_ + 2 * spatial_correlation_->getZeroPadding();
+  auto tmp = n_voxels_ + 2 * spatial_correlation_->getZeroPadding();
+  return tmp;
 }
 
-uint32_t PhaseAligner::getLowerBound() const noexcept {
-  return lower_bound_;
+int32_t PhaseAligner::getLowerBound() const noexcept {
+
+  auto tmp = lower_bound_;
+  return tmp;
 }
 
 uint32_t PhaseAligner::getUpperBound() const noexcept {
-  return upper_bound_;
+  auto tmp = upper_bound_;
+  return tmp;
 }
 
 }  // namespace phaser_core

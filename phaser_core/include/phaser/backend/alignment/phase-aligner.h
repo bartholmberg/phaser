@@ -22,7 +22,7 @@ class PhaseAligner : public BaseAligner {
 
   std::vector<double> getCorrelation() const override;
   uint32_t getNumberOfVoxels() const noexcept;
-  uint32_t getLowerBound() const noexcept;
+  int32_t getLowerBound() const noexcept;
   uint32_t getUpperBound() const noexcept;
 
  private:

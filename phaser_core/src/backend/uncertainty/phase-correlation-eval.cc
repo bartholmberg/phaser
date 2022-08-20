@@ -20,9 +20,9 @@ common::BaseDistributionPtr PhaseCorrelationEval::calcTranslationUncertainty(
     const phaser_core::PhaseAligner& aligner) {
   const std::vector<double> corr = aligner.getCorrelation();
   const uint32_t n_voxels = aligner.getNumberOfVoxels();
-  const uint32_t lower_bound = aligner.getLowerBound();
-  const uint32_t upper_bound = aligner.getUpperBound();
-  VLOG(1) << "----------- Computing translation with " << n_voxels << " voxels";
+  int32_t lower_bound = aligner.getLowerBound();
+  uint32_t upper_bound = aligner.getUpperBound();
+  std::cout << "\n----------- Computing translation with " << n_voxels << " voxels" << std::endl;
   return positional_eval_->evaluateCorrelationFromTranslation(
       n_voxels, lower_bound, upper_bound, corr);
 }
