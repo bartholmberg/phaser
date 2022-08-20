@@ -65,8 +65,8 @@ common::Gaussian GaussianPeakBasedEval::fitTranslationalNormalDist(
       n_voxels, discretize_lower_bound, discretize_upper_bound, start, end,
       norm_corr, &samples, &weights);
 
-  VLOG(1) << "samples:\n" << samples;
-  VLOG(1) << "b_weights: " << weights.transpose();
+  std::cout << "samples:\n" << samples << std::endl;
+  std::cout << "b_weights: " << weights.transpose() << std::endl;
 
   // Calculate mean and covariance.
   return common::Gaussian(samples, weights);
@@ -77,7 +77,8 @@ void GaussianPeakBasedEval::retrievePeakNeighbors(
     const int discretize_upper_bound, const uint32_t start, const uint32_t end,
     const std::vector<double>& norm_corr, Eigen::ArrayXXd* samples,
     Eigen::VectorXd* weights) const {
-  VLOG(1) << "Checking neighbors from " << start << " to " << end;
+
+  std::cout << "Checking neighbors from " << start << " to " << end << std :: endl;
 
   // Extract translational estimates.
   uint32_t k = 0u;

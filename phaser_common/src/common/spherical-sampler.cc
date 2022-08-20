@@ -40,8 +40,8 @@ std::vector<common::Point_t> SphericalSampler::create2BwGrid(
       sample_angles.emplace_back(std::move(p));
     }
   }
-  VLOG(2) << "Created spherical DH-Grid with " << sample_angles.size()
-          << " samples.";
+  std::cout << "Created spherical DH-Grid with " << sample_angles.size()
+          << " samples." << std::endl;
 
   return sample_angles;
 }

@@ -26,7 +26,8 @@ SphOptRegistration::SphOptRegistration()
   BaseEvalPtr pos_eval = std::make_unique<GaussianPeakBasedEval>();
   correlation_eval_ = std::make_unique<PhaseCorrelationEval>(
       std::move(rot_eval), std::move(pos_eval));
-  CHECK_NE(fftw_init_threads(), 0);
+  auto a = fftw_init_threads();
+  //CHECK_NE(fftw_init_threads(), 0);
   fftw_plan_with_nthreads(12);
 }
 SphOptRegistration::~SphOptRegistration() {}
