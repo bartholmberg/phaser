@@ -11,9 +11,11 @@ SphericalCombinedWorker::SphericalCombinedWorker(
     const model::FunctionValueVec& f_values,
     const model::FunctionValueVec& h_values)
     : f_values_(f_values), h_values_(h_values) {
-  sph_corr_.reset(new SphericalCorrelationLaplace(
-      FLAGS_phaser_core_spherical_bandwidth,
-      FLAGS_phaser_core_spherical_zero_padding));
+
+    auto bwTmp = FLAGS_phaser_core_spherical_bandwidth;
+    auto zpTmp = FLAGS_phaser_core_spherical_zero_padding;
+    auto sclTmp = new SphericalCorrelationLaplace(bwTmp, zpTmp);
+    sph_corr_.reset(sclTmp);
 }
 
 void SphericalCombinedWorker::run() {
