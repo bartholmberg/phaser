@@ -182,7 +182,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>EnableAllWarnings</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);NDEBUG;CMAKE_INTDIR="RelWithDebInfo";_USE_MATH_DEFINES;GLOG_NO_ABBREVIATED_SEVERITIES;GFLAGS_DLL_DEFINE_FLAG_removed;NOMINMAX</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);NDEBUG;CMAKE_INTDIR="RelWithDebInfo";_USE_MATH_DEFINES;GLOG_NO_ABBREVIATED_SEVERITIES;GFLAGS_DLL_DEFINE_FLAG_removed;GFLAGS_DLL_DECL_removed;NOMINMAX</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <AdditionalIncludeDirectories>..\phaser_viz\include;..\phaser_pre\include;..\fftw3;..\phaser_core\include;..\phaser_common\include</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4577;4267;4464;4365;4710;4514;5045;4820;4355;5027;5026;5246;4244;4626;5219;4625;4242;4668;4018</DisableSpecificWarnings>

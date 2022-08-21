@@ -17,9 +17,9 @@
 // 
 // 
 namespace phaser_core {
-DEFINE_string(target_cloud, "", "Defines the path to the target cloud.");
-DEFINE_string(source_cloud, "", "Defines the path to the source cloud.");
-DEFINE_string(reg_cloud, "", "Defines the path to the registered cloud.");
+DEFINE_string(target_cloud, "c:\\repo\\phaser\\phaser_test_data\\test_clouds\\os0\\", "Defines the path to the target cloud.");
+DEFINE_string(source_cloud, "c:\\repo\\phaser\\phaser_test_data\\test_clouds\\os0\\", "Defines the path to the source cloud.");
+DEFINE_string(reg_cloud, "c:\\repo\\phaser\\phaser_core\\", "Defines the path to the registered cloud.");
 
 // BAH, TBD:set these values to good defaults,
 //          similarly(not identical) named inputs _spherical_bandwidth
