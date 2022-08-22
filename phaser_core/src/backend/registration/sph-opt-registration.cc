@@ -15,7 +15,10 @@
 #include "phaser/common/rotation-utils.h"
 #include "phaser/common/statistic-utils.h"
 #include "phaser/common/translation-utils.h"
-
+#include <pcl/io/pcd_io.h>
+#include <pcl/io/ply_io.h>
+#include <pcl/point_types.h>
+#include <pcl/visualization/cloud_viewer.h>
 namespace phaser_core {
 
 SphOptRegistration::SphOptRegistration()
@@ -43,6 +46,12 @@ model::RegistrationResult SphOptRegistration::registerPointCloud(
 
   // Register the point cloud.
   model::RegistrationResult result = estimateRotation(cloud_prev, cloud_cur);
+
+  pcl::visualization::CloudViewer viewer("Simple Cloud Viewer");
+  // BAH, viewer doesn't like raw point cloud object???
+  //viewer.showCloud(*cloud_cur->getRawCloud());
+  //  BAH, save out rot only pnt cld
+  pcl::io::savePLYFileASCII("rotonly.pcd", *cloud_cur->getRawCloud());
   estimateTranslation(cloud_prev, &result);
   return result;
 }
