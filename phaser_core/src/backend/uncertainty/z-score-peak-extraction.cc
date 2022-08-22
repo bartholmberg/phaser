@@ -8,22 +8,15 @@
 #include <numeric>
 
 #include "phaser/backend/uncertainty/signal-analysis.h"
-
-DEFINE_double(
-    z_score_lag_percentile, 0.05,
-    "The window used for smoothing the function.");
-DEFINE_int32(
-    z_score_lag_max, 20, "The window used for smoothing the function.");
-DEFINE_double(
-    z_score_threshold, 4.33,
-    "Defines the number of n-std requires to include a signal.");
-DEFINE_double(
-    z_score_influence, 0.05,
-    "The influence of the current data point to the lag mean.");
-DEFINE_double(
-    z_score_filter_threshold, 0.405,
-    "Removes all correlation input below this value.");
-
+// BAH,  these are update per /phaser_share/run_phaser_driver
+DEFINE_double( z_score_lag_percentile, 0.05, "The window used for smoothing the function.");
+//DEFINE_int32( z_score_lag_max, 20, "The window used for smoothing the function.");
+DEFINE_int32( z_score_lag_max, 3, "The window used for smoothing the function.");
+//DEFINE_double( z_score_threshold, 4.33, "Defines the number of n-std requires to include a signal.");
+DEFINE_double( z_score_threshold, 3.0, "Defines the number of n-std requires to include a signal.");
+DEFINE_double( z_score_influence, 0.05, "The influence of the current data point to the lag mean.");
+//DEFINE_double( z_score_filter_threshold, 0.405, "Removes all correlation input below this value.");
+DEFINE_double( z_score_filter_threshold, 0.01, "Removes all correlation input below this value.");
 namespace phaser_core {
 
 ZScorePeakExtraction::ZScorePeakExtraction()

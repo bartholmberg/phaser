@@ -2,6 +2,7 @@
 
 namespace phaser_core {
 
+ //BAH, remove from build
 // Spherical correlation.
 DEFINE_int32(
     phaser_core_spherical_bandwidth, 75, "Defines the spherical bandwith.");

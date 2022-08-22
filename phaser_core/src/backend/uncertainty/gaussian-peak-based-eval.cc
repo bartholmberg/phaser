@@ -6,9 +6,7 @@
 #include "phaser/common/translation-utils.h"
 #include "phaser/distribution/gaussian.h"
 
-DEFINE_int32(
-    gaussian_peak_neighbors, 0,
-    "Determines the number of neighbors used for the Bingham calculation.");
+DEFINE_int32( gaussian_peak_neighbors, 0, "Determines the number of neighbors used for the Bingham calculation.");
 
 namespace phaser_core {
 
