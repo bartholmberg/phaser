@@ -32,14 +32,28 @@ common::Bingham BinghamPeakBasedEval::fitRotationalBinghamDistribution(
         return norm_corr[lhs] < norm_corr[rhs];
       });
   CHECK(max_signal != signals.end());
-
+  //  BAH, weight length == end-start + 1 
   uint32_t start, end;
+// allocate data into A_vec
+
+ 
   calculateStartEndNeighbor(*max_signal, n_corr, &start, &end);
-  Eigen::MatrixXd samples =
-      Eigen::MatrixXd::Zero(4, 2 * FLAGS_bingham_peak_neighbors + 1);
-  Eigen::RowVectorXd weights =
-      Eigen::RowVectorXd::Zero(2 * FLAGS_bingham_peak_neighbors + 1);
+  // BAH, start/end are the same in the example, which does not seem
+  // correct (for weight normalization). So set to 'reasonable value' until
+  // can figure out why
+  end = end + 10; 
+  start = start - 10;
+  std::vector<double> viewW(end - start + 1);  
+  //Eigen::MatrixXd samples = Eigen::MatrixXd::Zero(4, 2 * FLAGS_bingham_peak_neighbors + 1);
+  //Eigen::RowVectorXd weights = Eigen::RowVectorXd::Zero(2 * FLAGS_bingham_peak_neighbors + 1);
+  Eigen::MatrixXd samples = Eigen::MatrixXd::Zero(4, viewW.size());
+  Eigen::RowVectorXd weights = Eigen::RowVectorXd::Zero(viewW.size());
+  //Eigen::Map<Eigen::RowVectorXd> weights(viewW.data(), viewW.size(), 1);
+
   retrievePeakNeighbors(bw, start, end, norm_corr, &samples, &weights);
+  // BAH, view weights (in debugger)
+  viewW.insert( viewW.end(), std::make_move_iterator(weights.data()), std::make_move_iterator(weights.data() + weights.size()));
+
   return common::Bingham::fit(samples, weights);
 }
 
@@ -81,7 +95,10 @@ void BinghamPeakBasedEval::retrievePeakNeighbors(
     (*weights)(k) = norm_corr.at(i);
     ++k;
   }
+  // BAH, we are getting k==1 in test case
+  // so weights has only one value, and 
   if (k == 1) {
+    std::cout << "\n warning only one value for weight in this case, so normalization makes no sense" << std::endl;
     return;
   }
   const double weight_sum = weights->array().sum();
