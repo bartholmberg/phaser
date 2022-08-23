@@ -47,11 +47,12 @@ model::RegistrationResult SphOptRegistration::registerPointCloud(
   // Register the point cloud.
   model::RegistrationResult result = estimateRotation(cloud_prev, cloud_cur);
 
-  pcl::visualization::CloudViewer viewer("Simple Cloud Viewer");
+  //pcl::visualization::CloudViewer viewer("Simple Cloud Viewer");
   // BAH, viewer doesn't like raw point cloud object???
   //viewer.showCloud(*cloud_cur->getRawCloud());
   //  BAH, save out rot only pnt cld
-  pcl::io::savePLYFileASCII("rotonly.pcd", *cloud_cur->getRawCloud());
+  //pcl::io::savePLYFileASCII("rotonly.ply", *cloud_cur->getRawCloud());
+  pcl::io::savePLYFileBinary("rotonly.ply", *cloud_cur->getRawCloud());
   estimateTranslation(cloud_prev, &result);
   return result;
 }
@@ -73,8 +74,8 @@ model::RegistrationResult SphOptRegistration::estimateRotation(
   Eigen::VectorXd b_est =
       common::RotationUtils::ConvertQuaternionToXYZ(rot->getEstimate());
 
-  std::cout << "Bingham q: " << rot->getEstimate().transpose();
-  std::cout  << "Bingham rotation: " << b_est.transpose();
+  std::cout << "\nBingham q: " << rot->getEstimate().transpose() << std::endl;
+  std::cout  << "\nBingham rotation: " << b_est.transpose()*180.0/M_PI << std::endl;
   common::RotationUtils::RotateAroundXYZ(
       cloud_cur, b_est(0), b_est(1), b_est(2));
 
@@ -97,9 +98,9 @@ void SphOptRegistration::estimateTranslation(
       correlation_eval_->calcTranslationUncertainty(aligner_);
   Eigen::VectorXd g_est = pos->getEstimate();
 
-  VLOG(2) << "Gaussian translation: " << g_est.transpose();
-  VLOG(2) << "Translational alignment took: " << duration_translation_f_ms
-          << "ms.";
+  std::cout << "Gaussian translation: " << g_est.transpose() << std::endl;
+  std::cout << "Translational alignment took: " << duration_translation_f_ms << "ms." << std::endl;
+  
 
   common::TranslationUtils::TranslateXYZ(
       rot_cloud, g_est(0), g_est(1), g_est(2));
@@ -153,7 +154,7 @@ vector<SphericalCorrelation> *SphOptRegistration::correlatePointcloud(
   int* b = new int(1);
   vector<SphericalCorrelation>* tmpOut =new std::vector<SphericalCorrelation>{corr_combined_worker->getCorrelationObject()};
   //vector<SphericalCorrelation> tmpOut {corr_combined_worker->getCorrelationObject()};
-  //corr_combined_worker->shutdown();
+  corr_combined_worker->shutdown();
   return tmpOut;
 }
 
