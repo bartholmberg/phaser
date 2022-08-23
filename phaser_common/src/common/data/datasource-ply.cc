@@ -13,7 +13,7 @@ namespace data {
 DatasourcePly::DatasourcePly() : datasource_folder_(FLAGS_PlyReadDirectory) {}
 
 void DatasourcePly::subscribeToPointClouds(
-    boost::function<void(const model::PointCloudPtr&)> func) {
+    std::function<void(const model::PointCloudPtr&)> func) {
   callbacks_.emplace_back(func);
 }
 
