@@ -273,9 +273,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\repo\phaser\phaser_common\src\model\registration-result.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\model\gmm-parameters.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\model\state.cc" />
-    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\data\datasource-ros.cc">
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\opt\ros\noetic\x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\data\datasource-ply.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\data\file-system-helper.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\data\ply-helper.cc" />
@@ -306,6 +303,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\repo\phaser\phaser_common\src\distribution\bingham-objective.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\distribution\bingham-opt-mle.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\lib\tinyply\tinyply.cc" />
+    <ClCompile Include="src\common\data\datasource-ros.cc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\repo\phaser\phaser_common\ZERO_CHECK.vcxproj">

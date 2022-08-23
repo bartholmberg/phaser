@@ -19,9 +19,6 @@
     <ClCompile Include="C:\repo\phaser\phaser_common\src\model\state.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\data\datasource-ros.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\data\datasource-ply.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -104,6 +101,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\repo\phaser\phaser_common\lib\tinyply\tinyply.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\data\datasource-ros.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
