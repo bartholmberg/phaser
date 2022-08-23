@@ -3,7 +3,7 @@
 #include <pcl/io/pcd_io.h>
 #include <pcl/io/ply_io.h>
 #include <pcl/point_types.h>
-#include <ros/ros.h>
+//#include <ros/ros.h>
 #include <filesystem>
 #include "phaser/backend/registration/sph-opt-registration.h"
 #include "phaser/controller/cloud-controller.h"
@@ -81,7 +81,7 @@ static void registerCloud(
 }  // namespace phaser_core
    // namespace phaser_core
 int main(int argc, char** argv) {
-  ros::init(argc, argv, "phaser_core_driver");
+  //ros::init(argc, argv, "phaser_core_driver");
   google::ParseCommandLineFlags(&argc, &argv, true);
   google::InitGoogleLogging(argv[0]);
   google::InstallFailureSignalHandler();
