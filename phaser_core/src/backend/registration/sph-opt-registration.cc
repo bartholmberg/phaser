@@ -88,7 +88,7 @@ model::RegistrationResult SphOptRegistration::estimateRotation(
 
 void SphOptRegistration::estimateTranslation(
     model::PointCloudPtr cloud_prev, model::RegistrationResult* result) {
-  VLOG(1) << "[SphOptRegistration] Estimating translation...";
+  std::cout << "[SphOptRegistration] Estimating translation..." << std::endl;
 
   model::PointCloudPtr rot_cloud = result->getRegisteredCloud();
   const double duration_translation_f_ms = common::executeTimedFunction(

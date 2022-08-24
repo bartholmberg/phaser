@@ -79,20 +79,38 @@ static void registerCloud(
 }
 
 }  // namespace phaser_core
-   // namespace phaser_core
+
+
+void MakeKinectDat(std::string const& inPcdName, std::string const& outPlyName) {
+  pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloudin(
+      new pcl::PointCloud<pcl::PointXYZRGB>);
+  pcl::PointCloud<pcl::PointXYZI>::Ptr cloudout(
+      new pcl::PointCloud<pcl::PointXYZI>);
+
+  pcl::io::loadPCDFile<pcl::PointXYZRGB>(inPcdName, *cloudin);  //* load the file
+  cloudout->points.resize(cloudin->size());
+  for (size_t i = 0; i < cloudin->points.size(); i++) {
+    float iVal =
+        cloudin->points[i].r + cloudin->points[i].g + cloudin->points[i].b;
+    cloudout->points[i].x = cloudin->points[i].x;
+    cloudout->points[i].y = cloudin->points[i].y;
+    cloudout->points[i].z = cloudin->points[i].z;
+    cloudout->points[i].intensity = iVal;
+  };
+  pcl::io::savePLYFileASCII(outPlyName, *cloudout);
+
+}
 int main(int argc, char** argv) {
   //ros::init(argc, argv, "phaser_core_driver");
+
+  //MakeKinectDat( "C:\\repo\\bart\\demo\\room3\\pc_0006.pcd", phaser_core::FLAGS_source_cloud + "source_4.ply");
+ // MakeKinectDat("C:\\repo\\bart\\demo\\room3\\pc_0014.pcd", phaser_core::FLAGS_target_cloud + "target_4.ply");
+
   google::ParseCommandLineFlags(&argc, &argv, true);
   google::InitGoogleLogging(argv[0]);
   google::InstallFailureSignalHandler();
   std::cout << std::filesystem::current_path() << std::endl;
-  //std::string tmpName("C:\\repo\\phaser\\phaser_test_data\\test_clouds\\os0\\target_1.ply");
-  //std::string tmpName( "..\\phaser_test_data\\test_clouds\\os0\\source_1.ply");
-  //std::ifstream in_stream(tmpName);
-  // in_stream.open("target_1.ply");
-  //if (!in_stream.is_open()) {
-  //  std::cout << "\n Unable to open ply file: " << tmpName;
-  //}
+
   std::cout << "=== PHASER CORE DRIVER =====================" << std::endl;
   phaser_core::registerCloud(
       phaser_core::FLAGS_target_cloud, phaser_core::FLAGS_source_cloud,
