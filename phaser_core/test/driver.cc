@@ -92,9 +92,9 @@ void MakeKinectDat(std::string const& inPcdName, std::string const& outPlyName) 
   for (size_t i = 0; i < cloudin->points.size(); i++) {
     float iVal =
         cloudin->points[i].r + cloudin->points[i].g + cloudin->points[i].b;
-    cloudout->points[i].x = cloudin->points[i].x;
-    cloudout->points[i].y = cloudin->points[i].y;
-    cloudout->points[i].z = cloudin->points[i].z;
+    cloudout->points[i].x = cloudin->points[i].x/1000.0;
+    cloudout->points[i].y = cloudin->points[i].y/1000.0;
+    cloudout->points[i].z = cloudin->points[i].z/1000.0;
     cloudout->points[i].intensity = iVal;
   };
   pcl::io::savePLYFileASCII(outPlyName, *cloudout);
@@ -104,7 +104,7 @@ int main(int argc, char** argv) {
   //ros::init(argc, argv, "phaser_core_driver");
 
   //MakeKinectDat( "C:\\repo\\bart\\demo\\room3\\pc_0006.pcd", phaser_core::FLAGS_source_cloud + "source_4.ply");
- // MakeKinectDat("C:\\repo\\bart\\demo\\room3\\pc_0014.pcd", phaser_core::FLAGS_target_cloud + "target_4.ply");
+  //MakeKinectDat("C:\\repo\\bart\\demo\\room3\\pc_0014.pcd", phaser_core::FLAGS_target_cloud + "target_4.ply");
 
   google::ParseCommandLineFlags(&argc, &argv, true);
   google::InitGoogleLogging(argv[0]);
