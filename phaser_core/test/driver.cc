@@ -24,7 +24,7 @@ DEFINE_string(reg_cloud, "c:\\repo\\phaser\\phaser_core\\", "Defines the path to
 // BAH, TBD:set these values to good defaults,
 //          similarly(not identical) named inputs _spherical_bandwidth
 //          in phaser core lib source, why?
-DEFINE_int32(phaser_core_spherical_bandwidth, 150, "spherical bandwidth");
+DEFINE_int32(phaser_core_spherical_bandwidth, 150, "spherical bandwidth"); //150 original
 DEFINE_int32(phaser_core_spherical_zero_padding, 10, "zero pad");
 DEFINE_int32(
     phaser_core_spherical_low_pass_lower_bound, 0, "low pass - lower band");
@@ -89,22 +89,27 @@ void MakeKinectDat(std::string const& inPcdName, std::string const& outPlyName) 
 
   pcl::io::loadPCDFile<pcl::PointXYZRGB>(inPcdName, *cloudin);  //* load the file
   cloudout->points.resize(cloudin->size());
+  int k = 0;
   for (size_t i = 0; i < cloudin->points.size(); i++) {
     float iVal =
         cloudin->points[i].r + cloudin->points[i].g + cloudin->points[i].b;
-    cloudout->points[i].x = cloudin->points[i].x/1000.0;
-    cloudout->points[i].y = cloudin->points[i].y/1000.0;
-    cloudout->points[i].z = cloudin->points[i].z/1000.0;
-    cloudout->points[i].intensity = iVal;
+    if (iVal > 0) {
+      cloudout->points[k].x = 10 * cloudin->points[i].x / 1000.0;
+      cloudout->points[k].y = 10 * cloudin->points[i].y / 1000.0;
+      cloudout->points[k].z = 10 * cloudin->points[i].z / 1000.0;
+      cloudout->points[k].intensity = iVal * iVal;
+      k++;
+    }
   };
+  cloudout->points.resize(k);
   pcl::io::savePLYFileASCII(outPlyName, *cloudout);
 
 }
 int main(int argc, char** argv) {
   //ros::init(argc, argv, "phaser_core_driver");
 
-  //MakeKinectDat( "C:\\repo\\bart\\demo\\room3\\pc_0006.pcd", phaser_core::FLAGS_source_cloud + "source_4.ply");
-  //MakeKinectDat("C:\\repo\\bart\\demo\\room3\\pc_0014.pcd", phaser_core::FLAGS_target_cloud + "target_4.ply");
+  //MakeKinectDat( "C:\\repo\\bart\\demo\\room3\\pcd_0006.pcd", phaser_core::FLAGS_source_cloud + "source_4.ply");
+  //MakeKinectDat("C:\\repo\\bart\\demo\\room3\\pcd_0014.pcd", phaser_core::FLAGS_target_cloud + "target_4.ply");
 
   google::ParseCommandLineFlags(&argc, &argv, true);
   google::InitGoogleLogging(argv[0]);

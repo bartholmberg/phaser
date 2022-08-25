@@ -51,8 +51,7 @@ model::RegistrationResult SphOptRegistration::registerPointCloud(
   // BAH, viewer doesn't like raw point cloud object???
   //viewer.showCloud(*cloud_cur->getRawCloud());
   //  BAH, save out rot only pnt cld
-  //pcl::io::savePLYFileASCII("rotonly.ply", *cloud_cur->getRawCloud());
-  pcl::io::savePLYFileBinary("rotonly.ply", *cloud_cur->getRawCloud());
+  //pcl::io::savePLYFileBinary("rotonly.ply", *cloud_cur->getRawCloud());
   estimateTranslation(cloud_prev, &result);
   return result;
 }
@@ -121,16 +120,12 @@ vector<SphericalCorrelation> *SphOptRegistration::correlatePointcloud(
   // Sample the sphere at the grid points.
   vector<model::FunctionValue>* f_values =new vector<model::FunctionValue>;
   vector<model::FunctionValue>* h_values  = new vector < model::FunctionValue>;
-  //vector<model::FunctionValue> f_values;
-  //vector<model::FunctionValue> h_values;
 
-  auto temp = 1;
-  //sampler_.sampleUniformly(*target, &f_values);
-  //sampler_.sampleUniformly(*source, &h_values);
-  std::cout << " sample uniformly bug" << std::endl;
-  // BAH: bug, sample uniformly seems to have a problem.  
-  //     f_values,h_values constant 1
-  sampler_.sampleUniformly(*target, f_values);
+  std::cout << " sample uniformly" << std::endl;
+  // BAH: optionally save out clouds projected onto sphere
+  //
+  //"targetPrj.ply"
+  sampler_.sampleUniformly(*target, f_values );
   sampler_.sampleUniformly(*source, h_values);
   // Create workers for the spherical correlation.
   // SphericalIntensityWorkerPtr corr_intensity_worker = CHECK_NOTNULL(

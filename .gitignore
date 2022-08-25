@@ -67,3 +67,6 @@ CMakeLists.txt.user
 
 
 phaser_core/RelWithDebInfo/phaser_core_lib.pdb
+*.ply
+*.blend
+*.blend1

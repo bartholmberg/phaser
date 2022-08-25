@@ -1,5 +1,8 @@
 #include "phaser/common/spherical-sampler.h"
-
+#include <pcl/io/pcd_io.h>
+#include <pcl/io/ply_io.h>
+#include <pcl/point_types.h>
+#include <pcl/visualization/cloud_viewer.h>
 #include <cmath>
 #include <glog/logging.h>
 
@@ -17,11 +20,24 @@ void SphericalSampler::initialize(const int bandwith) {
   bandwith_ = bandwith;
 }
 
-void SphericalSampler::sampleUniformly(
+ void SphericalSampler::sampleUniformly(
     const model::PointCloud& cloud, std::vector<model::FunctionValue>* grid) {
+  static int cnt = 0;
   CHECK(is_initialized_);
   grid->clear();
   model::PointCloud sphere = projection_.convertPointCloudCopy(cloud);
+  model::PointCloud* sphereP =new model::PointCloud (projection_.convertPointCloudCopy(cloud));
+  // BAH, save out spherical projected cloud, 
+  //      Note,this function gets scheduled as a Task (in places), and any change to interface
+  //      breaks the task (why?).  But that is reason for clunky file names here.
+  std::string cldName;
+  if (cnt == 0)
+    cldName = "targetPrj.ply";
+  else
+    cldName = "sourcePrj.ply";
+  cnt++;
+  if ( cldName.size() >0 )
+    pcl::io::savePLYFileBinary(cldName, *sphereP->getRawCloud());
   sphere.initialize_kd_tree();
   sphere.getNearestPoints(cartesian_grid_, grid);
 }
