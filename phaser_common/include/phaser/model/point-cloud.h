@@ -24,10 +24,11 @@ class PointCloud {
 
   common::PointCloud_t::iterator begin();
   common::PointCloud_t::iterator end();
-
+  // BAH, getNearestPoints converts pnt cloud to grid
+  //      we need the inverse function grid
   void getNearestPoints(
-      const std::vector<common::Point_t>& query_points,
-      std::vector<FunctionValue>* function_values) const;
+      const std::vector<common::Point_t>& query_points,  //sample grid
+      std::vector<FunctionValue>* function_values) const; // pnt cld nearest neighbor (to grid pnts).
 
   void transformPointCloud(const Eigen::Matrix4f& T);
   void transformPointCloudCopy(
