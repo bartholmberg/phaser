@@ -1,4 +1,4 @@
-#include "phaser/backend/correlation/spherical-combined-worker.h"
+﻿#include "phaser/backend/correlation/spherical-combined-worker.h"
 
 #include <glog/logging.h>
 
@@ -20,8 +20,8 @@ SphericalCombinedWorker::SphericalCombinedWorker(
 
 void SphericalCombinedWorker::run() {
   CHECK_NOTNULL(sph_corr_);
-  std::cout << "[SphericalCombinedWorker::run] Estimating rotation..." << std::endl;
-  ;
+  std::cout << "[SphericalCombinedWorker::run ] Estimating rotation ..." << std::endl;
+  
 
   // Get the intensities.
   SampledSignal f_intensities;
@@ -40,23 +40,24 @@ void SphericalCombinedWorker::run() {
   convertFunctionValues(h_values_, func_range, &h_range);
 
   // Get the reflectivities.
-  SampledSignal f_reflectivity;
-  SampledSignal h_reflectivity;
-  std::function<double(const model::FunctionValue&)> func_reflectivity =
-      [](const model::FunctionValue& v) { return v.getAveragedReflectivity(); };
-  convertFunctionValues(f_values_, func_reflectivity, &f_reflectivity);
-  convertFunctionValues(h_values_, func_reflectivity, &h_reflectivity);
+  //SampledSignal f_reflectivity;
+  //SampledSignal h_reflectivity;
+  //std::function<double(const model::FunctionValue&)> func_reflectivity =
+  //    [](const model::FunctionValue& v) { return v.getAveragedReflectivity(); };
+  //convertFunctionValues(f_values_, func_reflectivity, &f_reflectivity);
+  //convertFunctionValues(h_values_, func_reflectivity, &h_reflectivity);
 
   // Get the ambient points.
-  SampledSignal f_ambient;
-  SampledSignal h_ambient;
-  std::function<double(const model::FunctionValue&)> func_ambient =
-      [](const model::FunctionValue& v) { return v.getAveragedAmbientNoise(); };
-  convertFunctionValues(f_values_, func_ambient, &f_ambient);
-  convertFunctionValues(h_values_, func_ambient, &h_ambient);
+  //SampledSignal f_ambient;
+  //SampledSignal h_ambient;
+ // std::function<double(const model::FunctionValue&)> func_ambient =
+ //     [](const model::FunctionValue& v) { return v.getAveragedAmbientNoise(); };
+ // convertFunctionValues(f_values_, func_ambient, &f_ambient);
+ // convertFunctionValues(h_values_, func_ambient, &h_ambient);
   //BAH, f/g memory freed when the thread completes. Like all 
   //     memory on the stack
-  std::vector<SampledSignal>f={f_range, f_intensities, f_reflectivity, f_ambient},g={h_range, h_intensities, h_reflectivity, h_ambient};
+  //std::vector<SampledSignal> f={f_range, f_intensities, f_reflectivity, f_ambient},g={h_range, h_intensities, h_reflectivity, h_ambient};
+  std::vector<SampledSignal> f = {f_range, f_intensities}, g = {h_range, h_intensities};
   sph_corr_->correlateSampledSignals(f,g);
   is_completed_ = true;
 }

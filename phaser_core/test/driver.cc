@@ -1,4 +1,4 @@
-#include <gflags/gflags.h>
+﻿#include <gflags/gflags.h>
 #include <glog/logging.h>
 #include <pcl/io/pcd_io.h>
 #include <pcl/io/ply_io.h>
@@ -108,7 +108,7 @@ void MakeKinectDat(std::string const& inPcdName, std::string const& outPlyName) 
 int main(int argc, char** argv) {
   //ros::init(argc, argv, "phaser_core_driver");
 
-  //MakeKinectDat( "C:\\repo\\bart\\demo\\room3\\pcd_0006.pcd", phaser_core::FLAGS_source_cloud + "source_4.ply");
+  //MakeKinectDat( "C:\\repo\\bart\\demo\\room3\\pcd_0009.pcd", phaser_core::FLAGS_source_cloud + "source_4.ply");
   //MakeKinectDat("C:\\repo\\bart\\demo\\room3\\pcd_0014.pcd", phaser_core::FLAGS_target_cloud + "target_4.ply");
 
   google::ParseCommandLineFlags(&argc, &argv, true);
@@ -116,7 +116,7 @@ int main(int argc, char** argv) {
   google::InstallFailureSignalHandler();
   std::cout << std::filesystem::current_path() << std::endl;
 
-  std::cout << "=== PHASER CORE DRIVER =====================" << std::endl;
+  std::wcout << "=== PHASER CORE DRIVER =====================" << std::endl;
   phaser_core::registerCloud(
       phaser_core::FLAGS_target_cloud, phaser_core::FLAGS_source_cloud,
       phaser_core::FLAGS_reg_cloud);

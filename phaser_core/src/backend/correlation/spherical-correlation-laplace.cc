@@ -1,4 +1,4 @@
-#include "phaser/backend/correlation/spherical-correlation-laplace.h"
+﻿#include "phaser/backend/correlation/spherical-correlation-laplace.h"
 
 #include <fstream>
 #include <glog/logging.h>
@@ -44,7 +44,7 @@ void SphericalCorrelationLaplace::extractTransformedChannels(
     const std::vector<SampledSignal>& fs, const std::vector<SampledSignal>& gs,
     std::vector<fftw_complex*>* f_channels,
     std::vector<fftw_complex*>* g_channels) {
-  std::cout << "[SphericalCombinedWorker::run] SphericalCorrelationLaplace::extractTransformedChannels"<< std::endl;
+  std::cout << "[SphericalCombinedWorker:: run] SphericalCorrelationLaplace::FFT"<< std::endl;
   CHECK_NOTNULL(f_channels);
   CHECK_NOTNULL(g_channels);
   const uint32_t n_channels = fs.size();
@@ -66,9 +66,10 @@ SphericalCorrelationLaplace::performFFTandShift(
   std::cout << "[SphericalCombinedWorker::run] SphericalCorrelationLaplace::performFFTandShift" << std::endl;
   performSphericalTransforms(f1, f2);
   shiftSignals(n_coeffs);
-  return std::make_pair(
+  auto freqout = std::make_pair(
       convertCoeffArrays(sig_coef_[0], sig_coef_[1], n_coeffs),
       convertCoeffArrays(pat_coef_[0], pat_coef_[1], n_coeffs));
+  return freqout;
 }
 
 fftw_complex* SphericalCorrelationLaplace::convertCoeffArrays(
