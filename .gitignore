@@ -55,7 +55,7 @@ CMakeLists.txt.user
 *.mat
 *.csv
 *.asv
-*.jpg
+#*.jpg
 
 # MacOS Desktop Services Store.
 .DS_Store

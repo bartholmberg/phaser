@@ -75,8 +75,9 @@ model::RegistrationResult SphOptRegistration::estimateRotation(
 
   std::cout << "\nBingham q: " << rot->getEstimate().transpose() << std::endl;
   std::cout  << "\nBingham rotation: " << b_est.transpose()*180.0/M_PI << std::endl;
+  //BAH, use -rot(y) because y axis is pointed down for K4a
   common::RotationUtils::RotateAroundXYZ(
-      cloud_cur, b_est(0), b_est(1), b_est(2));
+      cloud_cur, b_est(0), -b_est(1), b_est(2));
 
   model::RegistrationResult result(std::move(*cloud_cur));
   result.setRotUncertaintyEstimate(rot);
