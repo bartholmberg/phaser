@@ -108,8 +108,8 @@ void MakeKinectDat(std::string const& inPcdName, std::string const& outPlyName) 
 int main(int argc, char** argv) {
   //ros::init(argc, argv, "phaser_core_driver");
 
-  //MakeKinectDat( "C:\\repo\\bart\\demo\\room3\\pcd_0026.pcd", phaser_core::FLAGS_source_cloud + "source_4.ply");
-  //MakeKinectDat("C:\\repo\\bart\\demo\\room3\\pcd_0029.pcd", phaser_core::FLAGS_target_cloud + "target_4.ply");
+  //MakeKinectDat( "C:\\repo\\bart\\demo\\room3\\pcd_0012.pcd", phaser_core::FLAGS_source_cloud + "source_4.ply");
+  //MakeKinectDat("C:\\repo\\bart\\demo\\room3\\pcd_0014.pcd", phaser_core::FLAGS_target_cloud + "target_4.ply");
 
   google::ParseCommandLineFlags(&argc, &argv, true);
   google::InitGoogleLogging(argv[0]);
