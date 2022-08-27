@@ -1,10 +1,10 @@
 #include "phaser/common/data/datasource-ply.h"
 
-#include <boost/filesystem.hpp>
+//#include <boost/filesystem.hpp>
 #include <glog/logging.h>
 
 #include "phaser/common/data/file-system-helper.h"
-
+#include <filesystem>
 DEFINE_string(
     PlyReadDirectory, "", "Defines the directory to read the PLYs from.");
 
@@ -51,7 +51,7 @@ std::vector<model::PointCloudPtr> DatasourcePly::readPly(
     if (max_n_clouds > 0 && file_counter > max_n_clouds)
       break;
     const std::string& path_to_ply = directory + ply;
-    boost::filesystem::path p(path_to_ply);
+    std::filesystem::path p(path_to_ply);
     if (p.extension() != ".ply")
       continue;
     model::PointCloudPtr cur_cloud =

@@ -1,7 +1,8 @@
 #include "phaser/distribution/bingham.h"
 
 #include <algorithm>
-#include <boost/math/special_functions/bessel.hpp>
+//#include <boost/math/special_functions/bessel.hpp>
+#include <cmath>
 #include <cassert>
 #include <glog/logging.h>
 #include <iostream>
@@ -318,7 +319,7 @@ double Bingham::computeF(const Eigen::VectorXd& Z) {
   if (dim == 2) {
     const auto val = (Z(0) - Z(1)) / 2;
     const double S2 = MathUtils::computeUnitSphereSurface(1);
-    return std::exp(Z(1)) * S2 * boost::math::cyl_bessel_i(0.0, val) *
+    return std::exp(Z(1)) * S2 * std::cyl_bessel_i(0.0, val) *
            std::exp(val);
   } else {
     double result[3];
@@ -340,8 +341,8 @@ Eigen::VectorXd Bingham::computeDF(const Eigen::VectorXd& Z) {
 
   if (dim == 2) {
     const auto val = (Z(0) - Z(1)) / 2;
-    const auto b1 = boost::math::cyl_bessel_i(1, val);
-    const auto b0 = boost::math::cyl_bessel_i(0, val);
+    const auto b1 = std::cyl_bessel_i(1, val);
+    const auto b0 = std::cyl_bessel_i(0, val);
     const double S2 = MathUtils::computeUnitSphereSurface(1);
     dF(0) = S2 / 2 * (b1 + b0) * std::exp((Z(0) + Z(1)) / 2);
     dF(1) = S2 / 2 * (-b1 + b0) * std::exp((Z(0) + Z(1)) / 2);

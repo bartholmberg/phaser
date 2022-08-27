@@ -1,6 +1,6 @@
 #pragma once
 
-#include <boost/function.hpp>
+//#include <boost/function.hpp>
 #include <memory>
 
 #include "phaser/model/point-cloud.h"
