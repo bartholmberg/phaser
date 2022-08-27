@@ -94,9 +94,9 @@ void MakeKinectDat(std::string const& inPcdName, std::string const& outPlyName) 
     float iVal =
         cloudin->points[i].r + cloudin->points[i].g + cloudin->points[i].b;
     if (iVal > 0) {
-      cloudout->points[k].x = 10 * cloudin->points[i].x / 1000.0;
-      cloudout->points[k].y = 10 * cloudin->points[i].y / 1000.0;
-      cloudout->points[k].z = 10 * cloudin->points[i].z / 1000.0;
+      cloudout->points[k].x = cloudin->points[i].x / 1000.0;
+      cloudout->points[k].y = cloudin->points[i].y / 1000.0;
+      cloudout->points[k].z = cloudin->points[i].z / 1000.0;
       cloudout->points[k].intensity = iVal * iVal;
       k++;
     }
@@ -108,8 +108,8 @@ void MakeKinectDat(std::string const& inPcdName, std::string const& outPlyName) 
 int main(int argc, char** argv) {
   //ros::init(argc, argv, "phaser_core_driver");
 
-  //MakeKinectDat( "C:\\repo\\bart\\demo\\room3\\pcd_0009.pcd", phaser_core::FLAGS_source_cloud + "source_4.ply");
-  //MakeKinectDat("C:\\repo\\bart\\demo\\room3\\pcd_0014.pcd", phaser_core::FLAGS_target_cloud + "target_4.ply");
+  //MakeKinectDat( "C:\\repo\\bart\\demo\\room3\\pcd_0026.pcd", phaser_core::FLAGS_source_cloud + "source_4.ply");
+  //MakeKinectDat("C:\\repo\\bart\\demo\\room3\\pcd_0029.pcd", phaser_core::FLAGS_target_cloud + "target_4.ply");
 
   google::ParseCommandLineFlags(&argc, &argv, true);
   google::InitGoogleLogging(argv[0]);
