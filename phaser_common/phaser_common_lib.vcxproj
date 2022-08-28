@@ -192,7 +192,7 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_USE_MATH_DEFINES;GLOG_NO_ABBREVIATED_SEVERITIES;NDEBUG;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <AdditionalIncludeDirectories>..\fftw3;..\..\googletest\googletest\include;..\phaser_common\include\;..\..\vcpkg\installed\x64-windows\include\vtk-9.0\;..\..\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\fftw3;..\..\googletest\googletest\include;..\phaser_common\include\;..\..\vcpkg\installed\x64-windows\include\vtk-9.0\;..\..\pcl\common\include;..\..\pcl\search\include;..\..\pcl\io\include;..\..\pcl\features\include;..\..\pcl\visualization\include;..\..\pcl\kdtree\include;..\..\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
