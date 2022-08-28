@@ -11,3 +11,4 @@ vcpkg install boost-numeric-conversion:x64-windows
  vcpkg install boost-lexical-cast:x64-windows
  vcpkg install boost-interprocess:x64-windows
  vcpkg install pcl[vtk]:x64-windows --featurepackages --recurse
+ set opengl version to 4 in pcl
