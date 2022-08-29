@@ -11,7 +11,7 @@
 #include "phaser/common/point-types.h"
 #include "phaser/model/function-value.h"
 #include "phaser/model/ply-point-cloud.h"
-#include "phaser/model/point.h"
+//#include "phaser/model/point.h"
 
 namespace model {
 
