@@ -243,8 +243,8 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>RelWithDebInfo\phaser_core_lib.lib;RelWithDebInfo\phaser_common_lib.lib;RelWithDebInfo\phaser_pre_lib.lib;libfftw3-3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\phaser_pre;..\fftw3;..\phaser_common;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>RelWithDebInfo\phaser_core_lib.lib;RelWithDebInfo\phaser_common_lib.lib;RelWithDebInfo\phaser_pre_lib.lib;libfftw3-3.lib;Open3D.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\phaser_pre;..\Open3D_install\lib;..\fftw3;..\phaser_common;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -315,7 +315,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\repo\phaser\phaser_core\test\driver.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_core\test\driver.cc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="test\PointCloud.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">..\Open3D_install\include\;..\Open3D_install\include\open3d\3rdparty</AdditionalIncludeDirectories>
     </ClCompile>
