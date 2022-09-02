@@ -22,7 +22,7 @@
 *.app
 *.jnc
 .vs/
-#test/
+site/
 Open3D_install/
 RelWithDebInfo/
 Debug/
