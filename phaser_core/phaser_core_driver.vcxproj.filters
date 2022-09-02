@@ -4,6 +4,9 @@
     <ClCompile Include="C:\repo\phaser\phaser_core\test\driver.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="test\PointCloud.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\repo\phaser\phaser_core\CMakeLists.txt" />

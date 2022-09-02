@@ -22,6 +22,8 @@
 *.app
 *.jnc
 .vs/
+#test/
+Open3D_install/
 RelWithDebInfo/
 Debug/
 phaser_core_lib.dir/
