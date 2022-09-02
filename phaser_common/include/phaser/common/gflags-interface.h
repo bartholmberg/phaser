@@ -3,7 +3,7 @@
 
 #include <gflags/gflags.h>
 #include <glog/logging.h>
-#include <ros/ros.h>
+//#include <ros/ros.h>
 
 namespace common {
 
