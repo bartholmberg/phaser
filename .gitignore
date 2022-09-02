@@ -24,7 +24,7 @@
 .vs/
 site/
 #Open3D_install/
-lib/
+#lib/
 RelWithDebInfo/
 Debug/
 phaser_core_lib.dir/
