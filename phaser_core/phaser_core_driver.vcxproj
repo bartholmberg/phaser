@@ -317,7 +317,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <ClCompile Include="C:\repo\phaser\phaser_core\test\driver.cc" />
     <ClCompile Include="test\PointCloud.cpp">
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\repo\Open3D\cpp;..\Open3D_install\include\open3d\3rdparty</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">..\Open3D_install\include\;..\Open3D_install\include\open3d\3rdparty</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
