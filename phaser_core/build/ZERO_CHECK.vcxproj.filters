@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\repo\phaser\phaser_core\build\CMakeFiles\19db9b22300fa70a2dbd82b9e4a73df6\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{2FB5978E-FEAD-38FA-A761-3690A5F008DD}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

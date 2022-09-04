@@ -191,7 +191,7 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;NOMINMAX;_USE_MATH_DEFINES;GLOG_NO_ABBREVIATED_SEVERITIES;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <AdditionalIncludeDirectories>C:\repo\phaser\phaser_common\include;..\..\phaser_common\include;..\..\phaser_common\;..\..\phaser_common\include\phaser;..\..\phaser_core\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%VCPKG_ROOT%\..\phaser\fftw3;%VCPKG_ROOT%\installed\x64-windows\include\vtk-9.0;%VCPKG_ROOT%\..\phaser\phaser_common\include;..\..\phaser_core\include;..\..\phaser_pre;..\..\phaser_viz;..\..\phaser_pre\include;..\..\phaser_common\include\;..\..\phaser_common;..\..\phaser_common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
@@ -295,7 +295,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\test-worker.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\signal-utils.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\core-gflags.cc" />
-    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\test\testing-entrypoint.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\test\testing-entrypoint.cc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="C:\repo\phaser\phaser_common\src\distribution\gaussian.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\distribution\gaussian-mixture.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\distribution\bingham.cc" />
