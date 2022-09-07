@@ -16,10 +16,6 @@
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="MinSizeRel|x64">
-      <Configuration>MinSizeRel</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{AD69589F-074D-31A1-9A6E-2CF675090D30}</ProjectGuid>
@@ -45,11 +41,6 @@
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
-    <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v143</PlatformToolset>
-  </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
@@ -71,13 +62,10 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">phaser_core_lib.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">phaser_core_lib</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\repo\phaser\phaser_core\build\MinSizeRel\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">phaser_core_lib.dir\MinSizeRel\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">phaser_core_lib</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
+      <AdditionalIncludeDirectories>c:\repo\phaser\phaser_common\include\;%VCPKG_ROOT%..\phaser\phaser_core\include;%VCPKG_ROOT%..\phaser\fftw3;%VCPKG_ROOT%..\phaser\phaser_pre\include\phaser_pre;%VCPKG_ROOT%..\phaser\phaser_pre\include;%VCPKG_ROOT%..\phaser\phaser_pre;%VCPKG_ROOT%\installed\x64-windows\include\vtk-9.0;%VCPKG_ROOT%..\phaser\phaser_core;%VCPKG_ROOT%..\phaser\phaser_viz\include;%VCPKG_ROOT%..\phaser\phaser_common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -90,15 +78,17 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;NOMINMAX;_USE_MATH_DEFINES;GLOG_NO_ABBREVIATED_SEVERITIES;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLOG_NO_ABBREVIATED_SEVERITIES;_USE_MATH_DEFINES;NOMINMAX;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <AdditionalIncludeDirectories>%VCPKG_ROOT%\..\phaser\phaser_viz\include;%VCPKG_ROOT%\..\phaser\phaser_common\include;%VCPKG_ROOT%\installed\x64-windows\include\vtk-9.0;%VCPKG_ROOT%\..\phaser\phaser_core\include;%VCPKG_ROOT%\..\phaser\phaser_pre\include;%VCPKG_ROOT%\..\phaser\fftw3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\repo\phaser\phaser_core\..\phaser_common\include;C:\repo\phaser\phaser_core\ ;C:\repo\phaser\phaser_core\..\googletest\googletest\include;C:\repo\phaser\phaser_core\..\vcpkg\installed\x64-windows\include;C:\repo\phaser\phaser_core\..\..\opt\ros\noetic\x64\include;C:\repo\phaser\phaser_core\..\glog\glog;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\repo\phaser\phaser_core\..\phaser_common\include;C:\repo\phaser\phaser_core\ ;C:\repo\phaser\phaser_core\..\googletest\googletest\include;C:\repo\phaser\phaser_core\..\vcpkg\installed\x64-windows\include;C:\repo\phaser\phaser_core\..\..\opt\ros\noetic\x64\include;C:\repo\phaser\phaser_core\..\glog\glog;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -111,6 +101,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
+      <AdditionalIncludeDirectories>C:\repo\phaser\phaser_core\..\phaser_common\include;C:\repo\phaser\phaser_core\ ;C:\repo\phaser\phaser_core\..\googletest\googletest\include;C:\repo\phaser\phaser_core\..\vcpkg\installed\x64-windows\include;C:\repo\phaser\phaser_core\..\..\opt\ros\noetic\x64\include;C:\repo\phaser\phaser_core\..\glog\glog;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -129,9 +120,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\repo\phaser\phaser_core\..\phaser_common\include;C:\repo\phaser\phaser_core\ ;C:\repo\phaser\phaser_core\..\googletest\googletest\include;C:\repo\phaser\phaser_core\..\vcpkg\installed\x64-windows\include;C:\repo\phaser\phaser_core\..\..\opt\ros\noetic\x64\include;C:\repo\phaser\phaser_core\..\glog\glog;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\repo\phaser\phaser_core\..\phaser_common\include;C:\repo\phaser\phaser_core\ ;C:\repo\phaser\phaser_core\..\googletest\googletest\include;C:\repo\phaser\phaser_core\..\vcpkg\installed\x64-windows\include;C:\repo\phaser\phaser_core\..\..\opt\ros\noetic\x64\include;C:\repo\phaser\phaser_core\..\glog\glog;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -144,6 +136,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
+      <AdditionalIncludeDirectories>C:\repo\phaser\phaser_core\..\phaser_common\include;C:\repo\phaser\phaser_core\ ;C:\repo\phaser\phaser_core\..\googletest\googletest\include;C:\repo\phaser\phaser_core\..\vcpkg\installed\x64-windows\include;C:\repo\phaser\phaser_core\..\..\opt\ros\noetic\x64\include;C:\repo\phaser\phaser_core\..\glog\glog;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -162,42 +155,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\repo\phaser\phaser_core\..\phaser_common\include;C:\repo\phaser\phaser_core\ ;C:\repo\phaser\phaser_core\..\googletest\googletest\include;C:\repo\phaser\phaser_core\..\vcpkg\installed\x64-windows\include;C:\repo\phaser\phaser_core\..\..\opt\ros\noetic\x64\include;C:\repo\phaser\phaser_core\..\glog\glog;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
-      <HeaderFileName>%(Filename).h</HeaderFileName>
-      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
-      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
-      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
-    </Midl>
-    <Lib>
-      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
-    </Lib>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
-    <ClCompile>
-      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
-      <ExceptionHandling>Sync</ExceptionHandling>
-      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-      <OpenMPSupport>true</OpenMPSupport>
-      <Optimization>MinSpace</Optimization>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <UseFullPaths>false</UseFullPaths>
-      <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
-      <ObjectFileName>$(IntDir)</ObjectFileName>
-      <DebugInformationFormat>
-      </DebugInformationFormat>
-    </ClCompile>
-    <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
-    </ResourceCompile>
-    <Midl>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\repo\phaser\phaser_core\..\phaser_common\include;C:\repo\phaser\phaser_core\ ;C:\repo\phaser\phaser_core\..\googletest\googletest\include;C:\repo\phaser\phaser_core\..\vcpkg\installed\x64-windows\include;C:\repo\phaser\phaser_core\..\..\opt\ros\noetic\x64\include;C:\repo\phaser\phaser_core\..\glog\glog;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -250,19 +211,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\CMake\share\cmake-3.22\Modules\CMakeCInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeParseImplicitLinkInfo.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeRCInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\CMake\share\cmake-3.22\Modules\CheckCXXCompilerFlag.cmake;C:\CMake\share\cmake-3.22\Modules\CheckCXXSourceCompiles.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-C.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;C:\CMake\share\cmake-3.22\Modules\FindOpenMP.cmake;C:\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\CMake\share\cmake-3.22\Modules\Internal\CheckCompilerFlag.cmake;C:\CMake\share\cmake-3.22\Modules\Internal\CheckSourceCompiles.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-C.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\repo\phaser\phaser_core\build\CMakeFiles\3.22.1\CMakeCCompiler.cmake;C:\repo\phaser\phaser_core\build\CMakeFiles\3.22.1\CMakeCXXCompiler.cmake;C:\repo\phaser\phaser_core\build\CMakeFiles\3.22.1\CMakeRCCompiler.cmake;C:\repo\phaser\phaser_core\build\CMakeFiles\3.22.1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\repo\phaser\phaser_core\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/repo/phaser/phaser_core/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-C:\CMake\bin\cmake.exe -SC:/repo/phaser/phaser_core -BC:/repo/phaser/phaser_core/build --check-stamp-file C:/repo/phaser/phaser_core/build/CMakeFiles/generate.stamp
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\CMake\share\cmake-3.22\Modules\CMakeCInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeParseImplicitLinkInfo.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeRCInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\CMake\share\cmake-3.22\Modules\CheckCXXCompilerFlag.cmake;C:\CMake\share\cmake-3.22\Modules\CheckCXXSourceCompiles.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-C.cmake;C:\CMake\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;C:\CMake\share\cmake-3.22\Modules\FindOpenMP.cmake;C:\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\CMake\share\cmake-3.22\Modules\Internal\CheckCompilerFlag.cmake;C:\CMake\share\cmake-3.22\Modules\Internal\CheckSourceCompiles.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-C.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\repo\phaser\phaser_core\build\CMakeFiles\3.22.1\CMakeCCompiler.cmake;C:\repo\phaser\phaser_core\build\CMakeFiles\3.22.1\CMakeCXXCompiler.cmake;C:\repo\phaser\phaser_core\build\CMakeFiles\3.22.1\CMakeRCCompiler.cmake;C:\repo\phaser\phaser_core\build\CMakeFiles\3.22.1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\repo\phaser\phaser_core\build\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>

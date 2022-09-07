@@ -5,9 +5,9 @@ find_package(catkin_simple REQUIRED)
 catkin_simple(ALL_DEPS_REQUIRED)
 
 include(CheckCXXCompilerFlag)
-CHECK_CXX_COMPILER_FLAG("-std=c++14" COMPILER_SUPPORTS_CXX14)
-if(COMPILER_SUPPORTS_CXX14)
-  set(CMAKE_CXX_STANDARD 14)
+CHECK_CXX_COMPILER_FLAG("-std=c++17" COMPILER_SUPPORTS_CXX14)
+if(COMPILER_SUPPORTS_CXX17)
+  set(CMAKE_CXX_STANDARD 17)
   set(CMAKE_CXX_FLAGS         "-Wall -Wextra -msse -msse2 -msse3 -msse4 -O3 -DNDEBUG")
   set(CMAKE_CXX_FLAGS_DEBUG   "-O0 -g")
   set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG")
@@ -16,9 +16,9 @@ else()
 endif()
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-cs_add_library(${PROJECT_NAME}_lib
+add_library(${PROJECT_NAME}_lib
    src/visualization/plotty-visualizer.cc
 )
 
-cs_install()
-cs_export()
+#cs_install()
+#cs_export()
