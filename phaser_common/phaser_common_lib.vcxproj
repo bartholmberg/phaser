@@ -90,8 +90,9 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;NOMINMAX;_USE_MATH_DEFINES;GLOG_NO_ABBREVIATED_SEVERITIES;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
+      <AdditionalIncludeDirectories>%VCPKG_ROOT%..\phaser\phaser_core\include;%VCPKG_ROOT%..\phaser\fftw3;%VCPKG_ROOT%..\phaser\phaser_pre\include\phaser_pre;%VCPKG_ROOT%..\phaser\phaser_pre\include;%VCPKG_ROOT%..\phaser\phaser_pre;%VCPKG_ROOT%\installed\x64-windows\include\vtk-9.0;%VCPKG_ROOT%..\phaser\phaser_core;%VCPKG_ROOT%..\phaser\phaser_viz\include;%VCPKG_ROOT%..\phaser\phaser_common\include;%VCPKG_ROOT%..\phaser\phaser_common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
@@ -271,7 +272,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\repo\phaser\phaser_common\src\model\registration-result.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\model\gmm-parameters.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\model\state.cc" />
-    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\data\datasource-ros.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\data\datasource-ros.cc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\data\datasource-ply.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\data\file-system-helper.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\data\ply-helper.cc" />
@@ -282,7 +285,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\statistics-manager.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\metric-utils.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\point-cloud-utils.cc" />
-    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\gflags-interface.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\gflags-interface.cc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\math-utils.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\dual-quaternion.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\thread-pool.cc" />
