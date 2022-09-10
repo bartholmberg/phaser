@@ -27,7 +27,7 @@
 #include <Eigen/Dense>
 #include <iostream>
 #include <memory>
-
+#include<fmt/format.h>
 #include "open3d/Open3D.h"
 #include <ostream>
 #include <filesystem>

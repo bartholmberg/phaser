@@ -1,4 +1,4 @@
-assimp-vc142-mt.lib
+//assimp-vc142-mt.lib, //conflict in pnt cloud
 o3dlibs.md
 Open3D.lib
 Open3D_3rdparty_assimp.lib
