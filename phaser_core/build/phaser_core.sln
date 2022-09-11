@@ -27,6 +27,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "phaser_common_lib", "..\..\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "phaser_pre_lib", "..\..\phaser_pre\phaser_pre_lib.vcxproj", "{B5232DD7-4CCE-34D1-A2F9-9982B3278C1F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "phaser_o3d_driver", "phaser_o3d_driver.vcxproj", "{37D7AEE2-32AF-4F3F-A77D-71BA7C3589C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -80,6 +82,14 @@ Global
 		{B5232DD7-4CCE-34D1-A2F9-9982B3278C1F}.Release|x64.Build.0 = Release|x64
 		{B5232DD7-4CCE-34D1-A2F9-9982B3278C1F}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
 		{B5232DD7-4CCE-34D1-A2F9-9982B3278C1F}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
+		{37D7AEE2-32AF-4F3F-A77D-71BA7C3589C1}.Debug|x64.ActiveCfg = Debug|x64
+		{37D7AEE2-32AF-4F3F-A77D-71BA7C3589C1}.Debug|x64.Build.0 = Debug|x64
+		{37D7AEE2-32AF-4F3F-A77D-71BA7C3589C1}.MinSizeRel|x64.ActiveCfg = RelWithDebInfo|x64
+		{37D7AEE2-32AF-4F3F-A77D-71BA7C3589C1}.MinSizeRel|x64.Build.0 = RelWithDebInfo|x64
+		{37D7AEE2-32AF-4F3F-A77D-71BA7C3589C1}.Release|x64.ActiveCfg = Release|x64
+		{37D7AEE2-32AF-4F3F-A77D-71BA7C3589C1}.Release|x64.Build.0 = Release|x64
+		{37D7AEE2-32AF-4F3F-A77D-71BA7C3589C1}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
+		{37D7AEE2-32AF-4F3F-A77D-71BA7C3589C1}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
