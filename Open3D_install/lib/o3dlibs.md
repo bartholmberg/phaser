@@ -1,79 +1,90 @@
-//assimp-vc142-mt.lib, //conflict in pnt cloud
-o3dlibs.md
-Open3D.lib
-Open3D_3rdparty_assimp.lib
-Open3D_3rdparty_assimp_assimp-vc142-mt.lib
-Open3D_3rdparty_assimp_IrrXML.lib
-Open3D_3rdparty_blas_mkl_core.lib
-Open3D_3rdparty_blas_mkl_intel_ilp64.lib
-Open3D_3rdparty_blas_mkl_sequential.lib
-Open3D_3rdparty_blas_mkl_tbb_thread.lib
-Open3D_3rdparty_blas_tbb_static.lib
-Open3D_3rdparty_civetweb_civetweb-cpp.lib
-Open3D_3rdparty_civetweb_civetweb.lib
-Open3D_3rdparty_curl.lib
-Open3D_3rdparty_embree_embree3.lib
-Open3D_3rdparty_embree_embree_avx.lib
-Open3D_3rdparty_embree_embree_avx2.lib
-Open3D_3rdparty_embree_lexers.lib
-Open3D_3rdparty_embree_math.lib
-Open3D_3rdparty_embree_simd.lib
-Open3D_3rdparty_embree_sys.lib
-Open3D_3rdparty_embree_tasking.lib
-Open3D_3rdparty_filament_backend.lib
-Open3D_3rdparty_filament_bluegl.lib
-Open3D_3rdparty_filament_bluevk.lib
-Open3D_3rdparty_filament_filabridge.lib
-Open3D_3rdparty_filament_filaflat.lib
-Open3D_3rdparty_filament_filamat_lite.lib
-Open3D_3rdparty_filament_filament.lib
-Open3D_3rdparty_filament_filameshio.lib
-Open3D_3rdparty_filament_geometry.lib
-Open3D_3rdparty_filament_ibl.lib
-Open3D_3rdparty_filament_image.lib
-Open3D_3rdparty_filament_meshoptimizer.lib
-Open3D_3rdparty_filament_smol-v.lib
-Open3D_3rdparty_filament_utils.lib
-Open3D_3rdparty_fmt.lib
-Open3D_3rdparty_glew.lib
-Open3D_3rdparty_glfw.lib
-Open3D_3rdparty_glfw3.lib
-Open3D_3rdparty_imgui.lib
-Open3D_3rdparty_ippicv_ippicvmt.lib
-Open3D_3rdparty_ippicv_ippiw.lib
-Open3D_3rdparty_jpeg.lib
-Open3D_3rdparty_jsoncpp.lib
-Open3D_3rdparty_liblzf.lib
-Open3D_3rdparty_libpng.lib
-Open3D_3rdparty_lzf.lib
-Open3D_3rdparty_mkl_mkl_core.lib
-Open3D_3rdparty_mkl_mkl_intel_ilp64.lib
-Open3D_3rdparty_mkl_mkl_sequential.lib
-Open3D_3rdparty_mkl_mkl_tbb_thread.lib
-Open3D_3rdparty_mkl_tbb_static.lib
-Open3D_3rdparty_png.lib
-Open3D_3rdparty_qhullcpp.lib
-Open3D_3rdparty_qhull_r.lib
-Open3D_3rdparty_rply.lib
-Open3D_3rdparty_tbb_tbbmalloc_static.lib
-Open3D_3rdparty_tbb_tbb_static.lib
-Open3D_3rdparty_tinyfiledialogs.lib
-Open3D_3rdparty_vtk_vtkCommonCore-9.1.lib
-Open3D_3rdparty_vtk_vtkCommonDataModel-9.1.lib
-Open3D_3rdparty_vtk_vtkCommonExecutionModel-9.1.lib
-Open3D_3rdparty_vtk_vtkCommonMath-9.1.lib
-Open3D_3rdparty_vtk_vtkCommonMisc-9.1.lib
-Open3D_3rdparty_vtk_vtkCommonSystem-9.1.lib
-Open3D_3rdparty_vtk_vtkCommonTransforms-9.1.lib
-Open3D_3rdparty_vtk_vtkFiltersCore-9.1.lib
-Open3D_3rdparty_vtk_vtkFiltersGeneral-9.1.lib
-Open3D_3rdparty_vtk_vtkFiltersModeling-9.1.lib
-Open3D_3rdparty_vtk_vtkFiltersSources-9.1.lib
-Open3D_3rdparty_vtk_vtkkissfft-9.1.lib
-Open3D_3rdparty_vtk_vtkpugixml-9.1.lib
-Open3D_3rdparty_vtk_vtksys-9.1.lib
-Open3D_3rdparty_webrtc_webrtc.lib
-Open3D_3rdparty_webrtc_webrtc_extra.lib
-Open3D_3rdparty_zeromq.lib
-Open3D_3rdparty_zlib.lib
-turbojpeg-static.lib
+#
+#  all the libraries o3d uses to build apps
+# copy all those freshly build bits to phaser land
+
+xcopy /s /y C:\repo\Open3D\cpp\build\lib\RelWithDebInfo\Open3D.lib .
+xcopy /s /y C:\repo\Open3D\cpp\build\assimp\lib\assimp-vc143-mt.lib .
+xcopy /s /y C:\repo\Open3D\cpp\build\turbojpeg\lib\turbojpeg-static.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\jsoncpp\lib\jsoncpp.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\lib\RelWithDebInfo\Open3D_3rdparty_liblzf.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\curl\lib\libcurl.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\libpng\lib\libpng16_static.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\zlib\lib\zlibstatic.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\lib\RelWithDebInfo\Open3D_3rdparty_rply.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\lib\RelWithDebInfo\Open3D_3rdparty_tinyfiledialogs.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\lib\RelWithDebInfo\Open3D_3rdparty_qhullcpp.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\lib\RelWithDebInfo\Open3D_3rdparty_qhull_r.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\lib\RelWithDebInfo\Open3D_3rdparty_imgui.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\zeromq\lib\libzmq-v143-mt-s-4_3_3.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\vtk\src\ext_vtk\lib\vtkFiltersGeneral-9.1.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\vtk\src\ext_vtk\lib\vtkFiltersSources-9.1.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\vtk\src\ext_vtk\lib\vtkFiltersModeling-9.1.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\vtk\src\ext_vtk\lib\vtkFiltersCore-9.1.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\vtk\src\ext_vtk\lib\vtkCommonExecutionModel-9.1.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\vtk\src\ext_vtk\lib\vtkCommonDataModel-9.1.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\vtk\src\ext_vtk\lib\vtkCommonTransforms-9.1.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\vtk\src\ext_vtk\lib\vtkCommonMath-9.1.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\vtk\src\ext_vtk\lib\vtkCommonMisc-9.1.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\vtk\src\ext_vtk\lib\vtkCommonSystem-9.1.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\vtk\src\ext_vtk\lib\vtkCommonCore-9.1.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\vtk\src\ext_vtk\lib\vtkkissfft-9.1.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\vtk\src\ext_vtk\lib\vtkpugixml-9.1.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\vtk\src\ext_vtk\lib\vtksys-9.1.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\mkl_install\lib\tbbmalloc_static.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\mkl_install\lib\mkl_intel_ilp64.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\mkl_install\lib\mkl_core.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\mkl_install\lib\mkl_sequential.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\mkl_install\lib\mkl_tbb_thread.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\mkl_install\lib\tbb_static.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\embree\lib\embree3.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\embree\lib\embree_avx.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\embree\lib\embree_avx2.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\embree\lib\simd.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\embree\lib\lexers.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\embree\lib\sys.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\embree\lib\math.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\embree\lib\tasking.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\webrtc\src\ext_webrtc\Release\lib\webrtc.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\webrtc\src\ext_webrtc\Release\lib\webrtc_extra.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\civetweb\lib\civetweb.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\civetweb\lib\civetweb-cpp.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\ippicv\lib\ippiw.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\ippicv\lib\ippicvmt.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\lib\RelWithDebInfo\Open3D_3rdparty_glew.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\lib\RelWithDebInfo\glfw3.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\fmt\lib\fmt.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\filament\src\ext_filament\lib\x86_64\mt\filameshio.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\filament\src\ext_filament\lib\x86_64\mt\filament.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\filament\src\ext_filament\lib\x86_64\mt\filamat_lite.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\filament\src\ext_filament\lib\x86_64\mt\filaflat.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\filament\src\ext_filament\lib\x86_64\mt\filabridge.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\filament\src\ext_filament\lib\x86_64\mt\geometry.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\filament\src\ext_filament\lib\x86_64\mt\backend.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\filament\src\ext_filament\lib\x86_64\mt\bluegl.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\filament\src\ext_filament\lib\x86_64\mt\bluevk.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\filament\src\ext_filament\lib\x86_64\mt\ibl.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\filament\src\ext_filament\lib\x86_64\mt\image.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\filament\src\ext_filament\lib\x86_64\mt\meshoptimizer.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\filament\src\ext_filament\lib\x86_64\mt\smol-v.lib .
+xcopy /s /y  C:\repo\Open3D\cpp\build\filament\src\ext_filament\lib\x86_64\mt\utils.lib .
+# ws2_32.lib .
+# rpcrt4.lib .
+# iphlpapi.lib .
+# standard win libs, should be in system32
+# secur32.lib .
+# winmm.lib .
+# dmoguids.lib .
+# wmcodecdspuuid.lib .
+# msdmo.lib .
+# strmiids.lib .
+# gdi32.lib .
+# opengl32.lib .
+#kernel32.lib .
+# user32.lib .
+# winspool.lib .
+# shell32.lib .
+# ole32.lib .
+# oleaut32.lib .
+#  uuid.lib .
+# comdlg32.lib .
+# advapi32.lib .
