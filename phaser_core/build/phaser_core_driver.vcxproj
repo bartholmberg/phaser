@@ -99,8 +99,8 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>Open3D.lib;assimp-vc143-mt.lib;turbojpeg-static.lib;jsoncpp.lib;Open3D_3rdparty_liblzf.lib;libcurl.lib;libpng16_static.lib;zlibstatic.lib;Open3D_3rdparty_rply.lib;Open3D_3rdparty_tinyfiledialogs.lib;Open3D_3rdparty_qhullcpp.lib;Open3D_3rdparty_qhull_r.lib;Open3D_3rdparty_imgui.lib;libzmq-v143-mt-s-4_3_3.lib;ws2_32.lib;rpcrt4.lib;iphlpapi.lib;vtkFiltersGeneral-9.1.lib;vtkFiltersSources-9.1.lib;vtkFiltersModeling-9.1.lib;vtkFiltersCore-9.1.lib;vtkCommonExecutionModel-9.1.lib;vtkCommonDataModel-9.1.lib;vtkCommonTransforms-9.1.lib;vtkCommonMath-9.1.lib;vtkCommonMisc-9.1.lib;vtkCommonSystem-9.1.lib;vtkCommonCore-9.1.lib;vtkkissfft-9.1.lib;vtkpugixml-9.1.lib;vtksys-9.1.lib;tbbmalloc_static.lib;mkl_intel_ilp64.lib;mkl_core.lib;mkl_sequential.lib;mkl_tbb_thread.lib;tbb_static.lib;embree3.lib;embree_avx.lib;embree_avx2.lib;simd.lib;lexers.lib;sys.lib;math.lib;tasking.lib;webrtc.lib;webrtc_extra.lib;secur32.lib;winmm.lib;dmoguids.lib;wmcodecdspuuid.lib;msdmo.lib;strmiids.lib;civetweb.lib;civetweb-cpp.lib;ippiw.lib;ippicvmt.lib;Open3D_3rdparty_glew.lib;glfw3.lib;gdi32.lib;fmt.lib;filameshio.lib;filament.lib;filamat_lite.lib;filaflat.lib;filabridge.lib;geometry.lib;backend.lib;bluegl.lib;bluevk.lib;ibl.lib;image.lib;meshoptimizer.lib;smol-v.lib;utils.lib;opengl32.lib;kernel32.lib;user32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%VCPKG_ROOT%\..\phaser\phaser_pre\RelWithDebInfo;%VCPKG_ROOT%\..\phaser\phaser_common\RelWithDebInfo;%VCPKG_ROOT%\..\phaser\Open3D_install\lib;%VCPKG_ROOT%\..\phaser\fftw3;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>phaser_common_lib.lib;phaser_core_lib.lib;phaser_pre_lib.lib;libfftw3-3.lib;Open3D.lib;assimp-vc143-mt.lib;turbojpeg-static.lib;jsoncpp.lib;Open3D_3rdparty_liblzf.lib;libcurl.lib;libpng16_static.lib;zlibstatic.lib;Open3D_3rdparty_rply.lib;Open3D_3rdparty_tinyfiledialogs.lib;Open3D_3rdparty_qhullcpp.lib;Open3D_3rdparty_qhull_r.lib;Open3D_3rdparty_imgui.lib;libzmq-v143-mt-s-4_3_3.lib;ws2_32.lib;rpcrt4.lib;iphlpapi.lib;vtkFiltersGeneral-9.1.lib;vtkFiltersSources-9.1.lib;vtkFiltersModeling-9.1.lib;vtkFiltersCore-9.1.lib;vtkCommonExecutionModel-9.1.lib;vtkCommonDataModel-9.1.lib;vtkCommonTransforms-9.1.lib;vtkCommonMath-9.1.lib;vtkCommonMisc-9.1.lib;vtkCommonSystem-9.1.lib;vtkCommonCore-9.1.lib;vtkkissfft-9.1.lib;vtkpugixml-9.1.lib;vtksys-9.1.lib;tbbmalloc_static.lib;mkl_intel_ilp64.lib;mkl_core.lib;mkl_sequential.lib;mkl_tbb_thread.lib;tbb_static.lib;embree3.lib;embree_avx.lib;embree_avx2.lib;simd.lib;lexers.lib;sys.lib;math.lib;tasking.lib;webrtc.lib;webrtc_extra.lib;secur32.lib;winmm.lib;dmoguids.lib;wmcodecdspuuid.lib;msdmo.lib;strmiids.lib;civetweb.lib;civetweb-cpp.lib;ippiw.lib;ippicvmt.lib;Open3D_3rdparty_glew.lib;glfw3.lib;gdi32.lib;fmt.lib;filameshio.lib;filament.lib;filamat_lite.lib;filaflat.lib;filabridge.lib;geometry.lib;backend.lib;bluegl.lib;bluevk.lib;ibl.lib;image.lib;meshoptimizer.lib;smol-v.lib;utils.lib;opengl32.lib;kernel32.lib;user32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%VCPKG_ROOT%\..\phaser\phaser_core\build\RelWithDebInfo;%VCPKG_ROOT%\..\phaser\phaser_pre\RelWithDebInfo;%VCPKG_ROOT%\..\phaser\phaser_common\RelWithDebInfo;%VCPKG_ROOT%\..\phaser\Open3D_install\lib;%VCPKG_ROOT%\..\phaser\fftw3;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64 /FORCE:MULTIPLE</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -245,9 +245,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <ClCompile Include="..\test\PointCloud.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">MultiThreaded</RuntimeLibrary>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="C:\repo\phaser\phaser_core\test\driver.cc">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</ExcludedFromBuild>
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
