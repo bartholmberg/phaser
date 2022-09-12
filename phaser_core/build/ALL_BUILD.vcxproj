@@ -145,6 +145,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{AD69589F-074D-31A1-9A6E-2CF675090D30}</Project>
       <Name>phaser_core_lib</Name>
     </ProjectReference>
+    <ProjectReference Include="phaser_o3d_driver.vcxproj">
+      <Project>{37d7aee2-32af-4f3f-a77d-71ba7c3589c1}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
