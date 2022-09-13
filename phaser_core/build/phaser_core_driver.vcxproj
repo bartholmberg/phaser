@@ -85,7 +85,7 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;NOMINMAX;_USE_MATH_DEFINES;GLOG_NO_ABBREVIATED_SEVERITIES;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <AdditionalIncludeDirectories>%VCPKG_ROOT%..\phaser\fftw3;%VCPKG_ROOT%..\phaser\phaser_pre\include;%VCPKG_ROOT%..\phaser\phaser_core\include;%VCPKG_ROOT%..\phaser\phaser_common\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%VCPKG_ROOT%..\phaser\Open3D_install\include\;%VCPKG_ROOT%..\phaser\Open3D_install\include\open3d\3rdparty;%VCPKG_ROOT%..\phaser\fftw3;%VCPKG_ROOT%..\phaser\phaser_pre\include;%VCPKG_ROOT%..\phaser\phaser_core\include;%VCPKG_ROOT%..\phaser\phaser_common\include</AdditionalIncludeDirectories>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
@@ -104,7 +104,7 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/repo/phaser/phaser_core/build/RelWithDebInfo/phaser_core_driver.lib</ImportLibrary>
+      <ImportLibrary>C:/repo/Open3D/cpp/build/lib/RelWithDebInfo/PointCloud.lib</ImportLibrary>
       <ProgramDataBaseFile>C:/repo/phaser/phaser_core/build/RelWithDebInfo/phaser_core_driver.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>

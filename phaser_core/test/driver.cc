@@ -9,6 +9,13 @@
 #include "phaser/controller/cloud-controller.h"
 #include "phaser/common/core-gflags.h"
 
+#include <Eigen/Dense>
+#include <iostream>
+#include <memory>
+#include <fmt/format.h>
+#include "open3d/Open3D.h"
+#include <ostream>
+
 // BAH- why doesn't this work if moved to core-gflags.h
 
 //DECLARE_string(target_cloud, "", "Defines the path to the target cloud");
@@ -110,6 +117,10 @@ int main(int argc, char** argv) {
 
   //MakeKinectDat( "C:\\repo\\bart\\demo\\room3\\pcd_0012.pcd", phaser_core::FLAGS_source_cloud + "source_4.ply");
   //MakeKinectDat("C:\\repo\\bart\\demo\\room3\\pcd_0014.pcd", phaser_core::FLAGS_target_cloud + "target_4.ply");
+  // 
+  // BAH, use open3d point clouds
+  // 
+  //auto pcd = open3d::io::CreatePointCloudFromFile(argv[1]);
 
   google::ParseCommandLineFlags(&argc, &argv, true);
   google::InitGoogleLogging(argv[0]);
