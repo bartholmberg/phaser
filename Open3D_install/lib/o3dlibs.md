@@ -1,7 +1,7 @@
 #
 #  all the libraries o3d uses to build apps
 # copy all those freshly build bits to phaser land
-
+xcopy /x /y C:\repo\Open3D\cpp\build\cpp\open3d\io\io.dir\RelWithDebInfo\io.lib .
 xcopy /s /y C:\repo\Open3D\cpp\build\lib\RelWithDebInfo\Open3D.lib .
 xcopy /s /y C:\repo\Open3D\cpp\build\assimp\lib\assimp-vc143-mt.lib .
 xcopy /s /y C:\repo\Open3D\cpp\build\turbojpeg\lib\turbojpeg-static.lib .
