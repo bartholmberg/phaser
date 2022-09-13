@@ -99,14 +99,16 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>phaser_pre_lib.lib;phaser_common_lib.lib;RelWithDebInfo\phaser_core_lib.lib;libfftw3-3.lib;pcl_visualization.lib;pcl_common.lib;pcl_features.lib;pcl_io.lib;pcl_io_ply.lib;pcl_kdtree.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%VCPKG_ROOT%\..\phaser\phaser_pre\RelWithDebInfo;%VCPKG_ROOT%\..\phaser\phaser_common\RelWithDebInfo;%VCPKG_ROOT%\..\phaser\fftw3;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <AdditionalDependencies>phaser_pre_lib.lib;phaser_common_lib.lib;phaser_core_lib.lib;libfftw3-3.lib;pcl_visualization.lib;pcl_common.lib;pcl_features.lib;pcl_io.lib;pcl_io_ply.lib;pcl_kdtree.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%VCPKG_ROOT%\..\phaser\Open3D_install\lib;%VCPKG_ROOT%\..\phaser\phaser_core\build\RelWithDebInfo;%VCPKG_ROOT%\..\phaser\phaser_pre\RelWithDebInfo;%VCPKG_ROOT%\..\phaser\phaser_common\RelWithDebInfo;%VCPKG_ROOT%\..\phaser\fftw3;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64 /force:multiple</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/repo/Open3D/cpp/build/lib/RelWithDebInfo/PointCloud.lib</ImportLibrary>
+      <ImportLibrary>C:/repo/Open3D/cpp/build/lib/RelWithDebInfo/Open3D.lib</ImportLibrary>
       <ProgramDataBaseFile>C:/repo/phaser/phaser_core/build/RelWithDebInfo/phaser_core_driver.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
+      <IgnoreAllDefaultLibraries>
+      </IgnoreAllDefaultLibraries>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
