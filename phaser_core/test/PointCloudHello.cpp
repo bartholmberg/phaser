@@ -37,7 +37,7 @@
 #include <pcl/io/pcd_io.h>
 #include <pcl/io/ply_io.h>
 // BAH, need dll version for glog
-//#include <glog/logging.h>
+#include <glog/logging.h>
 void PrintPointCloud(const open3d::geometry::PointCloud &pointcloud) {
     using namespace open3d;
 
