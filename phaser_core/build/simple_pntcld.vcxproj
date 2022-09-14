@@ -83,7 +83,7 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;NOMINMAX;_USE_MATH_DEFINES;GLOG_NO_ABBREVIATED_SEVERITIES;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;GOOGLE_GLOG_DLL_DECL;NDEBUG;NOMINMAX;_USE_MATH_DEFINES;GLOG_NO_ABBREVIATED_SEVERITIES;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <AdditionalIncludeDirectories>c:\repo\phaser\Open3D_install\include\open3d\3rdparty;%VCPKG_ROOT%..\phaser\fftw3;%VCPKG_ROOT%..\phaser\phaser_pre\include;%VCPKG_ROOT%..\phaser\phaser_core\include;%VCPKG_ROOT%..\Open3D\cpp;%VCPKG_ROOT%..\Open3D\3rdparty\glew\include;%VCPKG_ROOT%..\Open3D\3rdparty\glfw\include;%VCPKG_ROOT%..\phaser\phaser_common\include</AdditionalIncludeDirectories>
     </ClCompile>
@@ -104,7 +104,8 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64 /FORCE:MULTIPLE</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/repo/phaser/phaser_core/build/RelWithDebInfo/phaser_o3d_driver.lib</ImportLibrary>
+      <ImportLibrary>
+      </ImportLibrary>
       <ProgramDataBaseFile>C:/repo/phaser/phaser_core/build/RelWithDebInfo/phaser_o3d_driver.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
