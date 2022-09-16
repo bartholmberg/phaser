@@ -31,6 +31,23 @@
 #include "open3d/Open3D.h"
 #include <ostream>
 #include <filesystem>
+#include <gflags/gflags.h>
+// BAH, We will use the native o3d logging
+//#include <glog/logging.h>
+// PCL goes away 
+//#include <pcl/io/pcd_io.h>
+//#include <pcl/io/ply_io.h>
+//#include <pcl/point_types.h>
+//#include <ros/ros.h>
+DEFINE_string(
+    target_cloud, "c:\\repo\\phaser\\phaser_test_data\\test_clouds\\os0\\",
+    "Defines the path to the target cloud.");
+DEFINE_string(
+    source_cloud, "c:\\repo\\phaser\\phaser_test_data\\test_clouds\\os0\\",
+    "Defines the path to the source cloud.");
+DEFINE_string(
+    reg_cloud, "c:\\repo\\phaser\\phaser_core\\",
+    "Defines the path to the registered cloud.");
 void PrintPointCloud(const open3d::geometry::PointCloud &pointcloud) {
     using namespace open3d;
 
@@ -77,7 +94,12 @@ int main(int argc, char *argv[]) {
     using namespace open3d;
 
     utility::SetVerbosityLevel(utility::VerbosityLevel::Debug);
+    google::ParseCommandLineFlags(&argc, &argv, true);
     std::cout << std::filesystem::current_path() << std::endl;
+    std::cout << FLAGS_target_cloud << " " << FLAGS_source_cloud << " "
+              << FLAGS_reg_cloud << " "
+              << std::endl;
+
     if (argc != 2 ||
         utility::ProgramOptionExistsAny(argc, argv, {"-h", "--help"})) {
         PrintHelp();

@@ -294,7 +294,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\base-worker.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\test-worker.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\signal-utils.cc" />
-    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\core-gflags.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\core-gflags.cc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\test\testing-entrypoint.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\distribution\gaussian.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\distribution\gaussian-mixture.cc" />
