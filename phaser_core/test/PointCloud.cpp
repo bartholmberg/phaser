@@ -79,16 +79,7 @@ void PrintPointCloud(const open3d::geometry::PointCloud &pointcloud) {
     utility::LogInfo("End of the list.");
 }
 
-void PrintHelp() {
-    using namespace open3d;
 
-    PrintOpen3DVersion();
-    // clang-format off
-    utility::LogInfo("Usage:");
-    utility::LogInfo("    > PointCloud [pointcloud_filename]");
-    // clang-format on
-    utility::LogInfo("");
-}
 
 int main(int argc, char *argv[]) {
     using namespace open3d;
@@ -99,52 +90,35 @@ int main(int argc, char *argv[]) {
     std::cout << FLAGS_target_cloud << " " << FLAGS_source_cloud << " "
               << FLAGS_reg_cloud << " "
               << std::endl;
+    //  BAH, using gflags instead of o3d command line options
 
-    if (argc != 2 ||
-        utility::ProgramOptionExistsAny(argc, argv, {"-h", "--help"})) {
-        PrintHelp();
-        return 1;
-    }
 
-    auto pcd = io::CreatePointCloudFromFile(argv[1]);
-    {
-        utility::ScopeTimer timer("FPFH estimation with Radius 0.25");
-        // for (int i = 0; i < 20; i++) {
-        pipelines::registration::ComputeFPFHFeature(
-                *pcd, open3d::geometry::KDTreeSearchParamRadius(0.25));
-        //}
-    }
+    auto pcd = io::CreatePointCloudFromFile(FLAGS_target_cloud);
 
-    {
-        utility::ScopeTimer timer("Normal estimation with KNN20");
-        for (int i = 0; i < 20; i++) {
-            pcd->EstimateNormals(open3d::geometry::KDTreeSearchParamKNN(20));
-        }
+
+    if (!pcd->HasNormals() ) {
+      utility::ScopeTimer timer("Normal estimation with KNN10");
+      for (int i = 0; i < 10; i++) {
+        pcd->EstimateNormals(open3d::geometry::KDTreeSearchParamKNN(10));
+      }
     }
+    
+   
     std::cout << pcd->normals_[0] << std::endl;
     std::cout << pcd->normals_[10] << std::endl;
 
-    {
-        utility::ScopeTimer timer("Normal estimation with Radius 0.01666");
-        for (int i = 0; i < 20; i++) {
-            pcd->EstimateNormals(
-                    open3d::geometry::KDTreeSearchParamRadius(0.01666));
+  
+
+    
+    utility::ScopeTimer timer("Normal estimation with Hybrid 0.01666, 60");
+    for (int i = 0; i < 20; i++) {
+        pcd->EstimateNormals(open3d::geometry::KDTreeSearchParamHybrid(0.01666, 60));
         }
-    }
+    
     std::cout << pcd->normals_[0] << std::endl;
     std::cout << pcd->normals_[10] << std::endl;
 
-    {
-        utility::ScopeTimer timer("Normal estimation with Hybrid 0.01666, 60");
-        for (int i = 0; i < 20; i++) {
-            pcd->EstimateNormals(
-                    open3d::geometry::KDTreeSearchParamHybrid(0.01666, 60));
-        }
-    }
-    std::cout << pcd->normals_[0] << std::endl;
-    std::cout << pcd->normals_[10] << std::endl;
-
-    auto downpcd = pcd->VoxelDownSample(0.05);
+    auto downpcd = pcd->VoxelDownSample(1.0/8.0);
 
     // 1. test basic pointcloud functions.
 
@@ -159,30 +133,12 @@ int main(int argc, char *argv[]) {
 
     // 2. test pointcloud IO.
 
-    const std::string filename_xyz("test.xyz");
-    const std::string filename_ply("test.ply");
 
-    if (io::ReadPointCloud(argv[1], pointcloud)) {
-        utility::LogInfo("Successfully read {}", argv[1]);
 
-        /*
-        geometry::PointCloud pointcloud_copy;
-        pointcloud_copy.CloneFrom(pointcloud);
-
-        if (io::WritePointCloud(filename_xyz, pointcloud)) {
-            utility::LogInfo("Successfully wrote {}",
-        filename_xyz.c_str()); } else { utility::LogError("Failed to write
-        {}", filename_xyz);
-        }
-
-        if (io::WritePointCloud(filename_ply, pointcloud_copy)) {
-            utility::LogInfo("Successfully wrote {}",
-        filename_ply); } else { utility::LogError("Failed to write
-        {}", filename_ply);
-        }
-         */
+    if (io::ReadPointCloud(FLAGS_target_cloud, pointcloud)) {
+        utility::LogInfo("Successfully read {}", FLAGS_target_cloud);
     } else {
-        utility::LogWarning("Failed to read {}", argv[1]);
+      utility::LogWarning("Failed to read {}", FLAGS_target_cloud);
     }
 
     // 3. test pointcloud visualization
