@@ -32,6 +32,9 @@
 #include <ostream>
 #include <filesystem>
 #include <gflags/gflags.h>
+
+#include <open3d/Open3D.h>
+#include <open3d/geometry/PointCloud.h>
 // BAH, We will use the native o3d logging
 //#include <glog/logging.h>
 // PCL goes away 
@@ -83,7 +86,7 @@ void PrintPointCloud(const open3d::geometry::PointCloud &pointcloud) {
 
 int main(int argc, char *argv[]) {
     using namespace open3d;
-
+    namespace o3d = open3d;
     utility::SetVerbosityLevel(utility::VerbosityLevel::Debug);
     google::ParseCommandLineFlags(&argc, &argv, true);
     std::cout << std::filesystem::current_path() << std::endl;
@@ -91,8 +94,7 @@ int main(int argc, char *argv[]) {
               << FLAGS_reg_cloud << " "
               << std::endl;
     //  BAH, using gflags instead of o3d command line options
-
-
+    std::shared_ptr<geometry::PointCloud> a;
     auto pcd = io::CreatePointCloudFromFile(FLAGS_target_cloud);
 
 
