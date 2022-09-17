@@ -15,8 +15,10 @@ model::RegistrationResult SphRegistrationMockCutted::registerPointCloud(
   VLOG(1) << "Cloud1: " << cloud_prev->getPlyReadDirectory();
   VLOG(1) << "Cloud2: " << cloud_cur->getPlyReadDirectory();
   common::Point_t min_pt, max_pt;
-  common::PointCloud_tPtr raw_cloud = cloud_prev->getRawCloud();
-  common::PointCloud_tPtr cur_raw_cloud = cloud_cur->getRawCloud();
+
+  //BAH, remove getRawCloud for now
+  common::PointCloud_tPtr raw_cloud;// = cloud_prev->getRawCloud();
+  common::PointCloud_tPtr cur_raw_cloud;//= cloud_cur->getRawCloud();
   //BAH, comment out for now until can
   // implement in o3d
   //pcl::getMinMax3D(*raw_cloud, min_pt, max_pt);
