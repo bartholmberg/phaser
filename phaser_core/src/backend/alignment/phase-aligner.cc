@@ -82,7 +82,9 @@ void PhaseAligner::discretizePointcloud(
   // BAH, remove until after init testing
 
   auto data2 = cloud.getRawCloud();
-  data = cloud.getRawCloud()->getMatrixXfMap();
+  // BAH, comment out for now until we 
+  // can build in o3d
+  //data = cloud.getRawCloud()->getMatrixXfMap();
   // Discretize the point cloud using an cartesian grid.
   VLOG(1) << "Performing histogram counts.";
   Eigen::VectorXd x_bins, y_bins, z_bins;

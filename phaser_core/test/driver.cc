@@ -62,7 +62,8 @@ static void writePointCloud(
     const std::string& reg_file, model::PointCloudPtr cloud) {
   CHECK(!reg_file.empty());
   CHECK_NOTNULL(cloud);
-  pcl::io::savePLYFileASCII(reg_file, *cloud->getRawCloud());
+  //BAH, remove for now, replace with o3d save
+  //pcl::io::savePLYFileASCII(reg_file, *cloud->getRawCloud());
   LOG(INFO) << "Wrote registered cloud to " << reg_file;
 }
 

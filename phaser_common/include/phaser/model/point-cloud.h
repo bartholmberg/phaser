@@ -22,8 +22,8 @@ class PointCloud {
   explicit PointCloud(const std::string& ply);
   explicit PointCloud(const std::vector<common::Point_t>& points);
 
-  common::PointCloud_t::iterator begin();
-  common::PointCloud_t::iterator end();
+  //common::PointCloud_t::iterator begin();
+  //common::PointCloud_t::iterator end();
   // BAH, getNearestPoints converts pnt cloud to grid
   //      we need the inverse function grid
   void getNearestPoints(
