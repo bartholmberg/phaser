@@ -6,7 +6,8 @@ SmoothnessResult CalcSmoothness::compute(const SegmentationResult& seg_result) {
   SmoothnessResult result;
   std::vector<smoothness_t>& smoothness = result.getSmoothness();
   const common::PointCloud_tPtr& seg_cloud = seg_result.getSegmentedCloud();
-  const std::size_t n_points = seg_cloud->size() - 5;
+  // BAH, comment out for now
+  const std::size_t n_points=0;//  = seg_cloud->size() - 5;
   const std::vector<float>& range = seg_result.getRange();
   for (std::size_t i = 5u; i < n_points; ++i) {
     const float diff_range = range[i - 5] + range[i - 4] + range[i - 3] +

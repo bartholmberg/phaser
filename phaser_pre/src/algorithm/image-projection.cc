@@ -21,8 +21,9 @@ ProjectionResult ImageProjection::projectPointCloudSequential(
 
   AlgorithmSettings settings;
   const auto full_cloud_size = settings.N_SCAN * settings.Horizon_SCAN;
-  full_cloud->points.resize(full_cloud_size);
-  full_info_cloud->points.resize(full_cloud_size);
+  // BAH, comment out for now
+  //full_cloud->points.resize(full_cloud_size);
+  //full_info_cloud->points.resize(full_cloud_size);
   cv::Mat range_mat = cv::Mat(
       settings.N_SCAN, settings.Horizon_SCAN, CV_32F, cv::Scalar::all(FLT_MAX));
   cv::Mat signal_mat = cv::Mat(
@@ -39,8 +40,9 @@ ProjectionResult ImageProjection::projectPointCloud(
   common::PointCloud_tPtr full_cloud(new common::PointCloud_t);
   common::PointCloud_tPtr full_info_cloud(new common::PointCloud_t);
   AlgorithmSettings settings;
-  full_cloud->points.resize(settings.N_SCAN * settings.Horizon_SCAN);
-  full_info_cloud->points.resize(settings.N_SCAN * settings.Horizon_SCAN);
+  // BAH, comment out for now
+  //full_cloud->points.resize(settings.N_SCAN * settings.Horizon_SCAN);
+  //full_info_cloud->points.resize(settings.N_SCAN * settings.Horizon_SCAN);
   cv::Mat range_mat = cv::Mat(
       settings.N_SCAN, settings.Horizon_SCAN, CV_32F, cv::Scalar::all(FLT_MAX));
   cv::Mat signal_mat = cv::Mat(
@@ -65,8 +67,10 @@ ProjectionResult ImageProjection::projectPointCloud(
   __m128 index = _mm_setzero_ps();
   uint32_t cond = 0;
   std::size_t i = 0;
+  // BAH, comment out for now
   common::PointCloud_tPtr input_cloud;//= cloud->getRawCloud();
-
+  // BAH, comment out for now
+  /*
   for (; i < n_points_vec; i += 4) {
     const auto& point1 = input_cloud->points[i];
     const auto& point2 = input_cloud->points[i + 1];
@@ -173,7 +177,7 @@ ProjectionResult ImageProjection::projectPointCloud(
       full_info_cloud->points[index.m128_f32[3]].y = point4.intensity;
     }
   }
-
+  */
   // Process the remaining points in the cloud sequentially.
   projectPointCloudSequentialImpl(
       input_cloud, i, n_points, full_cloud, full_info_cloud, &range_mat,
@@ -196,7 +200,8 @@ void ImageProjection::projectPointCloudSequentialImpl(
   float verticalAngleSeq, horizonAngleSeq, rangeSeq;
   std::size_t rowIdnSeq, columnIdnSeq, indexSeq;
   for (std::size_t i = start; i < end; ++i) {
-    common::Point_t& curPoint = cloud->points[i];
+    // BAH, comment out for now
+    const common::Point_t& curPoint=NULL;// = cloud->points[i];
     const float squaredXY = curPoint.x * curPoint.x + curPoint.y * curPoint.y;
 
     verticalAngleSeq = atan2(curPoint.z, sqrt(squaredXY)) * 180 / M_PI;
@@ -218,12 +223,15 @@ void ImageProjection::projectPointCloudSequentialImpl(
     signal_mat->at<float>(rowIdnSeq, columnIdnSeq) = curPoint.intensity;
 
     indexSeq = columnIdnSeq + rowIdnSeq * settings.Horizon_SCAN;
-    full_info_cloud->points[indexSeq].x = rangeSeq;
-    full_info_cloud->points[indexSeq].y = curPoint.intensity;
+    // BAH, comment out for now
+    //full_info_cloud->points[indexSeq].x = rangeSeq;
+    //full_info_cloud->points[indexSeq].y = curPoint.intensity;
 
     // curPoint.intensity = static_cast<float>(rowIdnSeq) +
     // static_cast<float>(columnIdnSeq) / 10000.0;
-    full_cloud->points[indexSeq] = curPoint;
+      
+    //BAH, comment out for now
+    //full_cloud->points[indexSeq] = curPoint;
   }
 }
 

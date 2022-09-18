@@ -34,6 +34,8 @@ SegmentationResult CloudSegmentation::segment(
       if (ground == 1 || range > 50 || label <= 0 || occ < 9) {
         continue;
       }
+      // BAH, comment out for now
+      /*
       seg_result.getGroundFlag()[size_of_cloud] = false;
       seg_result.getColumnIndex()[size_of_cloud] = j;
       seg_result.getRange()[size_of_cloud] = range;
@@ -41,6 +43,7 @@ SegmentationResult CloudSegmentation::segment(
       seg_info_cloud->push_back(
           full_info_cloud->points[j + i * settings_.Horizon_SCAN]);
       ++size_of_cloud;
+      */
     }
     end_index[i] = size_of_cloud - 1 - 5;
   }

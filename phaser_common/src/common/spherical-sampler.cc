@@ -36,8 +36,9 @@ void SphericalSampler::initialize(const int bandwith) {
   else
     cldName = "sourcePrj.ply";
   cnt++;
-  if ( cldName.size() >0 )
-    pcl::io::savePLYFileBinary(cldName, *sphereP->getRawCloud());
+  // BAH , comment out
+  // if ( cldName.size() >0 )
+    //pcl::io::savePLYFileBinary(cldName, *sphereP->getRawCloud());
   sphere.initialize_kd_tree();
   sphere.getNearestPoints(cartesian_grid_, grid);
 }

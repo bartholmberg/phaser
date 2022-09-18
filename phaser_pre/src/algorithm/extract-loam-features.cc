@@ -58,11 +58,13 @@ FeatureExtractionResult ExtractLoamFeatures::extractFeatures(
           largest_picked_num++;
           if (largest_picked_num <= 2) {
             unlabeled[ind] = 2;
-            corner_points_sharp->push_back(seg_cloud->points[ind]);
-            corner_points_less_sharp->push_back(seg_cloud->points[ind]);
+            // BAH, comment out for now
+            //corner_points_sharp->push_back(seg_cloud->points[ind]);
+            //corner_points_less_sharp->push_back(seg_cloud->points[ind]);
           } else if (largest_picked_num <= 20) {
             unlabeled[ind] = 1;
-            corner_points_less_sharp->push_back(seg_cloud->points[ind]);
+            // BAH, comment out for now
+           // corner_points_less_sharp->push_back(seg_cloud->points[ind]);
           } else {
             break;
           }
@@ -91,7 +93,8 @@ FeatureExtractionResult ExtractLoamFeatures::extractFeatures(
         if (picked_neighbors[ind] == 0 &&
             smoothness[ind].first < surf_threshold &&
             ground_flag[ind] == false) {
-          surf_points_flat->push_back(seg_cloud->points[ind]);
+          // BAH, comment out for now
+         // surf_points_flat->push_back(seg_cloud->points[ind]);
           unlabeled[ind] = 3;
 
           if (++smalled_picked_num >= 4) {
@@ -117,11 +120,14 @@ FeatureExtractionResult ExtractLoamFeatures::extractFeatures(
           }
         }
       }
+      // BAH, comment out for now
+      /*
       for (int k = sp; k <= ep; ++k) {
         if (unlabeled[k] <= 0) {
           surf_points_less_flat->push_back(seg_cloud->points[k]);
         }
       }
+      */
     }
   }
 

@@ -40,9 +40,9 @@ class PointCloud {
   common::PointCloud_tPtr& getRawInfoCloud();
   bool hasInfoCloud() const;
 
-  common::Point_t& pointAt(const std::size_t idx);
+  const common::Point_t& pointAt(const std::size_t idx);
   const common::Point_t& pointAt(const std::size_t idx) const;
-  common::Point_t& infoPointAt(const std::size_t idx);
+  const common::Point_t& infoPointAt(const std::size_t idx);
   const common::Point_t& infoPointAt(const std::size_t idx) const;
 
   std::size_t size() const;

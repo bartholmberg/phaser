@@ -14,7 +14,10 @@ namespace preproc {
 void PassThroughGndFilterCmd::execute(model::PointCloudPtr cloud) {
   VLOG(1) << "[PreProcessing] Performing pass through GND filtering...";
   // BAH, Having troubline linking these get**Cloud() routines
+  // BAH, comment out for now
   common::PointCloud_tPtr input_cloud; //= cloud->getRawCloud();
+  // BAH, comment out for now
+  /*
   gnd_filter_.setInputCloud(input_cloud);
   gnd_filter_.setFilterFieldName("z");
   gnd_filter_.setFilterLimits(
@@ -22,6 +25,7 @@ void PassThroughGndFilterCmd::execute(model::PointCloudPtr cloud) {
       FLAGS_phaser_pass_through_gnd_filter_limit_max);
   gnd_filter_.setFilterLimitsNegative(true);
   gnd_filter_.filter(*input_cloud);
+  */
 }
 
 }  // namespace preproc

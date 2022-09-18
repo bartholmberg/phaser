@@ -35,6 +35,7 @@ GroundRemovalResult AngleBasedGroundRemoval::removeGround(
       __m128 vecZShifted = _mm_setzero_ps();
 
       idx = j + (i)*settings_.Horizon_SCAN;
+      /*
       vecXY.m128_f32[0] = cloud->points[idx].x;
       vecXY.m128_f32[1] = cloud->points[idx].y;
       vecZ.m128_f32[0] = cloud->points[idx].z;
@@ -66,7 +67,7 @@ GroundRemovalResult AngleBasedGroundRemoval::removeGround(
       vecXYShifted2.m128_f32[2] = cloud->points[idx].x;
       vecXYShifted2.m128_f32[3] = cloud->points[idx].y;
       vecZShifted.m128_f32[3] = cloud->points[idx].z;
-
+      */
       // Calculate the difference between lower and upper bound.
       const __m128 diff = _mm_sub_ps(vecXYShifted, vecXY);
       const __m128 diff2 = _mm_sub_ps(vecXYShifted2, vecXY2);
@@ -117,7 +118,8 @@ void AngleBasedGroundRemoval::removeGroundForIndex(
   for (std::size_t i = start; i < settings_.groundScanInd; ++i) {
     size_t lowerInd = j + (i)*settings_.Horizon_SCAN;
     size_t upperInd = j + (i + 1) * settings_.Horizon_SCAN;
-
+    // BAH, comment out for now
+    /*
     if (cloud->points[lowerInd].intensity == -1 ||
         cloud->points[upperInd].intensity == -1) {
       // no info to check, invalid points
@@ -136,6 +138,7 @@ void AngleBasedGroundRemoval::removeGroundForIndex(
       ground_mat->at<int8_t>(i, j) = 1;
       ground_mat->at<int8_t>(i + 1, j) = 1;
     }
+    */
   }
 }
 }  // namespace preproc

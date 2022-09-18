@@ -46,6 +46,8 @@ double FunctionValue::getAveragedAmbientNoise() const noexcept {
 
 common::Point_t FunctionValue::getAveragedPoint() const noexcept {
   common::Point_t avg;
+  // BAH , comment out
+  /*
   const auto& points = points_->points;
   for (const common::Point_t& p : points) {
     avg.x += p.x;
@@ -56,6 +58,7 @@ common::Point_t FunctionValue::getAveragedPoint() const noexcept {
   avg.x = avg.x / n_points;
   avg.y = avg.y / n_points;
   avg.z = avg.z / n_points;
+  */
   return avg;
 }
 
@@ -84,7 +87,8 @@ void FunctionValue::addInstance(const uint16_t instance) {
 }
 
 void FunctionValue::addPoint(const common::Point_t& point) {
-  points_->push_back(point);
+  // BAH , comment out
+  //points_->push_back(point);
 }
 
 common::PointCloud_tPtr FunctionValue::getAllPoints() const {

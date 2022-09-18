@@ -26,8 +26,9 @@ void SphericalProjection::naiveProjection(
     const double dist = std::sqrt(dist_xy * dist_xy + point.z * point.z);
 
     // Set spherical coordinates.
-    common::Point_t& point_out = cloud_out->pointAt(i);
-    point_out.z = point.z / dist;
+    const common::Point_t& point_out=NULL;//= cloud_out->pointAt(i);
+    // BAH , comment out for now
+    //point_out.z = point.z / dist;
     cloud_out->setRange(dist, i);
 
     const double tmp_x = std::acos(point_out.z);
@@ -35,8 +36,8 @@ void SphericalProjection::naiveProjection(
         std::fmod(std::atan2(point.y, point.x) + 2 * M_PI, 2 * M_PI);
 
     // Convert back to cartesian coordinates.
-    point_out.x = std::sin(tmp_x) * std::cos(tmp_y);
-    point_out.y = std::sin(tmp_x) * std::sin(tmp_y);
+    //point_out.x = std::sin(tmp_x) * std::cos(tmp_y);
+    //point_out.y = std::sin(tmp_x) * std::sin(tmp_y);
   }
 }
 

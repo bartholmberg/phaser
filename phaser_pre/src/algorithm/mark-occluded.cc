@@ -5,7 +5,8 @@ namespace preproc {
 OcclusionResult MarkOccluded::compute(const SegmentationResult& seg_result) {
   OcclusionResult result;
   const common::PointCloud_tPtr& seg_cloud = seg_result.getSegmentedCloud();
-  const std::size_t n_points = seg_cloud->size() - 6;
+  // BAH, comment out for now
+  const std::size_t n_points = 0;// seg_cloud->size() - 6;
 
   const std::vector<float>& range = seg_result.getRange();
   const std::vector<uint32_t>& col_ind = seg_result.getColumnIndex();
