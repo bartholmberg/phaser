@@ -95,8 +95,13 @@ int main(int argc, char *argv[]) {
               << std::endl;
     //  BAH, using gflags instead of o3d command line options
     std::shared_ptr<geometry::PointCloud> a;
-    auto pcd = io::CreatePointCloudFromFile(FLAGS_target_cloud);
-
+    geometry::PointCloud b;
+    geometry::PointCloud* pcd;
+    io::ReadPointCloudOption cldOpt;
+    cldOpt.format = "XYZI";
+    //auto pcd = io::CreatePointCloudFromFile(FLAGS_source_cloud);
+    io::ReadPointCloudFromPLY(FLAGS_source_cloud,b, cldOpt);
+    io::ReadPointCloud(FLAGS_source_cloud, *pcd);
 
     if (!pcd->HasNormals() ) {
       utility::ScopeTimer timer("Normal estimation with KNN10");
@@ -120,8 +125,8 @@ int main(int argc, char *argv[]) {
     std::cout << pcd->normals_[0] << std::endl;
     std::cout << pcd->normals_[10] << std::endl;
 
-    auto downpcd = pcd->VoxelDownSample(1.0/8.0);
-
+    //auto downpcd = pcd->VoxelDownSample(1.0/8.0);
+    auto downpcd = pcd;
     // 1. test basic pointcloud functions.
 
     geometry::PointCloud pointcloud;
