@@ -246,6 +246,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\test\PointCloud.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">MultiThreaded</RuntimeLibrary>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</ExcludedFromBuild>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Disabled</Optimization>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

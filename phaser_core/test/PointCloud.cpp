@@ -94,36 +94,44 @@ int main(int argc, char *argv[]) {
               << FLAGS_reg_cloud << " "
               << std::endl;
     //  BAH, using gflags instead of o3d command line options
-    std::shared_ptr<geometry::PointCloud> a;
-    geometry::PointCloud b;
-    geometry::PointCloud* pcd;
-    io::ReadPointCloudOption cldOpt;
-    cldOpt.format = "XYZI";
+    using namespace std;
+    visualization::Visualizer visualizer;
+  
+    geometry::PointCloud tcld;
     //auto pcd = io::CreatePointCloudFromFile(FLAGS_source_cloud);
-    io::ReadPointCloudFromPLY(FLAGS_source_cloud,b, cldOpt);
-    io::ReadPointCloud(FLAGS_source_cloud, *pcd);
 
-    if (!pcd->HasNormals() ) {
+    io::ReadPointCloudFromPLY(FLAGS_source_cloud, tcld, {"XYZI", true, true, true});
+    shared_ptr<geometry::PointCloud> pcd(&tcld);
+    //io::ReadPointCloud(FLAGS_source_cloud, *pcd);
+    visualizer.CreateVisualizerWindow("Open3D", 1600, 900);
+    visualizer.AddGeometry(pcd);
+
+    visualizer.Run();
+    visualizer.DestroyVisualizerWindow();
+    visualization::DrawGeometries({pcd}, "Test o3d pnt clouds for phaser");
+    
+    if (!pcd.get()->HasNormals() ) {
       utility::ScopeTimer timer("Normal estimation with KNN10");
       for (int i = 0; i < 10; i++) {
-        pcd->EstimateNormals(open3d::geometry::KDTreeSearchParamKNN(10));
+        pcd.get()->EstimateNormals(open3d::geometry::KDTreeSearchParamKNN(10));
       }
     }
     
    
-    std::cout << pcd->normals_[0] << std::endl;
-    std::cout << pcd->normals_[10] << std::endl;
+    std::cout << pcd.get()->normals_[0] << std::endl;
+    std::cout << pcd.get()->normals_[10] << std::endl;
 
   
 
     
     utility::ScopeTimer timer("Normal estimation with Hybrid 0.01666, 60");
     for (int i = 0; i < 20; i++) {
-        pcd->EstimateNormals(open3d::geometry::KDTreeSearchParamHybrid(0.01666, 60));
+      pcd.get()->EstimateNormals(
+          open3d::geometry::KDTreeSearchParamHybrid(0.01666, 60));
         }
     
-    std::cout << pcd->normals_[0] << std::endl;
-    std::cout << pcd->normals_[10] << std::endl;
+    std::cout << pcd.get()->normals_[0] << std::endl;
+    std::cout << pcd.get()->normals_[10] << std::endl;
 
     //auto downpcd = pcd->VoxelDownSample(1.0/8.0);
     auto downpcd = pcd;
@@ -150,7 +158,7 @@ int main(int argc, char *argv[]) {
 
     // 3. test pointcloud visualization
 
-    visualization::Visualizer visualizer;
+
     std::shared_ptr<geometry::PointCloud> pointcloud_ptr(
             new geometry::PointCloud);
     *pointcloud_ptr = pointcloud;
@@ -168,11 +176,7 @@ int main(int argc, char *argv[]) {
     pointcloud_transformed_ptr->Transform(trans_to_origin.inverse() *
                                           transformation * trans_to_origin);
 
-    visualizer.CreateVisualizerWindow("Open3D", 1600, 900);
-    visualizer.AddGeometry(pointcloud_ptr);
-    visualizer.AddGeometry(pointcloud_transformed_ptr);
-    visualizer.Run();
-    visualizer.DestroyVisualizerWindow();
+    
 
     // 4. test operations
     *pointcloud_transformed_ptr += *pointcloud_ptr;
