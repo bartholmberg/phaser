@@ -32,6 +32,10 @@
 #include <ostream>
 #include <filesystem>
 #include <gflags/gflags.h>
+#include <pcl/io/pcd_io.h>
+#include <pcl/io/ply_io.h>
+#include "phaser/backend/registration/sph-opt-registration.h"
+#include "phaser/controller/cloud-controller.h"
 
 #include <open3d/Open3D.h>
 #include <open3d/geometry/PointCloud.h>
@@ -97,44 +101,51 @@ int main(int argc, char *argv[]) {
     using namespace std;
     visualization::Visualizer visualizer;
   
-    geometry::PointCloud tcld;
-    //auto pcd = io::CreatePointCloudFromFile(FLAGS_source_cloud);
+    geometry::PointCloud tcld,scld;
+    //auto targetCld = io::CreatePointCloudFromFile(FLAGS_source_cloud);
 
-    io::ReadPointCloudFromPLY(FLAGS_source_cloud, tcld, {"XYZI", true, true, true});
-    shared_ptr<geometry::PointCloud> pcd(&tcld);
-    //io::ReadPointCloud(FLAGS_source_cloud, *pcd);
+    io::ReadPointCloudFromPLY(FLAGS_source_cloud, scld, {"XYZI", true, true, true});
+    io::ReadPointCloudFromPLY( FLAGS_target_cloud, tcld, {"XYZI", true, true, true});
+    shared_ptr<geometry::PointCloud> sourceCld(&scld);
+    shared_ptr<geometry::PointCloud> targetCld(&tcld);
+    //io::ReadPointCloud(FLAGS_source_cloud, *targetCld);
     visualizer.CreateVisualizerWindow("Open3D", 1600, 900);
-    visualizer.AddGeometry(pcd);
-
+    visualizer.AddGeometry(sourceCld);
+    visualizer.AddGeometry(targetCld);
     visualizer.Run();
     visualizer.DestroyVisualizerWindow();
-    visualization::DrawGeometries({pcd}, "Test o3d pnt clouds for phaser");
+    visualization::DrawGeometries({targetCld,sourceCld}, "Test o3d pnt clouds for phaser");
     
-    if (!pcd.get()->HasNormals() ) {
+    // BAH, these are next to fix up with o3d pnt cld instead of PCL
+    //auto ctrl = std::make_unique<phaser_core::CloudController>("sph-opt");
+
+    //model::RegistrationResult result =ctrl->registerPointCloud(targetCld, sourceCld);
+
+    if (!targetCld.get()->HasNormals() ) {
       utility::ScopeTimer timer("Normal estimation with KNN10");
       for (int i = 0; i < 10; i++) {
-        pcd.get()->EstimateNormals(open3d::geometry::KDTreeSearchParamKNN(10));
+        targetCld.get()->EstimateNormals(open3d::geometry::KDTreeSearchParamKNN(10));
       }
     }
     
    
-    std::cout << pcd.get()->normals_[0] << std::endl;
-    std::cout << pcd.get()->normals_[10] << std::endl;
+    std::cout << targetCld.get()->normals_[0] << std::endl;
+    std::cout << targetCld.get()->normals_[10] << std::endl;
 
   
 
     
     utility::ScopeTimer timer("Normal estimation with Hybrid 0.01666, 60");
     for (int i = 0; i < 20; i++) {
-      pcd.get()->EstimateNormals(
+      targetCld.get()->EstimateNormals(
           open3d::geometry::KDTreeSearchParamHybrid(0.01666, 60));
         }
     
-    std::cout << pcd.get()->normals_[0] << std::endl;
-    std::cout << pcd.get()->normals_[10] << std::endl;
+    std::cout << targetCld.get()->normals_[0] << std::endl;
+    std::cout << targetCld.get()->normals_[10] << std::endl;
 
-    //auto downpcd = pcd->VoxelDownSample(1.0/8.0);
-    auto downpcd = pcd;
+    //auto downpcd = targetCld->VoxelDownSample(1.0/8.0);
+    auto downpcd = targetCld;
     // 1. test basic pointcloud functions.
 
     geometry::PointCloud pointcloud;
