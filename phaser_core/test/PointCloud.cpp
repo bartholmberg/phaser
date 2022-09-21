@@ -92,14 +92,16 @@ void PrintPointCloud(const geom::PointCloud& pointcloud) {
 //  Current o3d (9/22) point clouds do not support seperate intensity channel.
 //  For each point,
 //  Set each Green Blue value  to its Red value. Also scale by maximum
-
-void FixUpO3dColors(geom::PointCloud& pntCld) {
+//  NOTE- add a return value for convenient use in compound expressions.
+//        (even though this is in-place)
+geom::PointCloud& FixUpO3dColors(geom::PointCloud& pntCld) {
   double maxVal = 0.0;
   for (auto& clr : pntCld.colors_) {
     double r = clr(0);
     if (r > maxVal) maxVal = r;
   }
-  if (maxVal == 0.0) return;
+  if (maxVal == 0.0)
+    return pntCld;
   double invMax = 1.0 / maxVal;
   for (auto& clr : pntCld.colors_) {
     double r = clr(0) * invMax;
@@ -107,6 +109,7 @@ void FixUpO3dColors(geom::PointCloud& pntCld) {
     clr(2) = r;
     clr(0) = r;
   }
+  return pntCld;
 }
 
 int main(int argc, char* argv[]) {
@@ -123,10 +126,10 @@ int main(int argc, char* argv[]) {
 
   io::ReadPointCloudFromPLY( FLAGS_source_cloud, scld, {"XYZI", true, true, true});
   io::ReadPointCloudFromPLY( FLAGS_target_cloud, tcld, {"XYZI", true, true, true});
-  FixUpO3dColors(scld);
-  FixUpO3dColors(tcld);
-  shared_ptr<geom::PointCloud> sourceCld(&scld);
-  shared_ptr<geom::PointCloud> targetCld(&tcld);
+  //FixUpO3dColors(scld);
+  //FixUpO3dColors(tcld);
+  shared_ptr<geom::PointCloud> sourceCld(&FixUpO3dColors(scld));
+  shared_ptr<geom::PointCloud> targetCld(&FixUpO3dColors(tcld));
 
   visualizer.CreateVisualizerWindow("Open3D", 1600, 900);
   visualizer.AddGeometry(sourceCld);
