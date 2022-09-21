@@ -60,6 +60,7 @@ using namespace std;
 
 namespace o3d = open3d;
 namespace geom = geometry;
+namespace vis = visualization;
 void PrintPointCloud(const geom::PointCloud& pointcloud) {
   bool pointcloud_has_normal = pointcloud.HasNormals();
   utility::LogInfo("Pointcloud has %d points.", (int)pointcloud.points_.size());
@@ -120,7 +121,7 @@ int main(int argc, char* argv[]) {
             << FLAGS_reg_cloud << " " << std::endl;
   //  BAH, using gflags instead of o3d command line options
 
-  visualization::Visualizer visualizer;
+  vis::Visualizer vis;
 
   geom::PointCloud tcld, scld;
 
@@ -131,13 +132,18 @@ int main(int argc, char* argv[]) {
   shared_ptr<geom::PointCloud> sourceCld(&FixUpO3dColors(scld));
   shared_ptr<geom::PointCloud> targetCld(&FixUpO3dColors(tcld));
 
-  visualizer.CreateVisualizerWindow("Open3D", 1600, 900);
-  visualizer.AddGeometry(sourceCld);
-  visualizer.AddGeometry(targetCld);
-  visualizer.Run();
-  visualizer.DestroyVisualizerWindow();
-  visualization::DrawGeometries(
-      {targetCld, sourceCld}, "Test o3d pnt clouds for phaser");
+  //visualizer.CreateVisualizerWindow("Open3D", 1600, 900);
+  vis.AddGeometry(sourceCld);
+  vis.AddGeometry(targetCld);
+  //visualizer.Run();
+  //visualizer.DestroyVisualizerWindow();
+  double zoom =1.0/5.0;
+  
+  Eigen::Vector3d up = {0.0, -1.0, 0.0};
+  Eigen::Vector3d look = {1.0, 1.0, 0.0};
+  Eigen::Vector3d front = {0.0, 0.0, -1.0};
+  vis::DrawGeometries( {targetCld, sourceCld}, "o3d pnt clouds for phaser", 1600, 900, 50,
+      50, false, false, false, &look, &up,&front,&zoom);
 
   // BAH, these are next to fix up with o3d pnt cld instead of PCL
   // auto ctrl = std::make_unique<phaser_core::CloudController>("sph-opt");
