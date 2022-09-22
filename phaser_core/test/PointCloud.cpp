@@ -58,8 +58,8 @@ DEFINE_string(
 
 using namespace std;
 using namespace open3d;
-namespace o3d = open3d;
-namespace geom = geometry;
+//namespace o3d = open3d;
+//namespace geom = geometry;
 namespace vis = visualization;
 
 

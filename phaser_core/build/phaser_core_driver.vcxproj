@@ -247,15 +247,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <ClCompile Include="C:\repo\phaser\phaser_core\test\driver.cc">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</ExcludedFromBuild>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Disabled</Optimization>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\repo\phaser\phaser_core\build\ZERO_CHECK.vcxproj">
-      <Project>{A4E78480-F322-3B52-ADAC-224A6D17305B}</Project>
-      <Name>ZERO_CHECK</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </ProjectReference>
     <ProjectReference Include="C:\repo\phaser\phaser_core\build\phaser_core_lib.vcxproj">
       <Project>{AD69589F-074D-31A1-9A6E-2CF675090D30}</Project>
       <Name>phaser_core_lib</Name>
