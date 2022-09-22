@@ -85,7 +85,8 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;NOMINMAX;_USE_MATH_DEFINES;GLOG_NO_ABBREVIATED_SEVERITIES;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <AdditionalIncludeDirectories>%VCPKG_ROOT%..\phaser\Open3D_install\include;%VCPKG_ROOT%..\phaser\Open3D_install\include\open3d\3rdparty;%VCPKG_ROOT%..\phaser\fftw3;%VCPKG_ROOT%..\phaser\phaser_pre\include;%VCPKG_ROOT%..\phaser\phaser_core\include;%VCPKG_ROOT%..\Open3D\cpp;%VCPKG_ROOT%..\Open3D\3rdparty\glew\include;%VCPKG_ROOT%..\Open3D\3rdparty\glfw\include;%VCPKG_ROOT%..\phaser\phaser_common\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%VCPKG_ROOT%..\phaser\phaser_common\include;%VCPKG_ROOT%..\phaser\Open3D_install\include;%VCPKG_ROOT%..\phaser\Open3D_install\include\open3d\3rdparty;%VCPKG_ROOT%..\phaser\fftw3;%VCPKG_ROOT%..\phaser\phaser_pre\include;%VCPKG_ROOT%..\phaser\phaser_core\include;%VCPKG_ROOT%..\Open3D\cpp;%VCPKG_ROOT%..\Open3D\3rdparty\glew\include;%VCPKG_ROOT%..\Open3D\3rdparty\glfw\include</AdditionalIncludeDirectories>
+      <PreprocessToFile>true</PreprocessToFile>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
@@ -247,6 +248,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">MultiThreaded</RuntimeLibrary>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</ExcludedFromBuild>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Disabled</Optimization>
+      <PreprocessToFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</PreprocessToFile>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -260,6 +262,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{AD69589F-074D-31A1-9A6E-2CF675090D30}</Project>
       <Name>phaser_core_lib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\O3DIntegrationPlan.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

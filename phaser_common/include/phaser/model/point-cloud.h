@@ -7,7 +7,7 @@
 #include <pcl/point_types.h>
 #include <string>
 #include <vector>
-
+#include "open3d/geometry/KDTreeSearchParam.h"
 #include "phaser/common/point-types.h"
 #include "phaser/model/function-value.h"
 #include "phaser/model/ply-point-cloud.h"
@@ -77,8 +77,9 @@ class PointCloud {
 
   common::PointCloud_tPtr cloud_;
   common::PointCloud_tPtr info_cloud_;
+  //o3d::geometry::KDTreeFlann kd_tree_;
   pcl::KdTreeFLANN<common::Point_t> kd_tree_;
-
+  //pcl::KdTreeFLANN<common::Point_t> kd_tree_;
   bool kd_tree_is_initialized_;
   std::string ply_directory_;
   std::vector<double> ranges_;

@@ -13,4 +13,9 @@
       <UniqueIdentifier>{1B8D941F-6FF5-3017-A319-5829E6699A76}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\O3DIntegrationPlan.md">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>

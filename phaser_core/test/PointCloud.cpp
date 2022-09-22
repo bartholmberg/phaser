@@ -32,13 +32,20 @@
 #include <memory>
 #include <open3d/Open3D.h>
 #include <open3d/geometry/PointCloud.h>
-#include <ostream>
+
+
+//#include <phaser/common/point-types.h>
 #include <pcl/io/pcd_io.h>
 #include <pcl/io/ply_io.h>
+
 
 #include "open3d/Open3D.h"
 #include "phaser/backend/registration/sph-opt-registration.h"
 #include "phaser/controller/cloud-controller.h"
+#include <algorithm>                    // for copy_n, fill_n
+#include <cstdint>                      // for uint8_t, uint32_t
+#include <ostream>                      // for ostream, operator<<
+#include <type_traits>                  // for enable_if_t                 
 // BAH, We will use the native o3d logging
 //#include <glog/logging.h>
 // PCL goes away
@@ -114,7 +121,52 @@ geom::PointCloud& FixUpO3dColors(geom::PointCloud& pntCld) {
   }
   return pntCld;
 }
+using ele = double;
+union Mpoint_t {
+  ele data[4];
+  struct _M {
+    ele x;
+    ele y;
+    ele z;
+    ele intensity;
+  } M;
+};
 
+struct EIGEN_ALIGN16 _PointXYZI {
+  PCL_ADD_POINT4D;  // This adds the members x,y,z which can also be accessed
+                    // using the point (which is float[4])
+  union {
+    struct {
+      float intensity;
+    };
+    float data_c[4];
+  };
+  PCL_MAKE_ALIGNED_OPERATOR_NEW
+};
+//std::ostream& operator<<(std::ostream& os, const PointXYZI& p);
+struct PointXYZI : public _PointXYZI {
+  inline PointXYZI(const _PointXYZI& p) {
+    x = p.x;
+    y = p.y;
+    z = p.z;
+    data[3] = 1.0f;
+    intensity = p.intensity;
+  }
+
+  inline PointXYZI(float _intensity = 0.f)
+      : PointXYZI(0.f, 0.f, 0.f, _intensity) {}
+
+  inline PointXYZI(float _x, float _y, float _z, float _intensity = 0.f) {
+    x = _x;
+    y = _y;
+    z = _z;
+    data[3] = 1.0f;
+    intensity = _intensity;
+  }
+
+  //friend std::ostream& operator<<(std::ostream& os, const PointXYZI& p);
+};
+using Point_t = PointXYZI; 
 int main(int argc, char* argv[]) {
   utility::SetVerbosityLevel(utility::VerbosityLevel::Debug);
   google::ParseCommandLineFlags(&argc, &argv, true);
@@ -126,7 +178,9 @@ int main(int argc, char* argv[]) {
   vis::Visualizer vis;
 
   geom::PointCloud tcld, scld;
+  Point_t *aa = new Point_t();
 
+  Mpoint_t bb = {1, 2, 3, 4};
   io::ReadPointCloudFromPLY( FLAGS_source_cloud, scld, {"XYZI", true, true, true});
   io::ReadPointCloudFromPLY( FLAGS_target_cloud, tcld, {"XYZI", true, true, true});
   //FixUpO3dColors(scld);

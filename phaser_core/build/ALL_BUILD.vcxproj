@@ -137,13 +137,12 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ProjectReference Include="..\..\phaser_pre\phaser_pre_lib.vcxproj">
       <Project>{b5232dd7-4cce-34d1-a2f9-9982b3278c1f}</Project>
     </ProjectReference>
-    <ProjectReference Include="C:\repo\phaser\phaser_core\build\phaser_core_driver.vcxproj">
-      <Project>{0D8F2DCD-1F2E-3087-8AB2-711413C52C2B}</Project>
-      <Name>phaser_core_driver</Name>
-    </ProjectReference>
     <ProjectReference Include="C:\repo\phaser\phaser_core\build\phaser_core_lib.vcxproj">
       <Project>{AD69589F-074D-31A1-9A6E-2CF675090D30}</Project>
       <Name>phaser_core_lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="phaser_o3d_driver.vcxproj">
+      <Project>{37d7aee2-32af-4f3f-a77d-71ba7c3589c1}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
