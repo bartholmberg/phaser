@@ -132,14 +132,17 @@ int main(int argc, char* argv[]) {
   shared_ptr<geom::PointCloud> sourceCld(&FixUpO3dColors(scld));
   shared_ptr<geom::PointCloud> targetCld(&FixUpO3dColors(tcld));
 
-  //visualizer.CreateVisualizerWindow("Open3D", 1600, 900);
+  vis.CreateVisualizerWindow("Open3D", 1600, 900);
   vis.AddGeometry(sourceCld);
   vis.AddGeometry(targetCld);
 
   //BAH, How do we update render option
   //     in renderer?
-  vis::RenderOption().SetPointSize(2);
+  vis::RenderOption().SetPointSize(1);
+  vis::RenderOption().ChangePointSize(1);
+  vis.UpdateRender();
 
+  vis.Run();
   //visualizer.Run();
   //visualizer.DestroyVisualizerWindow();
   double zoom =1.0/5.0;
