@@ -12,9 +12,9 @@
 #include <Eigen/Dense>
 #include <iostream>
 #include <memory>
-#include <fmt/format.h>
-#include "open3d/Open3D.h"
-#include <ostream>
+//#include <fmt/format.h>
+//#include "open3d/Open3D.h"
+//#include <ostream>
 
 // BAH- why doesn't this work if moved to core-gflags.h
 

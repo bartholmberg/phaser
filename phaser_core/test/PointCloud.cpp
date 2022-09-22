@@ -55,12 +55,14 @@ DEFINE_string(
 DEFINE_string(
     reg_cloud, "c:\\repo\\phaser\\phaser_core\\",
     "Defines the path to the registered cloud.");
-using namespace open3d;
-using namespace std;
 
+using namespace std;
+using namespace open3d;
 namespace o3d = open3d;
 namespace geom = geometry;
 namespace vis = visualization;
+
+
 void PrintPointCloud(const geom::PointCloud& pointcloud) {
   bool pointcloud_has_normal = pointcloud.HasNormals();
   utility::LogInfo("Pointcloud has %d points.", (int)pointcloud.points_.size());
@@ -132,17 +134,17 @@ int main(int argc, char* argv[]) {
   shared_ptr<geom::PointCloud> sourceCld(&FixUpO3dColors(scld));
   shared_ptr<geom::PointCloud> targetCld(&FixUpO3dColors(tcld));
 
-  vis.CreateVisualizerWindow("Open3D", 1600, 900);
-  vis.AddGeometry(sourceCld);
-  vis.AddGeometry(targetCld);
+  //vis.CreateVisualizerWindow("Open3D", 1600, 900);
+  //vis.AddGeometry(sourceCld);
+  //vis.AddGeometry(targetCld);
 
   //BAH, How do we update render option
   //     in renderer?
-  vis::RenderOption().SetPointSize(1);
-  vis::RenderOption().ChangePointSize(1);
-  vis.UpdateRender();
+  //vis::RenderOption().SetPointSize(1);
+  //vis::RenderOption().ChangePointSize(1);
+  //vis.UpdateRender();
 
-  vis.Run();
+  //vis.Run();
   //visualizer.Run();
   //visualizer.DestroyVisualizerWindow();
   double zoom =1.0/5.0;
@@ -155,10 +157,9 @@ int main(int argc, char* argv[]) {
       50, false, false, false, &look, &up,&front,&zoom);
 
   // BAH, these are next to fix up with o3d pnt cld instead of PCL
-  // auto ctrl = std::make_unique<phaser_core::CloudController>("sph-opt");
+  //auto ctrl = std::make_unique<phaser_core::CloudController>("sph-opt");
 
-  // model::RegistrationResult result =ctrl->registerPointCloud(targetCld,
-  // sourceCld);
+  //model::RegistrationResult result =ctrl->registerPointCloud(targetCld, sourceCld);
 
   if (!targetCld.get()->HasNormals()) {
     utility::ScopeTimer timer("Normal estimation with KNN10");
