@@ -42,10 +42,12 @@
 #include "open3d/Open3D.h"
 #include "phaser/backend/registration/sph-opt-registration.h"
 #include "phaser/controller/cloud-controller.h"
+#include <Eigen/Core>                   // for MatrixMap
+
 #include <algorithm>                    // for copy_n, fill_n
 #include <cstdint>                      // for uint8_t, uint32_t
 #include <ostream>                      // for ostream, operator<<
-#include <type_traits>                  // for enable_if_t                 
+#include <type_traits>                  // for enable_if_t             
 // BAH, We will use the native o3d logging
 //#include <glog/logging.h>
 // PCL goes away
@@ -131,19 +133,71 @@ union Mpoint_t {
     ele intensity;
   } M;
 };
+using Array3fMap = Eigen::Map<Eigen::Array3f>;
+using Array3fMapConst = const Eigen::Map<const Eigen::Array3f>;
+using Array4fMap = Eigen::Map<Eigen::Array4f, Eigen::Aligned>;
+using Array4fMapConst = const Eigen::Map<const Eigen::Array4f, Eigen::Aligned>;
+using Vector3fMap = Eigen::Map<Eigen::Vector3f>;
+using Vector3fMapConst = const Eigen::Map<const Eigen::Vector3f>;
+using Vector4fMap = Eigen::Map<Eigen::Vector4f, Eigen::Aligned>;
+using Vector4fMapConst =
+    const Eigen::Map<const Eigen::Vector4f, Eigen::Aligned>;
 
-struct EIGEN_ALIGN16 _PointXYZI {
-  PCL_ADD_POINT4D;  // This adds the members x,y,z which can also be accessed
-                    // using the point (which is float[4])
+using Vector3c = Eigen::Matrix<std::uint8_t, 3, 1>;
+using Vector3cMap = Eigen::Map<Vector3c>;
+using Vector3cMapConst = const Eigen::Map<const Vector3c>;
+using Vector4c = Eigen::Matrix<std::uint8_t, 4, 1>;
+using Vector4cMap = Eigen::Map<Vector4c, Eigen::Aligned>;
+using Vector4cMapConst = const Eigen::Map<const Vector4c, Eigen::Aligned>;
+/** \brief A point structure representing Euclidean xyz coordinates, and the
+ * intensity value. \ingroup common
+ */
+// This adds the members x,y,z which can also be accessed using the point
+// (which is float[4])
+struct alignas(16) _PointXYZI {
+  union alignas(16) {
+    float data[4];
+    struct {
+      float x;
+      float y;
+      float z;
+    };
+  };
+  inline Vector3fMap getVector3fMap() {
+    return (Vector3fMap(data));
+  }
+  inline Vector3fMapConst getVector3fMap() const {
+    return (Vector3fMapConst(data));
+  }
+  inline Vector4fMap getVector4fMap() {
+    return (Vector4fMap(data));
+  }
+  inline Vector4fMapConst getVector4fMap() const {
+    return (Vector4fMapConst(data));
+  }
+  inline Array3fMap getArray3fMap() {
+    return (Array3fMap(data));
+  }
+  inline pcl::Array3fMapConst getArray3fMap() const {
+    return (pcl::Array3fMapConst(data));
+  }
+  inline Array4fMap getArray4fMap() {
+    return (Array4fMap(data));
+  }
+  inline Array4fMapConst getArray4fMap() const {
+    return (Array4fMapConst(data));
+  }
   union {
     struct {
       float intensity;
     };
     float data_c[4];
   };
-  PCL_MAKE_ALIGNED_OPERATOR_NEW
+  using _custom_allocator_type_trait = void;
 };
+
 //std::ostream& operator<<(std::ostream& os, const PointXYZI& p);
+
 struct PointXYZI : public _PointXYZI {
   inline PointXYZI(const _PointXYZI& p) {
     x = p.x;
@@ -164,8 +218,12 @@ struct PointXYZI : public _PointXYZI {
     intensity = _intensity;
   }
 
-  //friend std::ostream& operator<<(std::ostream& os, const PointXYZI& p);
+  friend std::ostream& operator<<(std::ostream& os, const PointXYZI& p) {
+    cout <<"x: " << p.x << " y: "<< p.y<< " z: "<<p.z<< " intensity: "<< p.intensity;
+    return os;
+  };
 };
+
 using Point_t = PointXYZI; 
 int main(int argc, char* argv[]) {
   utility::SetVerbosityLevel(utility::VerbosityLevel::Debug);
@@ -178,13 +236,13 @@ int main(int argc, char* argv[]) {
   vis::Visualizer vis;
 
   geom::PointCloud tcld, scld;
-  Point_t *aa = new Point_t();
-
+  Point_t aa(1,2,3,4);
+  cout << aa<<endl;
   Mpoint_t bb = {1, 2, 3, 4};
   io::ReadPointCloudFromPLY( FLAGS_source_cloud, scld, {"XYZI", true, true, true});
   io::ReadPointCloudFromPLY( FLAGS_target_cloud, tcld, {"XYZI", true, true, true});
-  //FixUpO3dColors(scld);
-  //FixUpO3dColors(tcld);
+ 
+
   shared_ptr<geom::PointCloud> sourceCld(&FixUpO3dColors(scld));
   shared_ptr<geom::PointCloud> targetCld(&FixUpO3dColors(tcld));
 

@@ -249,6 +249,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</ExcludedFromBuild>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Disabled</Optimization>
       <PreprocessToFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</PreprocessToFile>
+      <PreprocessSuppressLineNumbers Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</PreprocessSuppressLineNumbers>
+      <PreprocessKeepComments Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</PreprocessKeepComments>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
