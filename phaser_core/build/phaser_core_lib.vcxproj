@@ -65,7 +65,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>%VCPKG_ROOT%..\phaser\Open3D_install\include;%VCPKG_ROOT%..\phaser\Open3D_install\include\open3d\3rdparty;%VCPKG_ROOT%..\phaser\phaser_common\include\;%VCPKG_ROOT%..\phaser\phaser_core\include;%VCPKG_ROOT%..\phaser\fftw3;%VCPKG_ROOT%..\phaser\phaser_pre\include\phaser_pre;%VCPKG_ROOT%..\phaser\phaser_pre\include;%VCPKG_ROOT%..\phaser\phaser_pre;%VCPKG_ROOT%\installed\x64-windows\include\vtk-9.0;%VCPKG_ROOT%..\phaser\phaser_core;%VCPKG_ROOT%..\phaser\phaser_viz\include;%VCPKG_ROOT%..\phaser\phaser_common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%VCPKG_ROOT%..\phaser\Open3D_install\include;%VCPKG_ROOT%..\phaser\Open3D_install\include\open3d\3rdparty;%VCPKG_ROOT%..\phaser\phaser_common\include\;%VCPKG_ROOT%..\phaser\phaser_core\include;%VCPKG_ROOT%..\phaser\fftw3;%VCPKG_ROOT%..\phaser\phaser_pre\include\phaser_pre;%VCPKG_ROOT%..\phaser\phaser_pre\include;%VCPKG_ROOT%..\phaser\phaser_pre;%VCPKG_ROOT%\installed\x64-windows-static\include;%VCPKG_ROOT%\installed\x64-windows\include\vtk-9.0;%VCPKG_ROOT%..\phaser\phaser_core;%VCPKG_ROOT%..\phaser\phaser_viz\include;%VCPKG_ROOT%..\phaser\phaser_common</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -74,7 +74,7 @@
       <OpenMPSupport>true</OpenMPSupport>
       <Optimization>MaxSpeed</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>

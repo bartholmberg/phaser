@@ -34,7 +34,7 @@
 #include <open3d/geometry/PointCloud.h>
 
 
-//#include <phaser/common/point-types.h>
+#include <phaser/common/point-types.h>
 #include <pcl/io/pcd_io.h>
 #include <pcl/io/ply_io.h>
 
@@ -55,6 +55,8 @@
 //#include <pcl/io/ply_io.h>
 //#include <pcl/point_types.h>
 //#include <ros/ros.h>
+namespace phaser_core {
+
 DEFINE_string(
     target_cloud, "c:\\repo\\phaser\\phaser_test_data\\test_clouds\\os0\\",
     "Defines the path to the target cloud.");
@@ -65,12 +67,33 @@ DEFINE_string(
     reg_cloud, "c:\\repo\\phaser\\phaser_core\\",
     "Defines the path to the registered cloud.");
 
+// BAH, TBD:set these values to good defaults,
+//          similarly(not identical) named inputs _spherical_bandwidth
+//          in phaser core lib source, why?
+DEFINE_int32(
+    phaser_core_spherical_bandwidth, 150,
+    "spherical bandwidth");  // 150 original
+DEFINE_int32(phaser_core_spherical_zero_padding, 10, "zero pad");
+DEFINE_int32(
+    phaser_core_spherical_low_pass_lower_bound, 0, "low pass - lower band");
+DEFINE_int32(
+    phaser_core_spherical_low_pass_upper_bound, 10000, "low pass - upper band");
+
+DEFINE_int32(phaser_core_spatial_n_voxels, 201, "");
+DEFINE_int32(phaser_core_spatial_discretize_lower, -50, "");
+DEFINE_int32(phaser_core_spatial_discretize_upper, 50, "");
+DEFINE_int32(phaser_core_spatial_zero_padding, 0, "");
+DEFINE_int32(phaser_core_spatial_low_pass_lower_bound, 85, "");
+DEFINE_int32(phaser_core_spatial_low_pass_upper_bound, 115, "");
+// namespace phaser_core
+}  // namespace phaser_core
+
 using namespace std;
 using namespace open3d;
 //namespace o3d = open3d;
 //namespace geom = geometry;
 namespace vis = visualization;
-
+namespace cor = phaser_core;
 
 void PrintPointCloud(const geom::PointCloud& pointcloud) {
   bool pointcloud_has_normal = pointcloud.HasNormals();
@@ -123,124 +146,27 @@ geom::PointCloud& FixUpO3dColors(geom::PointCloud& pntCld) {
   }
   return pntCld;
 }
-using ele = double;
-union Mpoint_t {
-  ele data[4];
-  struct _M {
-    ele x;
-    ele y;
-    ele z;
-    ele intensity;
-  } M;
-};
-using Array3fMap = Eigen::Map<Eigen::Array3f>;
-using Array3fMapConst = const Eigen::Map<const Eigen::Array3f>;
-using Array4fMap = Eigen::Map<Eigen::Array4f, Eigen::Aligned>;
-using Array4fMapConst = const Eigen::Map<const Eigen::Array4f, Eigen::Aligned>;
-using Vector3fMap = Eigen::Map<Eigen::Vector3f>;
-using Vector3fMapConst = const Eigen::Map<const Eigen::Vector3f>;
-using Vector4fMap = Eigen::Map<Eigen::Vector4f, Eigen::Aligned>;
-using Vector4fMapConst =
-    const Eigen::Map<const Eigen::Vector4f, Eigen::Aligned>;
 
-using Vector3c = Eigen::Matrix<std::uint8_t, 3, 1>;
-using Vector3cMap = Eigen::Map<Vector3c>;
-using Vector3cMapConst = const Eigen::Map<const Vector3c>;
-using Vector4c = Eigen::Matrix<std::uint8_t, 4, 1>;
-using Vector4cMap = Eigen::Map<Vector4c, Eigen::Aligned>;
-using Vector4cMapConst = const Eigen::Map<const Vector4c, Eigen::Aligned>;
-/** \brief A point structure representing Euclidean xyz coordinates, and the
- * intensity value. \ingroup common
- */
-// This adds the members x,y,z which can also be accessed using the point
-// (which is float[4])
-struct alignas(16) _PointXYZI {
-  union alignas(16) {
-    float data[4];
-    struct {
-      float x;
-      float y;
-      float z;
-    };
-  };
-  inline Vector3fMap getVector3fMap() {
-    return (Vector3fMap(data));
-  }
-  inline Vector3fMapConst getVector3fMap() const {
-    return (Vector3fMapConst(data));
-  }
-  inline Vector4fMap getVector4fMap() {
-    return (Vector4fMap(data));
-  }
-  inline Vector4fMapConst getVector4fMap() const {
-    return (Vector4fMapConst(data));
-  }
-  inline Array3fMap getArray3fMap() {
-    return (Array3fMap(data));
-  }
-  inline pcl::Array3fMapConst getArray3fMap() const {
-    return (pcl::Array3fMapConst(data));
-  }
-  inline Array4fMap getArray4fMap() {
-    return (Array4fMap(data));
-  }
-  inline Array4fMapConst getArray4fMap() const {
-    return (Array4fMapConst(data));
-  }
-  union {
-    struct {
-      float intensity;
-    };
-    float data_c[4];
-  };
-  using _custom_allocator_type_trait = void;
-};
 
-//std::ostream& operator<<(std::ostream& os, const PointXYZI& p);
 
-struct PointXYZI : public _PointXYZI {
-  inline PointXYZI(const _PointXYZI& p) {
-    x = p.x;
-    y = p.y;
-    z = p.z;
-    data[3] = 1.0f;
-    intensity = p.intensity;
-  }
 
-  inline PointXYZI(float _intensity = 0.f)
-      : PointXYZI(0.f, 0.f, 0.f, _intensity) {}
-
-  inline PointXYZI(float _x, float _y, float _z, float _intensity = 0.f) {
-    x = _x;
-    y = _y;
-    z = _z;
-    data[3] = 1.0f;
-    intensity = _intensity;
-  }
-
-  friend std::ostream& operator<<(std::ostream& os, const PointXYZI& p) {
-    cout <<"x: " << p.x << " y: "<< p.y<< " z: "<<p.z<< " intensity: "<< p.intensity;
-    return os;
-  };
-};
-
-using Point_t = PointXYZI; 
+ 
 int main(int argc, char* argv[]) {
   utility::SetVerbosityLevel(utility::VerbosityLevel::Debug);
   google::ParseCommandLineFlags(&argc, &argv, true);
   std::cout << std::filesystem::current_path() << std::endl;
-  std::cout << FLAGS_target_cloud << " " << FLAGS_source_cloud << " "
-            << FLAGS_reg_cloud << " " << std::endl;
+  std::cout << cor::FLAGS_target_cloud << " " << cor::FLAGS_source_cloud << " "
+            << cor::FLAGS_reg_cloud << " " << std::endl;
   //  BAH, using gflags instead of o3d command line options
 
   vis::Visualizer vis;
 
   geom::PointCloud tcld, scld;
-  Point_t aa(1,2,3,4);
+  common::Point_t aa(1,2,3,4);
   cout << aa<<endl;
-  Mpoint_t bb = {1, 2, 3, 4};
-  io::ReadPointCloudFromPLY( FLAGS_source_cloud, scld, {"XYZI", true, true, true});
-  io::ReadPointCloudFromPLY( FLAGS_target_cloud, tcld, {"XYZI", true, true, true});
+ 
+  io::ReadPointCloudFromPLY( cor::FLAGS_source_cloud, scld, {"XYZI", true, true, true});
+  io::ReadPointCloudFromPLY( cor::FLAGS_target_cloud, tcld, {"XYZI", true, true, true});
  
 
   shared_ptr<geom::PointCloud> sourceCld(&FixUpO3dColors(scld));
@@ -269,7 +195,7 @@ int main(int argc, char* argv[]) {
       50, false, false, false, &look, &up,&front,&zoom);
 
   // BAH, these are next to fix up with o3d pnt cld instead of PCL
-  //auto ctrl = std::make_unique<phaser_core::CloudController>("sph-opt");
+  auto ctrl = std::make_unique<phaser_core::CloudController>("sph-opt");
 
   //model::RegistrationResult result =ctrl->registerPointCloud(targetCld, sourceCld);
 
@@ -308,10 +234,10 @@ int main(int argc, char* argv[]) {
 
   // 2. test pointcloud IO.
 
-  if (io::ReadPointCloud(FLAGS_target_cloud, pointcloud)) {
-    utility::LogInfo("Successfully read {}", FLAGS_target_cloud);
+  if (io::ReadPointCloud(cor::FLAGS_target_cloud, pointcloud)) {
+    utility::LogInfo("Successfully read {}", cor::FLAGS_target_cloud);
   } else {
-    utility::LogWarning("Failed to read {}", FLAGS_target_cloud);
+    utility::LogWarning("Failed to read {}", cor::FLAGS_target_cloud);
   }
 
   // 3. test pointcloud visualization
@@ -361,3 +287,4 @@ int main(int argc, char* argv[]) {
   utility::LogInfo("End of the test.");
   return 0;
 }
+//}  // namespace phaser_core

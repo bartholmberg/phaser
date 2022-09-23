@@ -79,13 +79,14 @@
       <OpenMPSupport>true</OpenMPSupport>
       <Optimization>MaxSpeed</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;NOMINMAX;_USE_MATH_DEFINES;GLOG_NO_ABBREVIATED_SEVERITIES;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <AdditionalIncludeDirectories>%VCPKG_ROOT%..\phaser\Open3D_install\include\;%VCPKG_ROOT%..\phaser\Open3D_install\include\open3d\3rdparty;%VCPKG_ROOT%..\phaser\fftw3;%VCPKG_ROOT%..\phaser\phaser_pre\include;%VCPKG_ROOT%..\phaser\phaser_core\include;%VCPKG_ROOT%..\phaser\phaser_common\include</AdditionalIncludeDirectories>
+      <CompileAsManaged>false</CompileAsManaged>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
