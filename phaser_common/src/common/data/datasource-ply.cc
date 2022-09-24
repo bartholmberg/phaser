@@ -1,7 +1,7 @@
 #include "phaser/common/data/datasource-ply.h"
 
 //#include <boost/filesystem.hpp>
-#include <glog/logging.h>
+//#include <glog/logging.h>
 
 #include "phaser/common/data/file-system-helper.h"
 #include <filesystem>
@@ -18,11 +18,11 @@ void DatasourcePly::subscribeToPointClouds(
 }
 
 void DatasourcePly::startStreaming(const uint32_t number_of_clouds) {
-  VLOG(1) << "reading ply from: " << datasource_folder_;
+  std::cout << "reading ply from: " << datasource_folder_;
   std::vector<model::PointCloudPtr> clouds =
       readPly(datasource_folder_, number_of_clouds);
-  VLOG(1) << "reading ply done. number of clouds: " << clouds.size();
-  CHECK(!clouds.empty());
+  std::cout << "reading ply done. number of clouds: " << clouds.size();
+  //CHECK(!clouds.empty());
   const uint32_t n_clouds = clouds.size();
   for (uint32_t i = 0u; i < n_clouds; ++i) {
     model::PointCloudPtr& cloud = clouds.at(i);

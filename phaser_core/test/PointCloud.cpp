@@ -158,7 +158,7 @@ int main(int argc, char* argv[]) {
   std::cout << cor::FLAGS_target_cloud << " " << cor::FLAGS_source_cloud << " "
             << cor::FLAGS_reg_cloud << " " << std::endl;
   //  BAH, using gflags instead of o3d command line options
-
+  //  BAH, do we need to remove glog from phaser???
   vis::Visualizer vis;
 
   geom::PointCloud tcld, scld;

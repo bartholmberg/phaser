@@ -1,11 +1,11 @@
 #include "phaser/distribution/bingham-opt-mle.h"
 
-#include <glog/logging.h>
+//#include <glog/logging.h>
 #include <nlopt.hpp>
 #include <vector>
 
 #include "phaser/distribution/bingham-objective.h"
-
+#include <iostream>
 namespace common {
 
 static double objective_wrapper(
@@ -25,12 +25,12 @@ Eigen::VectorXd BinghamOptMLE::compute(const Eigen::VectorXd& omega) {
   std::vector<double> t_init = {-1.0, -1.0, -1.0};
 
   double solminf;
-  VLOG(1) << "starting to optimize";
+  std::cout << "starting to optimize";
   try {
     nlopt::result result = opt.optimize(t_init, solminf);
-    VLOG(3) << "Optimization succeeded with " << static_cast<int>(result);
+    std::cout << "Optimization succeeded with " << static_cast<int>(result);
   } catch (std::exception& e) {
-    LOG(FATAL) << "Optimization Failed!";
+    std::cout << "Optimization Failed!";
   }
   return Eigen::Vector4d(t_init[0], t_init[1], t_init[2], 0);
 }

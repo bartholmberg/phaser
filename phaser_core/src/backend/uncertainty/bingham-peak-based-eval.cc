@@ -1,7 +1,7 @@
 #include "phaser/backend/uncertainty/bingham-peak-based-eval.h"
 
 #include <algorithm>
-#include <glog/logging.h>
+//#include <glog/logging.h>
 
 #include "phaser/common/rotation-utils.h"
 
@@ -24,14 +24,14 @@ common::Bingham BinghamPeakBasedEval::fitRotationalBinghamDistribution(
     const std::vector<double>& norm_corr) const {
   const uint32_t n_signals = signals.size();
   const uint32_t n_corr = norm_corr.size();
-  CHECK_NE(n_signals, 0);
-  VLOG(1) << "Checking " << n_signals << " signals for evaluation";
+  //CHECK_NE(n_signals, 0);
+  std::cout << "Checking " << n_signals << " signals for evaluation";
   std::set<uint32_t>::iterator max_signal = std::max_element(
       signals.begin(), signals.end(),
       [&norm_corr](const uint32_t lhs, const uint32_t rhs) {
         return norm_corr[lhs] < norm_corr[rhs];
       });
-  CHECK(max_signal != signals.end());
+  //CHECK(max_signal != signals.end());
   //  BAH, weight length == end-start + 1 
   uint32_t start, end;
 // allocate data into A_vec
@@ -60,8 +60,8 @@ common::Bingham BinghamPeakBasedEval::fitRotationalBinghamDistribution(
 void BinghamPeakBasedEval::calculateStartEndNeighbor(
     const uint32_t index, const uint32_t n_corr, uint32_t* start,
     uint32_t* end) const {
-  CHECK_NOTNULL(start);
-  CHECK_NOTNULL(end);
+  //CHECK_NOTNULL(start);
+  //CHECK_NOTNULL(end);
   *start = FLAGS_bingham_peak_neighbors > index
                ? index
                : index - FLAGS_bingham_peak_neighbors;
@@ -74,16 +74,16 @@ void BinghamPeakBasedEval::retrievePeakNeighbors(
     const uint32_t bw, const uint32_t start, const uint32_t end,
     const std::vector<double>& norm_corr, Eigen::MatrixXd* samples,
     Eigen::RowVectorXd* weights) const {
-  CHECK_NOTNULL(samples);
-  CHECK_NOTNULL(weights);
+  //CHECK_NOTNULL(samples);
+  //CHECK_NOTNULL(weights);
   const uint32_t n_signals = norm_corr.size();
 
-  CHECK_GT(n_signals, 0u);
-  CHECK_GE(start, 0u);
-  CHECK_LT(end, n_signals);
-  CHECK_LE(start, end);
+  //CHECK_GT(n_signals, 0u);
+  //CHECK_GE(start, 0u);
+  //CHECK_LT(end, n_signals);
+  //CHECK_LE(start, end);
 
-  VLOG(1) << "Checking bingham neighbors from " << start << " to " << end;
+  std::cout << "Checking bingham neighbors from " << start << " to " << end;
   std::size_t k = 0u;
   for (uint32_t i = start; i <= end; ++i) {
     std::array<double, 3> zyz = common::RotationUtils::GetZYZFromIndex(i, bw);
@@ -102,7 +102,7 @@ void BinghamPeakBasedEval::retrievePeakNeighbors(
     return;
   }
   const double weight_sum = weights->array().sum();
-  CHECK_GT(weight_sum, 0);
+  //CHECK_GT(weight_sum, 0);
   (*weights) = weights->array() / weight_sum;
 }
 

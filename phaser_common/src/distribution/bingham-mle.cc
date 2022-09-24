@@ -1,7 +1,7 @@
 #include "phaser/distribution/bingham-mle.h"
 
 #include <Eigen/Dense>
-#include <glog/logging.h>
+//#include <glog/logging.h>
 #include <iostream>
 
 #include "phaser/distribution/bingham-normalization-constant.h"

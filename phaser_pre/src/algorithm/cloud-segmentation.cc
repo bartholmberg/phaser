@@ -1,6 +1,6 @@
 #include "phaser_pre/algorithm/cloud-segmentation.h"
 
-#include <glog/logging.h>
+//#include <glog/logging.h>
 
 namespace preproc {
 
@@ -18,10 +18,10 @@ SegmentationResult CloudSegmentation::segment(
   common::PointCloud_tPtr& seg_info_cloud = seg_result.getSegmentedInfoCloud();
   common::PointCloud_tPtr full_cloud = proj_result.getFullCloud();
   common::PointCloud_tPtr full_info_cloud = proj_result.getFullInfoCloud();
-  CHECK_NOTNULL(seg_cloud);
-  CHECK_NOTNULL(seg_info_cloud);
-  CHECK_NOTNULL(full_cloud);
-  CHECK_NOTNULL(full_info_cloud);
+  //CHECK_NOTNULL(seg_cloud);
+  //CHECK_NOTNULL(seg_info_cloud);
+  //CHECK_NOTNULL(full_cloud);
+  //CHECK_NOTNULL(full_info_cloud);
 
   int size_of_cloud = 0u;
   for (uint32_t i = 0u; i < settings_.N_SCAN; ++i) {

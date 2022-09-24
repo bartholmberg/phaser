@@ -1,7 +1,7 @@
 #include "phaser/model/point-cloud.h"
 
 #include <chrono>
-#include <glog/logging.h>
+//#include <glog/logging.h>
 #include <omp.h>
 #include <pcl/common/io.h>
 #include <pcl/common/transforms.h>

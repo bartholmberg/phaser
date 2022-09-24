@@ -1,10 +1,10 @@
 #include "phaser/common/data/ply-helper.h"
 
 #include <fstream>
-#include <glog/logging.h>
+//#include <glog/logging.h>
 
 #include "tinyply/tinyply.h"
-#include <crtdbg.h>
+//#include <crtdbg.h>
 DEFINE_string(
     phaser_ply_intensity_str, "intensity",
     "Defines the name of the intensity field in the PLY.");

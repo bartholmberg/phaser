@@ -1,23 +1,23 @@
 #include "phaser/distribution/bingham-mixture.h"
 
-#include <glog/logging.h>
+//#include <glog/logging.h>
 
-DEFINE_int32(
-    bmm_sample_size, 70,
-    "Determines the number of samples used for the BMM calculation.");
+//DEFINE_int32(
+//    bmm_sample_size, 70,
+//    "Determines the number of samples used for the BMM calculation.");
 
 namespace common {
-
+const int FLAGS_bmm_sample_size= 70;
 BinghamMixture::BinghamMixture(
     const std::vector<Bingham>& binghams, const Eigen::VectorXd& weights)
     : binghams_(binghams), weights_(weights) {
-  CHECK_EQ(binghams_.size(), weights_.rows());
-  CHECK_GT(binghams_.size(), 0);
+  //CHECK_EQ(binghams_.size(), weights_.rows());
+  //CHECK_GT(binghams_.size(), 0);
 
   // Verify that all distributions have the same dimensions.
   dim_ = binghams_.front().getDim();
   for (const common::Bingham& bingham : binghams_) {
-    CHECK_EQ(dim_, bingham.getDim());
+    //CHECK_EQ(dim_, bingham.getDim());
   }
 
   bingham_sample_size_ = FLAGS_bmm_sample_size;

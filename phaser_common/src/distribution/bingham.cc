@@ -4,7 +4,7 @@
 //#include <boost/math/special_functions/bessel.hpp>
 #include <cmath>
 #include <cassert>
-#include <glog/logging.h>
+//#include <glog/logging.h>
 #include <iostream>
 #include <vector>
 #include <numeric>
