@@ -9,7 +9,14 @@ This is the Plan 🤟🏼 for integrating open3d point clouds into phaser.
 3  - BREAKS: phaser_core_driver project (for now) and it is removed from build
 4  - Will use the 👉 PCL version of driver.cc to compare with new phaser_o3d_driver🏌️
 
-NOTES: on changing to static build:
+(also search google for 'Can a exe link to DLL and static library at the same time?')
+
+NOTE0:  we may not change to link with static libs.  Works fine linking with VTK DLLs in
+in VCPKG.  So I *think* that the only time we need to build with the dynamic run-time library 
+option is if we are actually creating making a DLL.
+
+NOTES: on changing an app to static build:
+
 
 Look for 👉🏽 Globals in .vcxproj of interest 
 
