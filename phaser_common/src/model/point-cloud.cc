@@ -76,7 +76,7 @@ float PointCloud::calcSquaredVoxelSize() const {
 }
 
 void PointCloud::initialize_kd_tree() {
-  VLOG(1) << "Kd tree is initialized: " << std::boolalpha
+  std::cout << "Kd tree is initialized: " << std::boolalpha
           << kd_tree_is_initialized_ << ". for file: " << ply_read_directory_
           << ".";
   if (kd_tree_is_initialized_)
@@ -84,7 +84,7 @@ void PointCloud::initialize_kd_tree() {
   //BAH, comment out
   //kd_tree_.setInputCloud(cloud_);
   kd_tree_is_initialized_ = true;
-  VLOG(1) << "Initialized kd tree.";
+  std::cout << "Initialized kd tree.";
 }
 // BAH, comment out
 /*
@@ -100,9 +100,9 @@ common::PointCloud_t::iterator PointCloud::end() {
 void PointCloud::getNearestPoints(
     const std::vector<common::Point_t>& query_points,
     std::vector<FunctionValue>* function_values) const {
-  CHECK(kd_tree_is_initialized_);
-  CHECK_NOTNULL(cloud_);
-  CHECK_NOTNULL(function_values);
+  //CHECK(kd_tree_is_initialized_);
+  //CHECK_NOTNULL(cloud_);
+  //CHECK_NOTNULL(function_values);
   std::vector<int> pointIdxNKNSearch(FLAGS_sampling_neighbors);
   std::vector<float> pointNKNSquaredDistance(FLAGS_sampling_neighbors);
 
@@ -138,11 +138,11 @@ void PointCloud::sampleNearestWithoutCloudInfo(
     const uint32_t idx, const std::vector<int>& pointIdxNKNSearch,
     const std::vector<float>& pointNKNSquaredDistance,
     std::vector<FunctionValue>* function_values) const {
-  CHECK_NOTNULL(cloud_);
-  CHECK_NOTNULL(function_values);
+  //CHECK_NOTNULL(cloud_);
+  //CHECK_NOTNULL(function_values);
   // Approximate the function value given the neighbors.
   FunctionValue& value = (*function_values)[idx];
-  CHECK_GT(FLAGS_sampling_neighbors, 0);
+  //CHECK_GT(FLAGS_sampling_neighbors, 0);
   for (int16_t i = 0u; i < FLAGS_sampling_neighbors; ++i) {
     const float sq_dist = pointNKNSquaredDistance[i];
     if (sq_dist > squared_voxel_size_) {
@@ -170,12 +170,12 @@ void PointCloud::sampleNearestWithCloudInfo(
     const uint32_t idx, const std::vector<int>& pointIdxNKNSearch,
     const std::vector<float>& pointNKNSquaredDistance,
     std::vector<FunctionValue>* function_values) const {
-  CHECK_NOTNULL(function_values);
-  CHECK_NOTNULL(info_cloud_);
-  CHECK_NOTNULL(cloud_);
+  //CHECK_NOTNULL(function_values);
+  //CHECK_NOTNULL(info_cloud_);
+  //(cloud_);
   // Approximate the function value given the neighbors.
   FunctionValue& value = (*function_values)[idx];
-  CHECK_GT(FLAGS_sampling_neighbors, 0);
+  //CHECK_GT(FLAGS_sampling_neighbors, 0);
   for (int16_t i = 0u; i < FLAGS_sampling_neighbors; ++i) {
     const float sq_dist = pointNKNSquaredDistance[i];
     if (sq_dist > squared_voxel_size_) {
@@ -230,14 +230,14 @@ bool PointCloud::hasInfoCloud() const {
 }
 
 const common::Point_t& PointCloud::pointAt(const std::size_t idx) {
-  CHECK_NOTNULL(cloud_);
+  //CHECK_NOTNULL(cloud_);
  // CHECK(idx < cloud_->size());
  // return cloud_->points[idx];
   return NULL;
 }
 
 const common::Point_t& PointCloud::pointAt(const std::size_t idx) const {
-  CHECK_NOTNULL(cloud_);
+  //CHECK_NOTNULL(cloud_);
   // BAH , comment out
   //CHECK(idx < cloud_->size());
   //return cloud_->points[idx];
@@ -245,7 +245,7 @@ const common::Point_t& PointCloud::pointAt(const std::size_t idx) const {
 }
 
 const common::Point_t& PointCloud::infoPointAt(const std::size_t idx)  {
-  CHECK_NOTNULL(cloud_);
+  //CHECK_NOTNULL(cloud_);
   // BAH , comment out
   //CHECK(idx < info_cloud_->size());
   //return info_cloud_->points[idx];
@@ -253,7 +253,7 @@ const common::Point_t& PointCloud::infoPointAt(const std::size_t idx)  {
 }
 
 const common::Point_t& PointCloud::infoPointAt(const std::size_t idx) const {
-  CHECK_NOTNULL(cloud_);
+  //CHECK_NOTNULL(cloud_);
   //CHECK(idx < info_cloud_->size());
   //return info_cloud_->points[idx];
   return NULL;
@@ -284,12 +284,12 @@ PointCloud PointCloud::clone() const {
 }
 
 void PointCloud::setRange(const double range, const uint32_t i) {
-  CHECK_LT(i, ranges_.size());
+  //CHECK_LT(i, ranges_.size());
   ranges_.at(i) = range;
 }
 
 double PointCloud::rangeAt(const uint32_t i) const {
-  CHECK_LT(i, ranges_.size());
+  //CHECK_LT(i, ranges_.size());
   double range = ranges_.at(i);
   if (range == 0) {
     return calcRangeAt(i);
@@ -303,12 +303,12 @@ double PointCloud::calcRangeAt(const uint32_t i) const {
 }
 
 double PointCloud::getReflectivity(const uint32_t i) const {
-  CHECK_LT(i, reflectivities_.size());
+  //CHECK_LT(i, reflectivities_.size());
   return reflectivities_.at(i);
 }
 
 double PointCloud::getAmbientNoise(const uint32_t i) const {
-  CHECK_LT(i, ambient_points_.size());
+  //CHECK_LT(i, ambient_points_.size());
   return ambient_points_.at(i);
 }
 
@@ -323,7 +323,7 @@ bool PointCloud::hasAmbientNoisePoints() const {
 void PointCloud::writeToFile(std::string&& directory) {
   if (directory.empty())
     directory = ply_directory_;
-  CHECK(!directory.empty());
+  //CHECK(!directory.empty());
   //pcl::PLYWriter writer;
   std::vector<std::string> files;
   data::FileSystemHelper::readDirectory(directory, &files);
@@ -338,9 +338,9 @@ void PointCloud::writeToFile(std::string&& directory) {
 }
 
 void PointCloud::readFromFile(const std::string& ply) {
-  CHECK(!ply.empty());
-  CHECK_NOTNULL(cloud_);
-  VLOG(2) << "Reading PLY file from: " << ply;
+  //CHECK(!ply.empty());
+  //CHECK_NOTNULL(cloud_);
+  std::cout << "Reading PLY file from: " << ply;
   ply_read_directory_ = ply;
   data::PlyHelper ply_helper;
   model::PlyPointCloud *ply_cloud = ply_helper.readPlyFromFile(ply);
@@ -355,14 +355,14 @@ std::string PointCloud::getPlyReadDirectory() const noexcept {
 }
 
 void PointCloud::parsePlyPointCloud(PlyPointCloud&& ply_point_cloud) {
-  CHECK_NOTNULL(cloud_);
+  //CHECK_NOTNULL(cloud_);
   //BAH, NOTE: cloud_ 
   
   const std::vector<double>& xyz= ply_point_cloud.getXYZPoints();
   const std::vector<double>& intensities = ply_point_cloud.getIntentsities();
   const uint32_t n_points = xyz.size();
   const uint32_t n_intensities = intensities.size();
-  CHECK_GT(n_points, 0u);
+  //CHECK_GT(n_points, 0u);
   uint32_t k = 0u;
   for (uint32_t i = 0u; i < n_points && k < n_intensities; i += 3u) {
     common::Point_t p;

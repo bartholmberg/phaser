@@ -37,8 +37,8 @@ SphOptRegistration::~SphOptRegistration() {}
 
 model::RegistrationResult SphOptRegistration::registerPointCloud(
     model::PointCloudPtr cloud_prev, model::PointCloudPtr cloud_cur) {
-  CHECK(cloud_prev);
-  CHECK(cloud_cur);
+  //CHECK(cloud_prev);
+  //CHECK(cloud_cur);
   std::cout<< "=== Registering point cloud ==="<< std::endl;
   std::cout << "Cloud1: " << cloud_prev->getPlyReadDirectory() << std::endl;
   std::cout << "Cloud2: " << cloud_cur->getPlyReadDirectory() << std::endl;
@@ -133,8 +133,8 @@ vector<SphericalCorrelation> *SphOptRegistration::correlatePointcloud(
   // std::make_shared<SphericalIntensityWorker>(f_values, h_values));
   // SphericalRangeWorkerPtr corr_range_worker =
   // CHECK_NOTNULL(std::make_shared<SphericalRangeWorker>(f_values, h_values));
-  SphericalCombinedWorkerPtr corr_combined_worker = CHECK_NOTNULL(
-      std::make_shared<SphericalCombinedWorker>(*f_values, *h_values));
+  SphericalCombinedWorkerPtr corr_combined_worker = 
+      std::make_shared<SphericalCombinedWorker>(*f_values, *h_values);
 
   // Add workers to pool and execute them.
   auto start = std::chrono::high_resolution_clock::now();
@@ -159,12 +159,12 @@ void SphOptRegistration::setBandwith(const int bandwith) {
 }
 
 BaseEval& SphOptRegistration::getRotEvaluation() {
-  CHECK_NOTNULL(correlation_eval_);
+  //CHECK_NOTNULL(correlation_eval_);
   return correlation_eval_->getRotationEval();
 }
 
 BaseEval& SphOptRegistration::getPosEvaluation() {
-  CHECK_NOTNULL(correlation_eval_);
+  //CHECK_NOTNULL(correlation_eval_);
   return correlation_eval_->getPositionEval();
 }
 

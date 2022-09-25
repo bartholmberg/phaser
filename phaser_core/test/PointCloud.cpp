@@ -185,8 +185,8 @@ int main(int argc, char* argv[]) {
 
   // BAH, these are next to fix up with o3d pnt cld instead of PCL
   auto ctrl = std::make_unique<phaser_core::CloudController>("sph-opt");
-  model::PointCloudPtr foo;
- // model::RegistrationResult result =ctrl->registerPointCloud(targetCld, sourceCld);
+  model::PointCloudPtr tarCld,srcCld;
+  model::RegistrationResult result = ctrl->registerPointCloud(tarCld, srcCld);
 
   if (!targetCld.get()->HasNormals()) {
     utility::ScopeTimer timer("Normal estimation with KNN10");

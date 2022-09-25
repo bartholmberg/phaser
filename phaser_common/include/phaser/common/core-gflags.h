@@ -2,7 +2,7 @@
 #define PHASER_COMMON_CORE_GFLAGS_H_
 
 #include <gflags/gflags.h>
-#include <glog/logging.h>
+//#include <glog/logging.h>
 
 namespace phaser_core {
 
