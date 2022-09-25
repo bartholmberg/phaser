@@ -171,7 +171,8 @@ int main(int argc, char* argv[]) {
 
   shared_ptr<geom::PointCloud> sourceCld(&FixUpO3dColors(scld));
   shared_ptr<geom::PointCloud> targetCld(&FixUpO3dColors(tcld));
-
+  //  BAH, need to build model::PointCloudPtr from geom::PointCloud
+  model::PointCloudPtr foo1;
   //vis.CreateVisualizerWindow("Open3D", 1600, 900);
   //vis.AddGeometry(sourceCld);
   //vis.AddGeometry(targetCld);
@@ -196,8 +197,8 @@ int main(int argc, char* argv[]) {
 
   // BAH, these are next to fix up with o3d pnt cld instead of PCL
   auto ctrl = std::make_unique<phaser_core::CloudController>("sph-opt");
-
-  //model::RegistrationResult result =ctrl->registerPointCloud(targetCld, sourceCld);
+  model::PointCloudPtr foo;
+ // model::RegistrationResult result =ctrl->registerPointCloud(targetCld, sourceCld);
 
   if (!targetCld.get()->HasNormals()) {
     utility::ScopeTimer timer("Normal estimation with KNN10");
@@ -242,8 +243,7 @@ int main(int argc, char* argv[]) {
 
   // 3. test pointcloud visualization
 
-  std::shared_ptr<geometry::PointCloud> pointcloud_ptr(
-      new geometry::PointCloud);
+  std::shared_ptr<geom::PointCloud> pointcloud_ptr( new geom::PointCloud);
   *pointcloud_ptr = pointcloud;
   pointcloud_ptr->NormalizeNormals();
   auto bounding_box = pointcloud_ptr->GetAxisAlignedBoundingBox();
