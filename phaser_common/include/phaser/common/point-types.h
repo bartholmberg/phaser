@@ -9,8 +9,8 @@
 #include <open3d/Open3D.h>
 #include <open3d/geometry/PointCloud.h>
 
-#include <pcl/point_cloud.h>
-#include <pcl/point_representation.h>
+//#include <pcl/point_cloud.h>
+//#include <pcl/point_representation.h>
 
 namespace o3d = open3d;
 namespace geom = open3d::geometry;
@@ -59,7 +59,7 @@ struct alignas(16) _PointXYZI {
     return (Array3fMap(data));
   }
   inline Array3fMapConst getArray3fMap() const {
-    return (pcl::Array3fMapConst(data));
+    return (Array3fMapConst(data));
   }
   inline Array4fMap getArray4fMap() {
     return (Array4fMap(data));
@@ -108,7 +108,12 @@ struct PointXYZI : public _PointXYZI {
 // but without PCL
 
 //using Point_t_old = pcl::PointXYZI;
-using Point_t = pcl::PointXYZI; //swap in working
+//using Point_t = pcl::PointXYZI;
+//  
+//BAH, Use PHASER defined base point.  Same as PCL 
+// definition, but no dependency on PCL   
+//
+using Point_t = common::PointXYZI; //swap in working
 //using Point_t_new = std::vector<Eigen::Vector3d>;
 using PointCloud_t = geom::PointCloud;
 using PointCloud_tPtr = std::shared_ptr<geom::PointCloud>;

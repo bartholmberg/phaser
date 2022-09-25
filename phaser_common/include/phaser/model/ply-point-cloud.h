@@ -3,6 +3,7 @@
 
 #include <vector>
 
+// BAH, the base point cloud used in PHASER
 namespace model {
 
 class PlyPointCloud {

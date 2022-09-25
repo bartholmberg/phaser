@@ -2,9 +2,9 @@
 #define PHASER_MODEL_POINT_CLOUD_H_
 
 #include <memory>
-#include <pcl/common/projection_matrix.h>
-#include <pcl/kdtree/kdtree_flann.h>
-#include <pcl/point_types.h>
+//#include <pcl/common/projection_matrix.h>
+//#include <pcl/kdtree/kdtree_flann.h>
+//#include <pcl/point_types.h>
 #include <string>
 #include <vector>
 #include "open3d/geometry/KDTreeSearchParam.h"
@@ -77,8 +77,11 @@ class PointCloud {
 
   common::PointCloud_tPtr cloud_;
   common::PointCloud_tPtr info_cloud_;
+  // BAH, call KdTreeFLANN constructor which is deleted
+  //      so causes C2280 compiler error
   //o3d::geometry::KDTreeFlann kd_tree_;
-  pcl::KdTreeFLANN<common::Point_t> kd_tree_;
+  std::vector<int> kd_tree_;
+  //pcl::KdTreeFLANN<common::Point_t> kd_tree_;
   //pcl::KdTreeFLANN<common::Point_t> kd_tree_;
   bool kd_tree_is_initialized_;
   std::string ply_directory_;

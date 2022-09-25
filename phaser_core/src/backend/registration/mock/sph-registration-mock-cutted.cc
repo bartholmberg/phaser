@@ -1,19 +1,19 @@
 #include "phaser/backend/registration/mock/sph-registration-mock-cutted.h"
 #include "phaser/common/rotation-utils.h"
 
-#include <pcl/filters/passthrough.h>
-#include <pcl/common/common.h>
-#include <glog/logging.h>
+//#include <pcl/filters/passthrough.h>
+//#include <pcl/common/common.h>
+//#include <glog/logging.h>
 
 namespace phaser_core {
 
 model::RegistrationResult SphRegistrationMockCutted::registerPointCloud(
     model::PointCloudPtr cloud_prev, model::PointCloudPtr cloud_cur) {
-  CHECK(cloud_prev);
-  CHECK(cloud_cur);
-  VLOG(1) << "=== Registering point cloud (mock cutted) ======================";
-  VLOG(1) << "Cloud1: " << cloud_prev->getPlyReadDirectory();
-  VLOG(1) << "Cloud2: " << cloud_cur->getPlyReadDirectory();
+  //CHECK(cloud_prev);
+  //CHECK(cloud_cur);
+  std::cout << "=== Registering point cloud (mock cutted) ======================";
+  std::cout << "Cloud1: " << cloud_prev->getPlyReadDirectory();
+  std::cout  << "Cloud2: " << cloud_cur->getPlyReadDirectory();
   common::Point_t min_pt, max_pt;
 
   //BAH, remove getRawCloud for now
@@ -23,7 +23,7 @@ model::RegistrationResult SphRegistrationMockCutted::registerPointCloud(
   // implement in o3d
   //pcl::getMinMax3D(*raw_cloud, min_pt, max_pt);
   float dist = std::sqrt((min_pt.y - max_pt.y) * (min_pt.y - max_pt.y));
-  VLOG(3) << "min pt dist: " << dist;
+  std::cout << "min pt dist: " << dist;
   model::PointCloudPtr point_cloud =
       cutPointCloud(raw_cloud, min_pt.y + 1, min_pt.y + 0.7 * dist, "y");
   model::PointCloudPtr syn_cloud =
@@ -47,9 +47,9 @@ model::RegistrationResult SphRegistrationMockCutted::registerPointCloud(
 
 model::PointCloudPtr SphRegistrationMockCutted::cutPointCloud(
     common::PointCloud_tPtr& cloud, double min, double max, std::string&& dim) {
-  VLOG(3) << "pass using " << min << " and " << max;
+  std::cout << "pass using " << min << " and " << max;
   common::PointCloud_tPtr mod_cloud (new common::PointCloud_t);
-  pcl::PassThrough<common::Point_t> pass;
+  //pcl::PassThrough<common::Point_t> pass;
   // BAH, comment out until replace with o3d equivalent
   //pass.setInputCloud (cloud);
   //pass.setFilterFieldName (dim);

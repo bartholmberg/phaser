@@ -2,7 +2,7 @@
 #define PHASER_PRE_COMMON_PRE_PROCESSOR_GFLAGS_H_
 
 #include <gflags/gflags.h>
-#include <glog/logging.h>
+//#include <glog/logging.h>
 
 //namespace preproc {
 

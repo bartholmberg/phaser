@@ -173,19 +173,7 @@ int main(int argc, char* argv[]) {
   shared_ptr<geom::PointCloud> targetCld(&FixUpO3dColors(tcld));
   //  BAH, need to build model::PointCloudPtr from geom::PointCloud
   model::PointCloudPtr foo1;
-  //vis.CreateVisualizerWindow("Open3D", 1600, 900);
-  //vis.AddGeometry(sourceCld);
-  //vis.AddGeometry(targetCld);
 
-  //BAH, How do we update render option
-  //     in renderer?
-  //vis::RenderOption().SetPointSize(1);
-  //vis::RenderOption().ChangePointSize(1);
-  //vis.UpdateRender();
-
-  //vis.Run();
-  //visualizer.Run();
-  //visualizer.DestroyVisualizerWindow();
   double zoom =1.0/5.0;
   
   Eigen::Vector3d up = {0.0, -1.0, 0.0};
@@ -288,3 +276,18 @@ int main(int argc, char* argv[]) {
   return 0;
 }
 //}  // namespace phaser_core
+
+
+  // vis.CreateVisualizerWindow("Open3D", 1600, 900);
+// vis.AddGeometry(sourceCld);
+// vis.AddGeometry(targetCld);
+
+// BAH, How do we update render option
+//      in renderer?
+// vis::RenderOption().SetPointSize(1);
+// vis::RenderOption().ChangePointSize(1);
+// vis.UpdateRender();
+
+// vis.Run();
+// visualizer.Run();
+// visualizer.DestroyVisualizerWindow();

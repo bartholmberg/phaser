@@ -2,7 +2,7 @@
 
 #include <algorithm>
 #include <fftw3.h>
-#include <glog/logging.h>
+//#include <glog/logging.h>
 #include <iostream>
 
 #include "phaser/backend/alignment/phase-aligner.h"
@@ -15,10 +15,10 @@
 #include "phaser/common/rotation-utils.h"
 #include "phaser/common/statistic-utils.h"
 #include "phaser/common/translation-utils.h"
-#include <pcl/io/pcd_io.h>
-#include <pcl/io/ply_io.h>
-#include <pcl/point_types.h>
-#include <pcl/visualization/cloud_viewer.h>
+//#include <pcl/io/pcd_io.h>
+//#include <pcl/io/ply_io.h>
+//#include <pcl/point_types.h>
+//#include <pcl/visualization/cloud_viewer.h>
 namespace phaser_core {
 
 SphOptRegistration::SphOptRegistration()

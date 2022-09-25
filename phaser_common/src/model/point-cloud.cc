@@ -3,11 +3,11 @@
 #include <chrono>
 //#include <glog/logging.h>
 #include <omp.h>
-#include <pcl/common/io.h>
-#include <pcl/common/transforms.h>
-#include <pcl/features/normal_3d.h>
-#include <pcl/io/ply_io.h>
-#include <pcl/kdtree/impl/kdtree_flann.hpp>
+//#include <pcl/common/io.h>
+//#include <pcl/common/transforms.h>
+//#include <pcl/features/normal_3d.h>
+//#include <pcl/io/ply_io.h>
+//#include <pcl/kdtree/impl/kdtree_flann.hpp>
 
 #include "phaser/common/core-gflags.h"
 #include "phaser/common/data/file-system-helper.h"
@@ -115,9 +115,11 @@ void PointCloud::getNearestPoints(
   for (uint32_t i = 0u; i < n_points; ++i) {
     const common::Point_t& query_point = query_points[i];
     // First, find the closest points.
-    const int kd_tree_res = kd_tree_.nearestKSearch(
-        query_point, FLAGS_sampling_neighbors, pointIdxNKNSearch,
-        pointNKNSquaredDistance);
+    // BAH, need to replace with o3d search
+    const int kd_tree_res = 0;
+    //const int kd_tree_res = kd_tree_.nearestKSearch(
+    //    query_point, FLAGS_sampling_neighbors, pointIdxNKNSearch,
+    //    pointNKNSquaredDistance);
     if (kd_tree_res <= 0) {
       std::cout << "Unable to find nearest neighbor. Skipping point." << std::endl;
       continue;
@@ -266,17 +268,18 @@ std::size_t PointCloud::size() const {
 
 PointCloud PointCloud::clone() const {
   PointCloud cloned_cloud;
-  CHECK_NOTNULL(cloud_);
-  CHECK_NOTNULL(cloned_cloud.cloud_);
-  CHECK_NOTNULL(info_cloud_);
-  CHECK_NOTNULL(cloned_cloud.info_cloud_);
+  //CHECK_NOTNULL(cloud_);
+  //CHECK_NOTNULL(cloned_cloud.cloud_);
+  //CHECK_NOTNULL(info_cloud_);
+  //CHECK_NOTNULL(cloned_cloud.info_cloud_);
   //BAH, comment out
   //pcl::copyPointCloud(*cloud_, *cloned_cloud.cloud_);
   //pcl::copyPointCloud(*info_cloud_, *cloned_cloud.info_cloud_);
-  cloned_cloud.ranges_ = ranges_;
+  //cloned_cloud.ranges_ = ranges_;
   cloned_cloud.reflectivities_ = reflectivities_;
-  cloned_cloud.ambient_points_ = ambient_points_;
-  cloned_cloud.ply_read_directory_ = ply_read_directory_;
+  //cloned_cloud.ambient_points_ = ambient_points_;
+  //cloned_cloud.ply_read_directory_ = ply_read_directory_;
+  //return cloned_cloud;
   return cloned_cloud;
 }
 
@@ -321,7 +324,7 @@ void PointCloud::writeToFile(std::string&& directory) {
   if (directory.empty())
     directory = ply_directory_;
   CHECK(!directory.empty());
-  pcl::PLYWriter writer;
+  //pcl::PLYWriter writer;
   std::vector<std::string> files;
   data::FileSystemHelper::readDirectory(directory, &files);
   char buffer[50];
@@ -329,7 +332,7 @@ void PointCloud::writeToFile(std::string&& directory) {
       buffer, 50, "%s%.3lu.ply", FLAGS_PlyPrefix.c_str(), files.size() + 1);
   const std::string full_name = directory + std::string(buffer);
 
-  VLOG(2) << "Writing PLY file to: " << full_name;
+  std::cout << "Writing PLY file to: " << full_name;
   //BAH, comment out
   //writer.write(full_name, *cloud_);
 }
@@ -353,9 +356,9 @@ std::string PointCloud::getPlyReadDirectory() const noexcept {
 
 void PointCloud::parsePlyPointCloud(PlyPointCloud&& ply_point_cloud) {
   CHECK_NOTNULL(cloud_);
-  //BAH, comment out 
-  /*
-  const std::vector<double>& xyz;//= ply_point_cloud.getXYZPoints();
+  //BAH, NOTE: cloud_ 
+  
+  const std::vector<double>& xyz= ply_point_cloud.getXYZPoints();
   const std::vector<double>& intensities = ply_point_cloud.getIntentsities();
   const uint32_t n_points = xyz.size();
   const uint32_t n_intensities = intensities.size();
@@ -367,13 +370,13 @@ void PointCloud::parsePlyPointCloud(PlyPointCloud&& ply_point_cloud) {
     p.y = xyz[i + 1u];
     p.z = xyz[i + 2u];
     p.intensity = intensities[k];
-    cloud_->points.push_back(p);
+    //cloud_->points.push_back(p);
     ++k;
   }
-  ambient_points_ = ply_point_cloud.getAmbientPoints();
-  ranges_ = ply_point_cloud.getRange();
-  reflectivities_ = ply_point_cloud.getReflectivities();
-  */
+  //ambient_points_ = ply_point_cloud.getAmbientPoints();
+  //ranges_ = ply_point_cloud.getRange();
+  //reflectivities_ = ply_point_cloud.getReflectivities();
+  
 }
 
 }  // namespace model

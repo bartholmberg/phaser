@@ -1,6 +1,6 @@
 #include "phaser/model/registration-result.h"
 
-#include <glog/logging.h>
+//#include <glog/logging.h>
 
 #include "phaser/common/rotation-utils.h"
 
