@@ -4,7 +4,7 @@
 #include <pcl/point_types.h>
 #include <pcl/visualization/cloud_viewer.h>
 #include <cmath>
-#include <glog/logging.h>
+//#include <glog/logging.h>
 
 namespace common {
 
@@ -23,7 +23,7 @@ void SphericalSampler::initialize(const int bandwith) {
  void SphericalSampler::sampleUniformly(
     const model::PointCloud& cloud, std::vector<model::FunctionValue>* grid) {
   static int cnt = 0;
-  CHECK(is_initialized_);
+  //CHECK(is_initialized_);
   grid->clear();
   model::PointCloud sphere = projection_.convertPointCloudCopy(cloud);
   model::PointCloud* sphereP =new model::PointCloud (projection_.convertPointCloudCopy(cloud));
@@ -68,7 +68,8 @@ std::vector<common::Point_t> SphericalSampler::convertCartesian(
   std::vector<common::Point_t> res;
   const float n_grid = static_cast<float>(grid.size()) / 25;
   const float step_distance = 0.00;
-  VLOG(1) << "step distance = " << step_distance << " n: " << n_grid;
+  std::cout << "step distance = " << step_distance << " n: " << n_grid
+            << std::endl;
   float dist = 1.0f;
   for (const common::Point_t& p : grid) {
     common::Point_t cart_p;
@@ -82,7 +83,7 @@ std::vector<common::Point_t> SphericalSampler::convertCartesian(
 }
 
 int SphericalSampler::getInitializedBandwith() const noexcept {
-  CHECK(is_initialized_);
+  //CHECK(is_initialized_);
   return bandwith_;
 }
 

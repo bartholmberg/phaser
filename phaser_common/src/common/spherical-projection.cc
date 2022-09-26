@@ -8,10 +8,11 @@ namespace common {
 void SphericalProjection::convertPointCloud(model::PointCloud* cloud) {
   naiveProjection(*cloud, cloud);
 }
-
+// BAH, redo the clone and test projection onto sphere
 model::PointCloud SphericalProjection::convertPointCloudCopy(
     const model::PointCloud& cloud) {
   model::PointCloud cloned = cloud.clone();
+
   naiveProjection(cloud, &cloned);
   return cloned;
 }

@@ -150,7 +150,8 @@ geom::PointCloud& FixUpO3dColors(geom::PointCloud& pntCld) {
 
  
 
- // MakeModelCloud. Get 'raw' open3d cloud to construct a PHASER model pnt
+ // MakeModelCloud. Input name of ply cloud.
+ // Get 'raw' open3d cloud to construct a PHASER model pnt
  // cloud
  model::PointCloudPtr MakeModelCloud(const std::string & fN) {
    geom::PointCloud* gcld= new geom::PointCloud();
@@ -184,10 +185,12 @@ int main(int argc, char* argv[]) {
   Eigen::Vector3d up = {0.0, -1.0, 0.0};
   Eigen::Vector3d look = {1.0, 1.0, 0.0};
   Eigen::Vector3d front = {0.0, 0.0, -1.0};
-  
- // vis::DrawGeometries( {targetCld->getRawCloud(), sourceCld->getRawCloud()}, 
- //     "o3d pnt clouds for phaser", 1600, 900, 50,
-  //    50, false, false, false, &look, &up,&front,&zoom);
+  geom::PointCloud foo(targetCld->getRawCloud()->points_);
+  geom::PointCloud foo2(*targetCld->getRawCloud());
+  foo2= *targetCld->getRawCloud();
+  vis::DrawGeometries( {targetCld->getRawCloud(), sourceCld->getRawCloud()}, 
+      "o3d pnt clouds for phaser", 1600, 900, 50,
+      50, false, false, false, &look, &up,&front,&zoom);
 
   // BAH, these are next to fix up with o3d pnt cld instead of PCL
   auto ctrl = std::make_unique<phaser_core::CloudController>("sph-opt");

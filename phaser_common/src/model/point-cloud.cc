@@ -233,7 +233,7 @@ bool PointCloud::hasInfoCloud() const {
 const common::Point_t& PointCloud::pointAt(const std::size_t idx) {
   //CHECK_NOTNULL(cloud_);
  // CHECK(idx < cloud_->size());
- // return cloud_->points[idx];
+  //return cloud_->points_[idx];
   return NULL;
 }
 
@@ -276,10 +276,14 @@ PointCloud PointCloud::clone() const {
   //BAH, comment out
   //pcl::copyPointCloud(*cloud_, *cloned_cloud.cloud_);
   //pcl::copyPointCloud(*info_cloud_, *cloned_cloud.info_cloud_);
+
+  // BAH, use copy constructor for raw cloud
+  geom::PointCloud foo2(*cloud_);
+  *cloned_cloud.cloud_= foo2;
   //cloned_cloud.ranges_ = ranges_;
   cloned_cloud.reflectivities_ = reflectivities_;
   //cloned_cloud.ambient_points_ = ambient_points_;
-  //cloned_cloud.ply_read_directory_ = ply_read_directory_;
+  cloned_cloud.ply_read_directory_ = ply_read_directory_;
   //return cloned_cloud;
   return cloned_cloud;
 }

@@ -266,7 +266,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\repo\phaser\phaser_common\src\model\point-cloud.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\model\point-cloud.cc">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Disabled</Optimization>
+    </ClCompile>
     <ClCompile Include="C:\repo\phaser\phaser_common\src\model\ply-point-cloud.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\model\function-value.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\model\registration-result.cc" />
