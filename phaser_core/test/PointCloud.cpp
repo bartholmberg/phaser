@@ -147,8 +147,16 @@ geom::PointCloud& FixUpO3dColors(geom::PointCloud& pntCld) {
   return pntCld;
 }
 
+// MakeModelCloud. Use the 'raw' open3d cloud to construct a PHASER model pnt cloud
+ model::PointCloudPtr& MakeModelCloud(geom::PointCloud& pntCld) {
 
+  common::PointCloud_tPtr *pntCldPntr =new common::PointCloud_tPtr( &FixUpO3dColors(pntCld) );
 
+  model::PointCloud* mCld = new model::PointCloud(*pntCldPntr);
+  model::PointCloudPtr* mCldPtr = new model::PointCloudPtr(mCld);
+  return *mCldPtr;
+ 
+}
 
  
 int main(int argc, char* argv[]) {
@@ -168,47 +176,42 @@ int main(int argc, char* argv[]) {
   io::ReadPointCloudFromPLY( cor::FLAGS_source_cloud, scld, {"XYZI", true, true, true});
   io::ReadPointCloudFromPLY( cor::FLAGS_target_cloud, tcld, {"XYZI", true, true, true});
 
-  common::PointCloud_tPtr sourceCld(&FixUpO3dColors(scld));
-  //std::shared_ptr<geom::PointCloud> sourceCld(&FixUpO3dColors(scld));
-  std::shared_ptr<geom::PointCloud> targetCld(&FixUpO3dColors(tcld));
-  //  BAH, need to build model::PointCloudPtr from geom::PointCloud
-  model::PointCloud tarCld(targetCld);
-  model::PointCloudPtr tarCldPtr(&tarCld);
-  model::PointCloud  srcCld(sourceCld);
-  model::PointCloudPtr srcCldPtr(&srcCld);
+  model::PointCloudPtr targetCld = MakeModelCloud(tcld);
+  model::PointCloudPtr sourceCld = MakeModelCloud(scld);
   double zoom =1.0/5.0;
   
   Eigen::Vector3d up = {0.0, -1.0, 0.0};
   Eigen::Vector3d look = {1.0, 1.0, 0.0};
   Eigen::Vector3d front = {0.0, 0.0, -1.0};
   
-  vis::DrawGeometries( {targetCld, sourceCld}, "o3d pnt clouds for phaser", 1600, 900, 50,
+  vis::DrawGeometries( {targetCld->getRawCloud(), sourceCld->getRawCloud()}, "o3d pnt clouds for phaser", 1600, 900, 50,
       50, false, false, false, &look, &up,&front,&zoom);
 
   // BAH, these are next to fix up with o3d pnt cld instead of PCL
   auto ctrl = std::make_unique<phaser_core::CloudController>("sph-opt");
  
-  model::RegistrationResult result = ctrl->registerPointCloud(tarCldPtr, srcCldPtr);
+  model::RegistrationResult result =
+      ctrl->registerPointCloud(targetCld, sourceCld);
 
-  if (!targetCld.get()->HasNormals()) {
+  if (!targetCld->getRawCloud()->HasNormals()) {
     utility::ScopeTimer timer("Normal estimation with KNN10");
     for (int i = 0; i < 10; i++) {
-      targetCld.get()->EstimateNormals(
+      targetCld->getRawCloud()->EstimateNormals(
           open3d::geometry::KDTreeSearchParamKNN(10));
     }
   }
 
-  std::cout << targetCld.get()->normals_[0] << std::endl;
-  std::cout << targetCld.get()->normals_[10] << std::endl;
+  std::cout << targetCld->getRawCloud()->normals_[0] << std::endl;
+  std::cout << sourceCld->getRawCloud()->normals_[10] << std::endl;
 
   utility::ScopeTimer timer("Normal estimation with Hybrid 0.01666, 60");
   for (int i = 0; i < 20; i++) {
-    targetCld.get()->EstimateNormals(
+    targetCld->getRawCloud()->EstimateNormals(
         open3d::geometry::KDTreeSearchParamHybrid(0.01666, 60));
   }
 
-  std::cout << targetCld.get()->normals_[0] << std::endl;
-  std::cout << targetCld.get()->normals_[10] << std::endl;
+  std::cout << targetCld->getRawCloud()->normals_[0] << std::endl;
+  std::cout << targetCld->getRawCloud()->normals_[10] << std::endl;
 
   // auto downpcd = targetCld->VoxelDownSample(1.0/8.0);
   auto downpcd = targetCld;
