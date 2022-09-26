@@ -350,6 +350,9 @@ void PointCloud::readFromFile(const std::string& ply) {
   initialize_kd_tree();
 }
 
+void PointCloud::setPlyReadDirectory(const std::string& ply) {
+  ply_read_directory_= ply;
+}
 std::string PointCloud::getPlyReadDirectory() const noexcept {
   return ply_read_directory_;
 }

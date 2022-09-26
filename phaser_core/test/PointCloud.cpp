@@ -148,15 +148,19 @@ geom::PointCloud& FixUpO3dColors(geom::PointCloud& pntCld) {
 }
 
 
- // MakeModelCloud. Use the 'raw' open3d cloud to construct a PHASER model pnt
+ 
+
+ // MakeModelCloud. Get 'raw' open3d cloud to construct a PHASER model pnt
  // cloud
- model::PointCloudPtr MakeModelCloud(geom::PointCloud& pntCld) {
-   common::PointCloud_tPtr pntCldPntr(&FixUpO3dColors(pntCld));
+ model::PointCloudPtr MakeModelCloud(const std::string & fN) {
+   geom::PointCloud* gcld= new geom::PointCloud();
+   io::ReadPointCloudFromPLY(fN, *gcld, {"XYZI", true, true, true});
+   common::PointCloud_tPtr pntCldPntr(&FixUpO3dColors(*gcld));
    model::PointCloud* mCld = new model::PointCloud(pntCldPntr);
    model::PointCloudPtr mCldPtr(mCld);
+   mCldPtr->setPlyReadDirectory(fN);
    return mCldPtr;
  }
-
  
 int main(int argc, char* argv[]) {
   utility::SetVerbosityLevel(utility::VerbosityLevel::Debug);
@@ -168,16 +172,13 @@ int main(int argc, char* argv[]) {
   //  BAH, do we need to remove glog from phaser???
   vis::Visualizer vis;
 
-  geom::PointCloud tcld, scld;
+  //geom::PointCloud tcld, scld;
   common::Point_t aa(1,2,3,4);
   cout << aa<<endl;
  
-  io::ReadPointCloudFromPLY( cor::FLAGS_source_cloud, scld, {"XYZI", true, true, true});
-  io::ReadPointCloudFromPLY( cor::FLAGS_target_cloud, tcld, {"XYZI", true, true, true});
 
-  
-  model::PointCloudPtr targetCld = MakeModelCloud(tcld);
-  model::PointCloudPtr sourceCld = MakeModelCloud(scld);
+  model::PointCloudPtr sourceCld = MakeModelCloud(cor::FLAGS_source_cloud);
+  model::PointCloudPtr targetCld = MakeModelCloud(cor::FLAGS_target_cloud);
   double zoom =1.0/5.0;
   
   Eigen::Vector3d up = {0.0, -1.0, 0.0};

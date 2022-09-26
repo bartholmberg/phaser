@@ -61,7 +61,7 @@ class PointCloud {
   void writeToFile(std::string&& directory = "");
 
   std::string getPlyReadDirectory() const noexcept;
-
+  void setPlyReadDirectory(const std::string& ply);
  private:
   void readFromFile(const std::string& ply);
   void sampleNearestWithoutCloudInfo(
