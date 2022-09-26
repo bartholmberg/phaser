@@ -92,7 +92,7 @@ class PointCloud {
   float squared_voxel_size_;
 };
 
-using PointCloudPtr = std::shared_ptr<PointCloud>;
+using PointCloudPtr = std::shared_ptr<model::PointCloud>;
 
 }  // namespace model
 

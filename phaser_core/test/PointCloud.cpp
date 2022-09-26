@@ -167,13 +167,15 @@ int main(int argc, char* argv[]) {
  
   io::ReadPointCloudFromPLY( cor::FLAGS_source_cloud, scld, {"XYZI", true, true, true});
   io::ReadPointCloudFromPLY( cor::FLAGS_target_cloud, tcld, {"XYZI", true, true, true});
- 
 
-  shared_ptr<geom::PointCloud> sourceCld(&FixUpO3dColors(scld));
-  shared_ptr<geom::PointCloud> targetCld(&FixUpO3dColors(tcld));
+  common::PointCloud_tPtr sourceCld(&FixUpO3dColors(scld));
+  //std::shared_ptr<geom::PointCloud> sourceCld(&FixUpO3dColors(scld));
+  std::shared_ptr<geom::PointCloud> targetCld(&FixUpO3dColors(tcld));
   //  BAH, need to build model::PointCloudPtr from geom::PointCloud
-  model::PointCloudPtr foo1;
-
+  model::PointCloud tarCld(targetCld);
+  model::PointCloudPtr tarCldPtr(&tarCld);
+  model::PointCloud  srcCld(sourceCld);
+  model::PointCloudPtr srcCldPtr(&srcCld);
   double zoom =1.0/5.0;
   
   Eigen::Vector3d up = {0.0, -1.0, 0.0};
@@ -185,8 +187,8 @@ int main(int argc, char* argv[]) {
 
   // BAH, these are next to fix up with o3d pnt cld instead of PCL
   auto ctrl = std::make_unique<phaser_core::CloudController>("sph-opt");
-  model::PointCloudPtr tarCld,srcCld;
-  model::RegistrationResult result = ctrl->registerPointCloud(tarCld, srcCld);
+ 
+  model::RegistrationResult result = ctrl->registerPointCloud(tarCldPtr, srcCldPtr);
 
   if (!targetCld.get()->HasNormals()) {
     utility::ScopeTimer timer("Normal estimation with KNN10");
