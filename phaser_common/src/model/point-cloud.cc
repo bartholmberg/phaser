@@ -77,14 +77,15 @@ float PointCloud::calcSquaredVoxelSize() const {
 
 void PointCloud::initialize_kd_tree() {
   std::cout << "Kd tree is initialized: " << std::boolalpha
-          << kd_tree_is_initialized_ << ". for file: " << ply_read_directory_
-          << ".";
+            << kd_tree_is_initialized_ << ". for file: " << ply_read_directory_
+            << "." << std::endl;
+  
   if (kd_tree_is_initialized_)
     return;
   //BAH, comment out
   //kd_tree_.setInputCloud(cloud_);
   kd_tree_is_initialized_ = true;
-  std::cout << "Initialized kd tree.";
+  std::cout << "Initialized kd tree."<<std::endl;
 }
 // BAH, comment out
 /*
@@ -103,8 +104,8 @@ void PointCloud::getNearestPoints(
   //CHECK(kd_tree_is_initialized_);
   //CHECK_NOTNULL(cloud_);
   //CHECK_NOTNULL(function_values);
-  std::vector<int> pointIdxNKNSearch(FLAGS_sampling_neighbors);
-  std::vector<float> pointNKNSquaredDistance(FLAGS_sampling_neighbors);
+  std::vector<int> pointIdxNKNSearch = {FLAGS_sampling_neighbors};
+  std::vector<float> pointNKNSquaredDistance = {(float)FLAGS_sampling_neighbors};
 
   const bool info_cloud_is_available = hasInfoCloud();
   std::cout << "Sampling using info cloud: " << info_cloud_is_available << "." << std::endl;

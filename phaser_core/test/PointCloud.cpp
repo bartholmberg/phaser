@@ -185,8 +185,9 @@ int main(int argc, char* argv[]) {
   Eigen::Vector3d look = {1.0, 1.0, 0.0};
   Eigen::Vector3d front = {0.0, 0.0, -1.0};
   
-  vis::DrawGeometries( {targetCld->getRawCloud(), sourceCld->getRawCloud()}, "o3d pnt clouds for phaser", 1600, 900, 50,
-      50, false, false, false, &look, &up,&front,&zoom);
+ // vis::DrawGeometries( {targetCld->getRawCloud(), sourceCld->getRawCloud()}, 
+ //     "o3d pnt clouds for phaser", 1600, 900, 50,
+  //    50, false, false, false, &look, &up,&front,&zoom);
 
   // BAH, these are next to fix up with o3d pnt cld instead of PCL
   auto ctrl = std::make_unique<phaser_core::CloudController>("sph-opt");
