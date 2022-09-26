@@ -147,16 +147,15 @@ geom::PointCloud& FixUpO3dColors(geom::PointCloud& pntCld) {
   return pntCld;
 }
 
-// MakeModelCloud. Use the 'raw' open3d cloud to construct a PHASER model pnt cloud
- model::PointCloudPtr& MakeModelCloud(geom::PointCloud& pntCld) {
 
-  common::PointCloud_tPtr *pntCldPntr =new common::PointCloud_tPtr( &FixUpO3dColors(pntCld) );
-
-  model::PointCloud* mCld = new model::PointCloud(*pntCldPntr);
-  model::PointCloudPtr* mCldPtr = new model::PointCloudPtr(mCld);
-  return *mCldPtr;
- 
-}
+ // MakeModelCloud. Use the 'raw' open3d cloud to construct a PHASER model pnt
+ // cloud
+ model::PointCloudPtr MakeModelCloud(geom::PointCloud& pntCld) {
+   common::PointCloud_tPtr pntCldPntr(&FixUpO3dColors(pntCld));
+   model::PointCloud* mCld = new model::PointCloud(pntCldPntr);
+   model::PointCloudPtr mCldPtr(mCld);
+   return mCldPtr;
+ }
 
  
 int main(int argc, char* argv[]) {
@@ -176,6 +175,7 @@ int main(int argc, char* argv[]) {
   io::ReadPointCloudFromPLY( cor::FLAGS_source_cloud, scld, {"XYZI", true, true, true});
   io::ReadPointCloudFromPLY( cor::FLAGS_target_cloud, tcld, {"XYZI", true, true, true});
 
+  
   model::PointCloudPtr targetCld = MakeModelCloud(tcld);
   model::PointCloudPtr sourceCld = MakeModelCloud(scld);
   double zoom =1.0/5.0;
