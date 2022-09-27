@@ -107,7 +107,7 @@ void PointCloud::getNearestPoints(
   //CHECK_NOTNULL(function_values);
   std::vector<int> pointIdxNKNSearch = {FLAGS_sampling_neighbors};
   std::vector<float> pointNKNSquaredDistance = {(float)FLAGS_sampling_neighbors};
-
+  std::vector<double> tDist;
   const bool info_cloud_is_available = hasInfoCloud();
   std::cout << "Sampling using info cloud: " << info_cloud_is_available << "." << std::endl;
   const uint32_t n_points = query_points.size();
@@ -118,7 +118,7 @@ void PointCloud::getNearestPoints(
     const common::Point_t& query_point = query_points[i];
     // First, find the closest points.
     // BAH, need to replace with o3d search
-    const int kd_tree_res = 10;
+    //const int kd_tree_res = 10;
     // BAH, redo with o3d search
     // C:\repo\bart\ProjectSuraNovi\O3dCeres
     //def KnnOrder(pcd = o3d.geometry.PointCloud(), center = 100, radius = 3000)
@@ -131,13 +131,23 @@ void PointCloud::getNearestPoints(
     //          idx
     auto foo=cloud_->GetName();
     // 
-    //const int kd_tree_res = kd_tree_.nearestKSearch(
-    //    query_point, FLAGS_sampling_neighbors, pointIdxNKNSearch,
-    //    pointNKNSquaredDistance);
+    int nn = std::min(20, (int)cloud_->points_.size() - 1);
+    std::vector<int> iVec(nn);
+    std::vector<double> dVec(nn);
+    // BAH, need to change query point to cloud_->point, l
+    //kd_tree_->SearchKNN(cloud_->points_[0], nn, iVec, dVec);
+    //kd_tree_->SearchKNN(query_point, nn, iVec, dVec);
+    // 
+    // BAH, link problem??
+    //kd_tree_->SearchKNN(query_point, FLAGS_sampling_neighbors, pointIdxNKNSearch,tDist);
+    const int kd_tree_res = 1;
     if (kd_tree_res <= 0) {
       std::cout << "Unable to find nearest neighbor. Skipping point." << std::endl;
       continue;
     }
+    //BAH, TODO: change float to double in PHASER. Then remove klunky 
+    //    next line.
+    pointNKNSquaredDistance[0] = tDist[0];
     if (info_cloud_is_available) {
       sampleNearestWithCloudInfo(
           i, pointIdxNKNSearch, pointNKNSquaredDistance, function_values);
