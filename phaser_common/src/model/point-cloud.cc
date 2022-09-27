@@ -116,19 +116,7 @@ void PointCloud::getNearestPoints(
   // #pragma omp parallel for num_threads(2)
   for (uint32_t i = 0u; i < n_points; ++i) {
     const common::Point_t& query_point = query_points[i];
-    // First, find the closest points.
-    // BAH, need to replace with o3d search
-    //const int kd_tree_res = 10;
-    // BAH, redo with o3d search
-    // C:\repo\bart\ProjectSuraNovi\O3dCeres
-    //def KnnOrder(pcd = o3d.geometry.PointCloud(), center = 100, radius = 3000)
-    //   : pcd_tree = o3d.geometry.KDTreeFlann(pcd)
-    //                     [k, idx, _] =
-    //          pcd_tree.search_radius_vector_3d(pcd.points[center], radius)
-    //     #[k0, idx0, _] = pcd_tree.search_knn_vector_xd(pcd.points[center], 3)
-    //     #idx = np.sort(idx)
-    //                  return pcd,
-    //          idx
+
     auto foo=cloud_->GetName();
     // 
     int nn = std::min(20, (int)cloud_->points_.size() - 1);
@@ -139,7 +127,10 @@ void PointCloud::getNearestPoints(
     //kd_tree_->SearchKNN(query_point, nn, iVec, dVec);
     // 
     // BAH, link problem??
-    //kd_tree_->SearchKNN(query_point, FLAGS_sampling_neighbors, pointIdxNKNSearch,tDist);
+    auto tmp0 = cloud_->points_[0];
+    auto tmp1 = (Eigen::Vector3d)query_point.getArray3fMap().cast<double>();
+  ;
+    kd_tree_->SearchKNN(tmp1, FLAGS_sampling_neighbors, pointIdxNKNSearch,tDist);
     const int kd_tree_res = 1;
     if (kd_tree_res <= 0) {
       std::cout << "Unable to find nearest neighbor. Skipping point." << std::endl;
