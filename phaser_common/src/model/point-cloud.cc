@@ -82,8 +82,9 @@ void PointCloud::initialize_kd_tree() {
   
   if (kd_tree_is_initialized_)
     return;
-  //BAH, comment out
-  //kd_tree_.setInputCloud(cloud_);
+  //BAH, comment in
+  kd_tree_ = new o3d::geometry::KDTreeFlann(*cloud_);
+  //kd_tree_->SetGeometry(*cloud_);
   kd_tree_is_initialized_ = true;
   std::cout << "Initialized kd tree."<<std::endl;
 }

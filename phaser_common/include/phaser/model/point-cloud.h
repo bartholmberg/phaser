@@ -79,8 +79,8 @@ class PointCloud {
   common::PointCloud_tPtr info_cloud_;
   // BAH, call KdTreeFLANN constructor which is deleted
   //      so causes C2280 compiler error
-  //o3d::geometry::KDTreeFlann kd_tree_;
-  std::vector<int> kd_tree_;
+  o3d::geometry::KDTreeFlann* kd_tree_;
+  //std::vector<int> kd_tree_;
   //pcl::KdTreeFLANN<common::Point_t> kd_tree_;
   //pcl::KdTreeFLANN<common::Point_t> kd_tree_;
   bool kd_tree_is_initialized_;

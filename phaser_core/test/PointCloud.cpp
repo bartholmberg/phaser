@@ -157,6 +157,7 @@ geom::PointCloud& FixUpO3dColors(geom::PointCloud& pntCld) {
  // cloud
  model::PointCloudPtr MakeModelCloud(const std::string & fN) {
    geom::PointCloud* gcld= new geom::PointCloud();
+   gcld->SetName(fN);
    io::ReadPointCloudFromPLY(fN, *gcld, {"XYZI", true, true, true});
    common::PointCloud_tPtr pntCldPntr(&FixUpO3dColors(*gcld));
    model::PointCloud* mCld = new model::PointCloud(pntCldPntr);
@@ -182,6 +183,7 @@ int main(int argc, char* argv[]) {
 
   model::PointCloudPtr sourceCld = MakeModelCloud(cor::FLAGS_source_cloud);
   model::PointCloudPtr targetCld = MakeModelCloud(cor::FLAGS_target_cloud);
+  std::cout << sourceCld->getRawCloud()->GetName() << " " << std::endl;
   double zoom =1.0/5.0;
   // simple nearest neighbor search example
   geometry::KDTreeFlann fooKd(*sourceCld->getRawCloud());
