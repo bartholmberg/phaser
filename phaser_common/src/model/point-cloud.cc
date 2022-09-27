@@ -38,7 +38,7 @@ PointCloud::PointCloud(common::PointCloud_tPtr cloud)
       kd_tree_is_initialized_(false),
       ply_directory_(FLAGS_PlyWriteDirectory) {
     //BAH, comment out
-  // ranges_.resize(cloud_->size());
+  ranges_.resize(cloud_->points_.size());
   squared_voxel_size_ = calcSquaredVoxelSize();
 }
 
@@ -49,7 +49,7 @@ PointCloud::PointCloud(const std::string& ply)
       ply_directory_(FLAGS_PlyWriteDirectory) {
   readFromFile(ply);
   //BAH, comment out
-  //ranges_.resize(cloud_->size());
+  ranges_.resize(cloud_->points_.size());
   squared_voxel_size_ = calcSquaredVoxelSize();
 }
 
@@ -299,7 +299,7 @@ PointCloud PointCloud::clone() const {
   // BAH, use copy constructor for raw cloud
   geom::PointCloud foo2(*cloud_);
   *cloned_cloud.cloud_= foo2;
-  //cloned_cloud.ranges_ = ranges_;
+  cloned_cloud.ranges_ = ranges_;
   cloned_cloud.reflectivities_ = reflectivities_;
   //cloned_cloud.ambient_points_ = ambient_points_;
   cloned_cloud.ply_read_directory_ = ply_read_directory_;
@@ -401,8 +401,8 @@ void PointCloud::parsePlyPointCloud(PlyPointCloud&& ply_point_cloud) {
     ++k;
   }
   //ambient_points_ = ply_point_cloud.getAmbientPoints();
-  //ranges_ = ply_point_cloud.getRange();
-  //reflectivities_ = ply_point_cloud.getReflectivities();
+  ranges_ = ply_point_cloud.getRange();
+  reflectivities_ = ply_point_cloud.getReflectivities();
   
 }
 
