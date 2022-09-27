@@ -28,6 +28,7 @@ void SphericalProjection::naiveProjection(
 
     // Set spherical coordinates.
     common::Point_t point_out = cloud_out->pointAt(i);
+
     point_out.z = point.z / dist;
     cloud_out->setRange(dist, i);
 
@@ -38,6 +39,9 @@ void SphericalProjection::naiveProjection(
     // Convert back to cartesian coordinates.
     point_out.x = std::sin(tmp_x) * std::cos(tmp_y);
     point_out.y = std::sin(tmp_x) * std::sin(tmp_y);
+    // BAH, Added extra move(s) at in/out.  Need to fix this 
+    // after functional
+    cloud_out->getRawCloud()->points_[i] = {point_out.x, point_out.y, point_out.z};
   }
 }
 

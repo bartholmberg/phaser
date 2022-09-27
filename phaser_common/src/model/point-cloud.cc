@@ -166,11 +166,12 @@ void PointCloud::sampleNearestWithoutCloudInfo(
     }
     const int current_idx = pointIdxNKNSearch[i];
     //BAH, comment out
-    //if (current_idx < 0 || current_idx >= cloud_->size()) {
-    //  continue;
-    //}
-    /*
-    const common::Point_t& point = cloud_->points[current_idx];
+    if (current_idx < 0 || current_idx >= cloud_->points_.size()  ) {
+      continue;
+    }
+    auto t0 = cloud_->points_[current_idx];
+    
+    const common::Point_t& point = {(float)t0.x(),(float)t0.y(),(float)t0.z(),(float)t0[3]};
     value.addPoint(point);
     value.addRange(ranges_.at(current_idx));
     value.addIntensity(point.intensity);
@@ -178,7 +179,7 @@ void PointCloud::sampleNearestWithoutCloudInfo(
       value.addReflectivity(reflectivities_.at(current_idx));
     if (!ambient_points_.empty())
       value.addAmbientNoise(ambient_points_.at(current_idx));
-      */
+      
   }
 }
 
