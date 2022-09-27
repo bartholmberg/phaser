@@ -117,7 +117,19 @@ void PointCloud::getNearestPoints(
     const common::Point_t& query_point = query_points[i];
     // First, find the closest points.
     // BAH, need to replace with o3d search
-    const int kd_tree_res = 0;
+    const int kd_tree_res = 10;
+    // BAH, redo with o3d search
+    // C:\repo\bart\ProjectSuraNovi\O3dCeres
+    //def KnnOrder(pcd = o3d.geometry.PointCloud(), center = 100, radius = 3000)
+    //   : pcd_tree = o3d.geometry.KDTreeFlann(pcd)
+    //                     [k, idx, _] =
+    //          pcd_tree.search_radius_vector_3d(pcd.points[center], radius)
+    //     #[k0, idx0, _] = pcd_tree.search_knn_vector_xd(pcd.points[center], 3)
+    //     #idx = np.sort(idx)
+    //                  return pcd,
+    //          idx
+    auto foo=cloud_->GetName();
+    // 
     //const int kd_tree_res = kd_tree_.nearestKSearch(
     //    query_point, FLAGS_sampling_neighbors, pointIdxNKNSearch,
     //    pointNKNSquaredDistance);

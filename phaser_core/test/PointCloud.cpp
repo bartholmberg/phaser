@@ -32,7 +32,9 @@
 #include <memory>
 #include <open3d/Open3D.h>
 #include <open3d/geometry/PointCloud.h>
-
+#include "open3d/geometry/Geometry3D.h"
+#include "open3d/geometry/KDTreeSearchParam.h"
+#include "open3d/utility/Optional.h"
 
 #include <phaser/common/point-types.h>
 #include <pcl/io/pcd_io.h>
@@ -181,10 +183,16 @@ int main(int argc, char* argv[]) {
   model::PointCloudPtr sourceCld = MakeModelCloud(cor::FLAGS_source_cloud);
   model::PointCloudPtr targetCld = MakeModelCloud(cor::FLAGS_target_cloud);
   double zoom =1.0/5.0;
-  
+  // simple nearest neighbor search example
+  geometry::KDTreeFlann fooKd(*sourceCld->getRawCloud());
+  int nn = std::min(20, (int)sourceCld->getRawCloud()->points_.size() - 1);
+  std::vector<int> iVec(nn);
+  std::vector<double> dVec(nn);
+  fooKd.SearchKNN(sourceCld->getRawCloud()->points_[0], nn, iVec, dVec);
   Eigen::Vector3d up = {0.0, -1.0, 0.0};
   Eigen::Vector3d look = {1.0, 1.0, 0.0};
   Eigen::Vector3d front = {0.0, 0.0, -1.0};
+  // clone o3d cloud example
   geom::PointCloud foo(targetCld->getRawCloud()->points_);
   geom::PointCloud foo2(*targetCld->getRawCloud());
   foo2= *targetCld->getRawCloud();
