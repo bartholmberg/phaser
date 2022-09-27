@@ -108,7 +108,8 @@ void PointCloud::getNearestPoints(
   std::vector<int> pointIdxNKNSearch = {FLAGS_sampling_neighbors};
   std::vector<float> pointNKNSquaredDistance = {(float)FLAGS_sampling_neighbors};
   std::vector<double> tDist;
-  const bool info_cloud_is_available = hasInfoCloud();
+  const bool info_cloud_is_available = false;
+  //= hasInfoCloud();
   std::cout << "Sampling using info cloud: " << info_cloud_is_available << "." << std::endl;
   const uint32_t n_points = query_points.size();
   function_values->resize(n_points);
@@ -247,16 +248,20 @@ bool PointCloud::hasInfoCloud() const {
 const common::Point_t& PointCloud::pointAt(const std::size_t idx) {
   //CHECK_NOTNULL(cloud_);
  // CHECK(idx < cloud_->size());
-  //return cloud_->points_[idx];
-  return NULL;
+  auto tp = cloud_->points_[idx];
+
+  common::Point_t tmp(tp.x(), tp.y(), tp.z(),1.0);
+  common::Point_t& t(tmp);
+  return t;
+  //return NULL;
 }
 
 const common::Point_t& PointCloud::pointAt(const std::size_t idx) const {
-  //CHECK_NOTNULL(cloud_);
-  // BAH , comment out
-  //CHECK(idx < cloud_->size());
-  //return cloud_->points[idx];
-  return NULL;
+  auto tp = cloud_->points_[idx];
+
+  common::Point_t tmp(tp.x(), tp.y(), tp.z(), 1.0);
+  common::Point_t& t(tmp);
+  return t;
 }
 
 const common::Point_t& PointCloud::infoPointAt(const std::size_t idx)  {
@@ -277,7 +282,7 @@ const common::Point_t& PointCloud::infoPointAt(const std::size_t idx) const {
 std::size_t PointCloud::size() const {
   // BAH , comment out
   //CHECK_NOTNULL(cloud_);
-  //return cloud_->points.size();
+  return cloud_->points_.size();
   return 0;
 }
 
