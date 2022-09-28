@@ -139,7 +139,8 @@ geom::PointCloud& FixUpO3dColors(geom::PointCloud& pntCld) {
   }
   if (maxVal == 0.0)
     return pntCld;
-  double invMax = 1.0 / maxVal;
+  double invMax = 2729984.0*1.0 / maxVal;
+  invMax = 1.0;
   for (auto& clr : pntCld.colors_) {
     double r = clr(0) * invMax;
     clr(1) = r;
