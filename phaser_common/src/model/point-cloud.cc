@@ -170,8 +170,8 @@ void PointCloud::sampleNearestWithoutCloudInfo(
       continue;
     }
     auto t0 = cloud_->points_[current_idx];
-    
-    const common::Point_t& point = {(float)t0.x(),(float)t0.y(),(float)t0.z(),(float)t0[3]};
+    auto c0 = cloud_->colors_[current_idx];
+    const common::Point_t& point = {(float)t0.x(),(float)t0.y(),(float)t0.z(),(float)c0[0]};
     value.addPoint(point);
     value.addRange(ranges_.at(current_idx));
     value.addIntensity(point.intensity);

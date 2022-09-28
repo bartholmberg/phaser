@@ -26,19 +26,12 @@ void SphericalSampler::initialize(const int bandwith) {
   //CHECK(is_initialized_);
   grid->clear();
   model::PointCloud sphere = projection_.convertPointCloudCopy(cloud);
-  model::PointCloud* sphereP =new model::PointCloud (projection_.convertPointCloudCopy(cloud));
+  //model::PointCloud* sphereP =new model::PointCloud (projection_.convertPointCloudCopy(cloud));
   // BAH, save out spherical projected cloud, 
   //      Note,this function gets scheduled as a Task (in places), and any change to interface
-  //      breaks the task (why?).  But that is reason for clunky file names here.
-  std::string cldName;
-  if (cnt == 0)
-    cldName = "targetPrj.ply";
-  else
-    cldName = "sourcePrj.ply";
-  cnt++;
-  // BAH , comment out
-  // if ( cldName.size() >0 )
-    //pcl::io::savePLYFileBinary(cldName, *sphereP->getRawCloud());
+  //      breaks the task (why?).  
+
+
   sphere.initialize_kd_tree();
   sphere.getNearestPoints(cartesian_grid_, grid);
 }

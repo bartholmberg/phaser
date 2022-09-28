@@ -42,6 +42,7 @@ void SphericalProjection::naiveProjection(
     // BAH, Added extra move(s) at in/out.  Need to fix this 
     // after functional
     cloud_out->getRawCloud()->points_[i] = {point_out.x, point_out.y, point_out.z};
+
   }
 }
 
