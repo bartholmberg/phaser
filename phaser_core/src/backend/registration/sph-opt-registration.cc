@@ -19,8 +19,14 @@
 //#include <pcl/io/ply_io.h>
 //#include <pcl/point_types.h>
 //#include <pcl/visualization/cloud_viewer.h>
+#include <open3d/Open3D.h>
+#include <open3d/geometry/PointCloud.h>
 namespace phaser_core {
-
+using namespace open3d;
+// namespace o3d = open3d;
+// namespace geom = geometry;
+namespace vis = visualization;
+namespace cor = phaser_core;
 SphOptRegistration::SphOptRegistration()
     : BaseRegistration("SphOptRegistration"),
       bandwidth_(FLAGS_phaser_core_spherical_bandwidth),
@@ -46,6 +52,16 @@ model::RegistrationResult SphOptRegistration::registerPointCloud(
 
   // Register the point cloud.
   model::RegistrationResult result = estimateRotation(cloud_prev, cloud_cur);
+  Eigen::Vector3d up = {0.0, -1.0, 0.0};
+  Eigen::Vector3d look = {1.0, 1.0, 0.0};
+  Eigen::Vector3d front = {0.0, 0.0, -1.0};
+  cloud_cur->getRawCloud()->PaintUniformColor({0.5, 0, 0});
+  cloud_prev->getRawCloud()->PaintUniformColor({0,0.5,  0});
+  vis::DrawGeometries(
+      {cloud_prev->getRawCloud(),
+       cloud_cur->getRawCloud()},
+      "Rotation Corrected point cloud", 1600, 900, 50, 50, false, false, false,
+      &look, &up, &front, 1/5);
 
   //pcl::visualization::CloudViewer viewer("Simple Cloud Viewer");
   // BAH, viewer doesn't like raw point cloud object???

@@ -286,7 +286,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\spherical-sampler.cc">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Disabled</Optimization>
     </ClCompile>
-    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\rotation-utils.cc" />
+    <ClCompile Include="C:\repo\phaser\phaser_common\src\common\rotation-utils.cc">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Disabled</Optimization>
+    </ClCompile>
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\translation-utils.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\statistics-manager.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\metric-utils.cc" />

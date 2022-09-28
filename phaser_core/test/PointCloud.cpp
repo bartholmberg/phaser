@@ -132,17 +132,10 @@ void PrintPointCloud(const geom::PointCloud& pointcloud) {
 //  NOTE- add a return value for convenient use in compound expressions.
 //        (even though this is in-place)
 geom::PointCloud& FixUpO3dColors(geom::PointCloud& pntCld) {
-  double maxVal = 0.0;
+  
+  double Scale = 1.0;
   for (auto& clr : pntCld.colors_) {
-    double r = clr(0);
-    if (r > maxVal) maxVal = r;
-  }
-  if (maxVal == 0.0)
-    return pntCld;
-  double invMax = 2729984.0*1.0 / maxVal;
-  invMax = 1.0;
-  for (auto& clr : pntCld.colors_) {
-    double r = clr(0) * invMax;
+    double r = clr(0) * Scale;
     clr(1) = r;
     clr(2) = r;
     clr(0) = r;
@@ -191,6 +184,7 @@ int main(int argc, char* argv[]) {
   int nn = std::min(20, (int)sourceCld->getRawCloud()->points_.size() - 1);
   std::vector<int> iVec(nn);
   std::vector<double> dVec(nn);
+  // BAH, simple example of o3d nearest neighbor search
   fooKd.SearchKNN(sourceCld->getRawCloud()->points_[0], nn, iVec, dVec);
   Eigen::Vector3d up = {0.0, -1.0, 0.0};
   Eigen::Vector3d look = {1.0, 1.0, 0.0};
@@ -199,7 +193,7 @@ int main(int argc, char* argv[]) {
   geom::PointCloud foo(targetCld->getRawCloud()->points_);
   geom::PointCloud foo2(*targetCld->getRawCloud());
   foo2= *targetCld->getRawCloud();
-  vis::DrawGeometries( {targetCld->getRawCloud(), sourceCld->getRawCloud()}, 
+  vis::DrawGeometries({targetCld->getRawCloudScaledColor(),    sourceCld->getRawCloudScaledColor()}, 
       "o3d pnt clouds for phaser", 1600, 900, 50,
       50, false, false, false, &look, &up,&front,&zoom);
 

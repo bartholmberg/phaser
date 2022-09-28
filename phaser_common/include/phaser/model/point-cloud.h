@@ -36,6 +36,7 @@ class PointCloud {
 
   common::PointCloud_tPtr getRawCloud() const;
   common::PointCloud_tPtr& getRawCloud();
+  common::PointCloud_tPtr& getRawCloudScaledColor();
   common::PointCloud_tPtr getRawInfoCloud() const;
   common::PointCloud_tPtr& getRawInfoCloud();
   bool hasInfoCloud() const;

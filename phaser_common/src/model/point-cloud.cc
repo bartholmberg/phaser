@@ -12,7 +12,8 @@
 #include "phaser/common/core-gflags.h"
 #include "phaser/common/data/file-system-helper.h"
 #include "phaser/common/data/ply-helper.h"
-
+#include <open3d/Open3D.h>
+#include <open3d/geometry/PointCloud.h>
 DEFINE_string(
     PlyWriteDirectory, "", "Defines the directory to store the point clouds.");
 DEFINE_string(PlyPrefix, "cloud", "Defines the prefix name for the PLY.");
@@ -212,6 +213,8 @@ void PointCloud::sampleNearestWithCloudInfo(
 void PointCloud::transformPointCloud(const Eigen::Matrix4f& T) {
     //BAH , comment out
   //pcl::transformPointCloud(*cloud_, *cloud_, T);
+
+    cloud_->Transform( T.cast<double>() );
 }
 
 void PointCloud::transformPointCloudCopy(
@@ -232,7 +235,31 @@ common::PointCloud_tPtr PointCloud::getRawCloud() const {
 common::PointCloud_tPtr& PointCloud::getRawCloud() {
   return cloud_;
 }
+// BAH, For O3D drawing scaling colors must be scaled <1.0
+//      recall we used the o3d point cloud, red channel as 
+//      intensity 
+common::PointCloud_tPtr& PointCloud::getRawCloudScaledColor() {
 
+  double maxVal = 0.0;
+  for (auto& clr : cloud_->colors_) {
+    double r = clr(0);
+    if (r > maxVal)
+      maxVal = r;
+  }
+  if (maxVal == 0.0)
+    return cloud_;
+  double invMax = 1.0 / maxVal;
+
+  auto scaledRawCld = new open3d::geometry::PointCloud(*cloud_) ;
+  for (auto& clr : scaledRawCld->colors_) {
+    double r = clr(0) * invMax;
+    clr(1) = r;
+    clr(2) = r;
+    clr(0) = r;
+  }
+  auto tmp = new common::PointCloud_tPtr(scaledRawCld);
+  return *std::move(tmp);
+}
 common::PointCloud_tPtr PointCloud::getRawInfoCloud() const {
   return info_cloud_;
 }
