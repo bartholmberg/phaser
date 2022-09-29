@@ -55,19 +55,17 @@ model::RegistrationResult SphOptRegistration::registerPointCloud(
   Eigen::Vector3d up = {0.0, -1.0, 0.0};
   Eigen::Vector3d look = {1.0, 1.0, 0.0};
   Eigen::Vector3d front = {0.0, 0.0, -1.0};
-  cloud_cur->getRawCloud()->PaintUniformColor({0.5, 0, 0});
-  cloud_prev->getRawCloud()->PaintUniformColor({0,0.5,  0});
+  auto foop = cloud_prev->clone();
+  foop.getRawCloud()->PaintUniformColor({0.7, 0.7, 0.0});
+
+  
+  
+  //foop.getRawCloud()->PaintUniformColor({0.5, 0.3, 0.0});
   vis::DrawGeometries(
-      {cloud_prev->getRawCloud(),
-       cloud_cur->getRawCloud()},
+      {foop.getRawCloud(), cloud_cur->getRawCloudScaledColor()},
       "Rotation Corrected point cloud", 1600, 900, 50, 50, false, false, false,
       &look, &up, &front, 1/5);
 
-  //pcl::visualization::CloudViewer viewer("Simple Cloud Viewer");
-  // BAH, viewer doesn't like raw point cloud object???
-  //viewer.showCloud(*cloud_cur->getRawCloud());
-  //  BAH, save out rot only pnt cld
-  //pcl::io::savePLYFileBinary("rotonly.ply", *cloud_cur->getRawCloud());
   estimateTranslation(cloud_prev, &result);
   return result;
 }
