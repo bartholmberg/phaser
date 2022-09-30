@@ -17,5 +17,8 @@
     <None Include="..\O3DIntegrationPlan.md">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="..\point_cloud_pcl.h.md">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
