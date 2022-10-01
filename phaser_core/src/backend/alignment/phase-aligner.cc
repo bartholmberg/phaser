@@ -13,43 +13,11 @@
 #include "phaser/common/core-gflags.h"
 #include "phaser/common/point-cloud-utils.h"
 #include "phaser/common/signal-utils.h"
-
+#include "phaser\model\point-cloud.h"
+#include "phaser\common\point-types.h"
 namespace phaser_core {
-//std::vector<PointT, Eigen::aligned_allocator<PointT> > points;
-/** \brief Return an Eigen MatrixXf (assumes float values) mapped to the
- * specified dimensions of the PointCloud. \note This method is for advanced
- * users only! Use with care!
- *
- * \attention Compile time flags used for Eigen might affect the dimension of
- * the Eigen::Map returned. If Eigen is using row major storage, the matrix
- * shape would be (number of Points X elements in a Point) else the matrix shape
- * would be (elements in a Point X number of Points). Essentially,
- *   * Major direction: number of points in cloud
- *   * Minor direction: number of point dimensions
- * By default, as of Eigen 3.3, Eigen uses Column major storage
- *
- * \param[in] dim the number of dimensions to consider for each point
- * \param[in] stride the number of values in each point (will be the number of
- * values that separate two of the columns) \param[in] offset the number of
- * dimensions to skip from the beginning of each point (stride = offset + dim +
- * x, where x is the number of dimensions to skip from the end of each point)
- * \note for getting only XYZ coordinates out of PointXYZ use dim=3, stride=4
- * and offset=0 due to the alignment. \attention PointT types are most of the
- * time aligned, so the offsets are not continuous!
- */
- /*   
-inline Eigen::Map<Eigen::MatrixXf, Eigen::Aligned, Eigen::OuterStride<> >
-getMatrixXfMap(int dim, int stride, int offset) {
-  if (Eigen::MatrixXf::Flags & Eigen::RowMajorBit)
-    return (Eigen::Map<Eigen::MatrixXf, Eigen::Aligned, Eigen::OuterStride<> >(
-        reinterpret_cast<float*>(&points[0]) + offset, size(), dim,
-        Eigen::OuterStride<>(stride)));
-  else
-    return (Eigen::Map<Eigen::MatrixXf, Eigen::Aligned, Eigen::OuterStride<> >(
-        reinterpret_cast<float*>(&points[0]) + offset, dim, size(),
-        Eigen::OuterStride<>(stride)));
-}
-*/
+
+
 PhaseAligner::PhaseAligner()
     : n_voxels_(FLAGS_phaser_core_spatial_n_voxels),
       total_n_voxels_(
@@ -118,6 +86,8 @@ void PhaseAligner::discretizePointcloud(
   auto data2 = cloud.getRawCloud();
   // BAH, comment out for now until we 
   // can build in o3d
+  // added to point-types.h for now.  May need to move
+  // to point-cloud.h
   //data = cloud.getRawCloud()->getMatrixXfMap();
   // Discretize the point cloud using an cartesian grid.
   VLOG(1) << "Performing histogram counts.";
