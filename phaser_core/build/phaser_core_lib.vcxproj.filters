@@ -124,6 +124,9 @@
     <ClCompile Include="C:\repo\phaser\phaser_core\src\backend\fusion\pyramid-struct.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\include\igl\histc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\repo\phaser\phaser_core\CMakeLists.txt" />

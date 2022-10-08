@@ -92,6 +92,7 @@ DEFINE_int32(phaser_core_spatial_low_pass_upper_bound, 115, "");
 
 using namespace std;
 using namespace open3d;
+using namespace Eigen;
 //namespace o3d = open3d;
 //namespace geom = geometry;
 namespace vis = visualization;
@@ -199,7 +200,13 @@ int main(int argc, char* argv[]) {
 
   // BAH, these are next to fix up with o3d pnt cld instead of PCL
   auto ctrl = std::make_unique<phaser_core::CloudController>("sph-opt");
- 
+  auto tmpFoo = common::getMatrixXfMap(3, 3, 1);
+
+  double fo[10];
+  for (int i = 0; i < 10; i++) {
+    fo[i] = i;
+  }
+  std::cout << Map<Matrix4d>(fo) << tmpFoo << endl;
   model::RegistrationResult result =
       ctrl->registerPointCloud(targetCld, sourceCld);
 

@@ -68,7 +68,10 @@ void PhaseAligner::alignRegistered(
   previous_correlation_ =
       std::vector<double>(c, c + spatial_correlation_->getCorrelationSize());
 }
-
+using namespace std;
+using namespace Eigen;
+using namespace open3d;
+namespace vis = visualization;
 void PhaseAligner::discretizePointcloud(
     const model::PointCloud& cloud, const std::vector<Eigen::VectorXd*>& f,
     Eigen::VectorXd* hist) const {
@@ -81,20 +84,33 @@ void PhaseAligner::discretizePointcloud(
 
   VLOG(1) << "Discretizing point cloud...";
   Eigen::MatrixXf data;
+  //void* rptr;
   // BAH, remove until after init testing
 
-  auto data2 = cloud.getRawCloud();
+  model::PointCloud *data2 =new model::PointCloud(cloud.getRawCloud());
   // BAH, comment out for now until we 
   // can build in o3d
   // added to point-types.h for now.  May need to move
   // to point-cloud.h
   //data = cloud.getRawCloud()->getMatrixXfMap();
+  geom::PointCloud&  rptr = *cloud.getRawCloud();
+  void* tptr = &rptr.points_;
+  // BAH,
+  // zptr,used in igl::histc() below.  May need to use getMatrixXfMap()
+  //
+  Eigen::MatrixXf* zptr = (Eigen::MatrixXf*)tptr;
+  //void * tptr = (void *)*rptr;
   // Discretize the point cloud using an cartesian grid.
   VLOG(1) << "Performing histogram counts.";
+  geom::VoxelGrid foo ;
+  auto f2=foo.CreateFromPointCloud(*data2->getRawCloudScaledColor(),0.02);
+  vis::DrawGeometries(
+      {f2},
+      "o3d pnt clouds for phaser", 1600, 900, -50, 50, false, false, false);
   Eigen::VectorXd x_bins, y_bins, z_bins;
-  igl::histc(data.row(0), edges_, x_bins);
-  igl::histc(data.row(1), edges_, y_bins);
-  igl::histc(data.row(2), edges_, z_bins);
+  igl::histc(zptr->row(0), edges_, x_bins);
+  igl::histc(zptr->row(1), edges_, y_bins);
+  igl::histc(zptr->row(2), edges_, z_bins);
 
   // Calculate an average function value for each voxel.
   Eigen::VectorXd* f_intensities = f[0];

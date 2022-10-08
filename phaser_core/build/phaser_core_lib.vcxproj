@@ -72,7 +72,7 @@
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <OpenMPSupport>true</OpenMPSupport>
-      <Optimization>MaxSpeed</Optimization>
+      <Optimization>Disabled</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -214,6 +214,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\include\igl\histc.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="C:\repo\phaser\phaser_core\lib\SOFT\s2_legendreTransforms.c" />
     <ClCompile Include="C:\repo\phaser\phaser_core\lib\SOFT\makeweights.c" />
     <ClCompile Include="C:\repo\phaser\phaser_core\lib\SOFT\s2_primitive.c" />

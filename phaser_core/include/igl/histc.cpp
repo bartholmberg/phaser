@@ -34,6 +34,7 @@ template <typename DerivedX, typename DerivedE, typename DerivedB>
 inline void igl::histc(
     const Eigen::MatrixBase<DerivedX>& X, const Eigen::MatrixBase<DerivedE>& E,
     Eigen::PlainObjectBase<DerivedB>& B) {
+  // BAH, o3d point cloud questions.  
   const std::size_t m = X.size();
   using namespace std;
   assert(
@@ -41,6 +42,7 @@ inline void igl::histc(
               .maxCoeff() >= 0 &&
       "E should be monotonically increasing");
   B.resize(m, 1);
+  std::cout << "" << X.size() << m << std::endl;
 #pragma omp parallel for num_threads(8)
   for (int j = 0; j < m; ++j) {
     const double x = X(j);
