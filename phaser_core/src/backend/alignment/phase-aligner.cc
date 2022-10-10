@@ -16,8 +16,18 @@
 #include "phaser\model\point-cloud.h"
 #include "phaser\common\point-types.h"
 namespace phaser_core {
-
-
+using namespace Eigen;
+Map<MatrixXd, Aligned, OuterStride<> >
+getMatrixXdMap2(int dim, int stride, int offset,double * points_, std::size_t size) {
+  auto tmp0 = Map< MatrixXd, Aligned, OuterStride<> >(
+      reinterpret_cast<double*>(&points_[0]) + offset, size, dim,OuterStride<>(stride));
+  auto tmp1=  Map< MatrixXd, Aligned, OuterStride<> >(
+      reinterpret_cast<double*>(&points_[0]) + offset, dim, size, OuterStride<>(stride));
+  if (MatrixXd::Flags & RowMajorBit)
+    return tmp0;
+  else
+    return tmp1;
+}
 PhaseAligner::PhaseAligner()
     : n_voxels_(FLAGS_phaser_core_spatial_n_voxels),
       total_n_voxels_(
@@ -98,6 +108,13 @@ void PhaseAligner::discretizePointcloud(
   // BAH,
   // zptr,used in igl::histc() below.  May need to use getMatrixXfMap()
   //
+  
+  //Eigen::MatrixXd tmpFoo =
+   //   getMatrixXdMap2(8, 8, 0, (double*)&rptr.points_[0], rptr.points_.size());
+  auto &tmpFoo =
+      getMatrixXdMap2(8, 8, 0, (double*)&rptr.points_[0], rptr.points_.size());
+  Eigen::MatrixXf* fooXf = new Eigen::MatrixXf();//
+  //=common::getMatrixXfMap(8, 8, 1);
   Eigen::MatrixXf* zptr = (Eigen::MatrixXf*)tptr;
   //void * tptr = (void *)*rptr;
   // Discretize the point cloud using an cartesian grid.
@@ -108,7 +125,8 @@ void PhaseAligner::discretizePointcloud(
       {f2},
       "o3d pnt clouds for phaser", 1600, 900, -50, 50, false, false, false);
   Eigen::VectorXd x_bins, y_bins, z_bins;
-  igl::histc(zptr->row(0), edges_, x_bins);
+  //cout << tmpFoo.row(0) << std::hex<<endl;
+  igl::histc(tmpFoo.row(0), edges_, x_bins);
   igl::histc(zptr->row(1), edges_, y_bins);
   igl::histc(zptr->row(2), edges_, z_bins);
 
