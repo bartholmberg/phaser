@@ -84,7 +84,7 @@ void PhaseAligner::discretizePointcloud(
   CHECK_NOTNULL(hist);
 
   VLOG(1) << "Discretizing point cloud...";
-  Eigen::MatrixXf data;
+  //Eigen::MatrixXf data;
   //void* rptr;
   // BAH, remove until after init testing
 
@@ -102,7 +102,8 @@ void PhaseAligner::discretizePointcloud(
   
 
 
-   auto tmpFoo = Map< MatrixXd, Aligned, OuterStride<> >(reinterpret_cast<double*>(&rptr.points_[0]) + 0, 3, rptr.points_.size(),
+    auto data = Map<MatrixXd, Aligned, OuterStride<> >(
+      reinterpret_cast<double*>(&rptr.points_[0]) + 0, 3, rptr.points_.size(),
       OuterStride<>(3));
   //Eigen::MatrixXf* fooXf = new Eigen::MatrixXf();//
   //=common::getMatrixXfMap(8, 8, 1);
@@ -117,9 +118,9 @@ void PhaseAligner::discretizePointcloud(
       "o3d pnt clouds for phaser", 1600, 900, -50, 50, false, false, false);
   Eigen::VectorXd x_bins, y_bins, z_bins;
   //cout << tmpFoo.row(0) << std::hex<<endl;
-  igl::histc(tmpFoo.row(0), edges_, x_bins);
-  igl::histc(tmpFoo.row(1), edges_, y_bins);
-  igl::histc(tmpFoo.row(2), edges_, z_bins);
+  igl::histc(data.row(0), edges_, x_bins);
+  igl::histc(data.row(1), edges_, y_bins);
+  igl::histc(data.row(2), edges_, z_bins);
 
   // Calculate an average function value for each voxel.
   Eigen::VectorXd* f_intensities = f[0];
@@ -140,8 +141,10 @@ void PhaseAligner::discretizePointcloud(
     if (lin_index > n_f) {
       continue;
     }
+    auto intensity = cloud.getRawCloud()->colors_[i].x();
+
     (*f_intensities)(lin_index) =
-        (*f_intensities)(lin_index) + cloud.pointAt(i).intensity;
+        (*f_intensities)(lin_index) + intensity;
     (*f_ranges)(lin_index) = (*f_ranges)(lin_index) + cloud.rangeAt(i);
     if (cloud.hasReflectivityPoints())
       (*f_reflectivity)(lin_index) =
