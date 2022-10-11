@@ -213,8 +213,8 @@ int main(int argc, char* argv[]) {
   if (!targetCld->getRawCloud()->HasNormals()) {
     utility::ScopeTimer timer("Normal estimation with KNN10");
     for (int i = 0; i < 10; i++) {
-      targetCld->getRawCloud()->EstimateNormals(
-          open3d::geometry::KDTreeSearchParamKNN(10));
+      targetCld->getRawCloud()->EstimateNormals(geom::KDTreeSearchParamKNN(10));
+      sourceCld->getRawCloud()->EstimateNormals(geom::KDTreeSearchParamKNN(10));
     }
   }
 

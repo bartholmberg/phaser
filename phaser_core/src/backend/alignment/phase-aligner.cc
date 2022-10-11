@@ -134,8 +134,8 @@ void PhaseAligner::discretizePointcloud(
   hist->setZero();
   const uint32_t n_points = data.cols();
   const uint32_t n_f = f_intensities->rows();
-  // #pragma omp parallel for num_threads(4)
-  for (uint32_t i = 0u; i < n_points; ++i) {
+  #pragma omp parallel for num_threads(4)
+  for (int i = 0u; i < n_points; ++i) {
     const uint32_t lin_index = common::SignalUtils::Sub2Ind(
         x_bins(i), y_bins(i), z_bins(i), n_voxels_, n_voxels_);
     if (lin_index > n_f) {

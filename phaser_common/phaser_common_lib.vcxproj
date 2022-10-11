@@ -281,13 +281,13 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\data\file-system-helper.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\data\ply-helper.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\spherical-projection.cc">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Disabled</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\spherical-sampler.cc">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Disabled</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\rotation-utils.cc">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Disabled</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\translation-utils.cc" />
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\statistics-manager.cc" />
