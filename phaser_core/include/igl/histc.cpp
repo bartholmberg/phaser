@@ -43,7 +43,7 @@ inline void igl::histc(
       "E should be monotonically increasing");
   B.resize(m, 1);
   std::cout << "" << X.size() << m << std::endl;
-#pragma omp parallel for num_threads(8)
+ #pragma omp parallel for num_threads(8)
   for (int j = 0; j < m; ++j) {
     const double x = X(j);
     // Boring one-offs
