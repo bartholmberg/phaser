@@ -80,7 +80,7 @@ void SpatialCorrelationLaplace::extractTransformedChannels(
     g_channels->emplace_back(G);
   }
 }
-
+//BAH, bug, F_,G_ zero after fftw_execute???
 void SpatialCorrelationLaplace::performFFTandShift() {
   fftw_execute(f_plan_);
   fftw_execute(g_plan_);
