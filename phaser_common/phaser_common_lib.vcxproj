@@ -284,7 +284,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\spherical-sampler.cc">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Disabled</Optimization>
     </ClCompile>
     <ClCompile Include="C:\repo\phaser\phaser_common\src\common\rotation-utils.cc">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">MaxSpeed</Optimization>

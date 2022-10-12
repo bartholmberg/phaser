@@ -140,8 +140,20 @@ vector<SphericalCorrelation> *SphOptRegistration::correlatePointcloud(
   // BAH: optionally save out clouds projected onto sphere
   //
   //"targetPrj.ply"
-  sampler_.sampleUniformly(*target, f_values );
-  sampler_.sampleUniformly(*source, h_values);
+  auto srcPnt=sampler_.sampleUniformly(*target, f_values );
+  auto dstPnt=sampler_.sampleUniformly(*source, h_values);
+
+  Eigen::Vector3d up = {0.0, -1.0, 0.0};
+  Eigen::Vector3d look = {1.0, 1.0, 0.0};
+  Eigen::Vector3d front = {0.0, 0.0, -1.0};
+  double zoom = 1.0 / 5.0;
+  common::PointCloud_tPtr fooSrc((srcPnt.clone()).getRawCloud());
+  common::PointCloud_tPtr fooDst((dstPnt.clone()).getRawCloud());
+  fooSrc->PaintUniformColor({0.0, 0.4, 0.5});
+  fooDst->PaintUniformColor({0.5, 0.7, 0.0});
+  vis::DrawGeometries(
+      {fooSrc,fooDst}, "spherical projection", 1600, 900, 50, 50, false, false, false,
+      &look, &up, &front, &zoom);
   // Create workers for the spherical correlation.
   // SphericalIntensityWorkerPtr corr_intensity_worker = CHECK_NOTNULL(
   // std::make_shared<SphericalIntensityWorker>(f_values, h_values));

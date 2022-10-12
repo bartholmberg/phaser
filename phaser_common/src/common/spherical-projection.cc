@@ -1,7 +1,13 @@
 #include "phaser/common/spherical-projection.h"
-
+#include "open3d/Open3D.h"
 #include <cmath>
-#include <glog/logging.h>
+//#include <glog/logging.h>
+
+using namespace open3d;
+using namespace Eigen;
+// namespace o3d = open3d;
+// namespace geom = geometry;
+namespace vis = visualization;
 
 namespace common {
 
@@ -12,8 +18,9 @@ void SphericalProjection::convertPointCloud(model::PointCloud* cloud) {
 model::PointCloud SphericalProjection::convertPointCloudCopy(
     const model::PointCloud& cloud) {
   model::PointCloud cloned = cloud.clone();
-
+ 
   naiveProjection(cloud, &cloned);
+  
   return cloned;
 }
 

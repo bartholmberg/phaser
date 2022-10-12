@@ -11,7 +11,7 @@ namespace common {
 class SphericalSampler {
  public:
   explicit SphericalSampler(const int bandwith);
-  void sampleUniformly(
+  model::PointCloud sampleUniformly(
       const model::PointCloud& cloud, std::vector<model::FunctionValue>* grid);
 
   void initialize(const int bandwith);
