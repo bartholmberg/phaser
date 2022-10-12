@@ -153,6 +153,7 @@ geom::PointCloud& FixUpO3dColors(geom::PointCloud& pntCld) {
  model::PointCloudPtr MakeModelCloud(const std::string & fN) {
    geom::PointCloud* gcld= new geom::PointCloud();
    gcld->SetName(fN);
+   //io::ReadPointCloudFromPCD(fN, *gcld, {"XYZI", true, true, true});
    io::ReadPointCloudFromPLY(fN, *gcld, {"XYZI", true, true, true});
    common::PointCloud_tPtr pntCldPntr(&FixUpO3dColors(*gcld));
    model::PointCloud* mCld = new model::PointCloud(pntCldPntr);
