@@ -149,8 +149,8 @@ vector<SphericalCorrelation> *SphOptRegistration::correlatePointcloud(
   double zoom = 1.0 / 5.0;
   common::PointCloud_tPtr fooSrc((srcPnt.clone()).getRawCloud());
   common::PointCloud_tPtr fooDst((dstPnt.clone()).getRawCloud());
-  fooSrc->PaintUniformColor({0.0, 0.4, 0.5});
-  fooDst->PaintUniformColor({0.5, 0.7, 0.0});
+  fooSrc->PaintUniformColor({0.0, 0.4, 0.3});
+  fooDst->PaintUniformColor({0.5, 0.4, 0.0});
   vis::DrawGeometries(
       {fooSrc,fooDst}, "spherical projection", 1600, 900, 50, 50, false, false, false,
       &look, &up, &front, &zoom);

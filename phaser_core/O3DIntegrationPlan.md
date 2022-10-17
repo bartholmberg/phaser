@@ -1,5 +1,6 @@
 This is the Plan 🤟🏼 for integrating open3d point clouds into phaser. 
 
+part 1)
 0   - Add Open3D_install to phaser .  This is the installation for o3d.  
       I've also update Open3D_install\lib with a runable list of libs to copy from o3d
 1  - update   point-types.h with o3d pnt cld 
@@ -15,7 +16,11 @@ NOTE0:  we may not change to link with static libs.  Works fine linking with VTK
 in VCPKG.  So I *think* that the only time we need to build with the dynamic run-time library 
 option is if we are actually creating making a DLL.
 
-NOTES: on changing an app to static build:
+part 2)
+
+0   - remove PCL
+1   - pybind11 tap point, intermediate tap points ( spherical projection, frequency transorm spher proj, corr output)
+2   - How to configure ?  Keep branched phaser or seperate phaser for o3d.
 
 
 
