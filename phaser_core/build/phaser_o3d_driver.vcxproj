@@ -100,7 +100,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>phaser_pre_lib.lib;phaser_common_lib.lib;phaser_core_lib.lib;libfftw3-3.lib;pcl_visualization.lib;pcl_common.lib;pcl_features.lib;pcl_io.lib;pcl_io_ply.lib;pcl_kdtree.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;Open3D.lib;assimp-vc143-mt.lib;turbojpeg-static.lib;jsoncpp.lib;Open3D_3rdparty_liblzf.lib;libcurl.lib;libpng16_static.lib;zlibstatic.lib;Open3D_3rdparty_rply.lib;Open3D_3rdparty_tinyfiledialogs.lib;Open3D_3rdparty_qhullcpp.lib;Open3D_3rdparty_qhull_r.lib;Open3D_3rdparty_imgui.lib;libzmq-v143-mt-s-4_3_3.lib;ws2_32.lib;rpcrt4.lib;iphlpapi.lib;vtkFiltersGeneral-9.0.lib;vtkFiltersSources-9.0.lib;vtkFiltersModeling-9.0.lib;vtkFiltersCore-9.0.lib;vtkCommonExecutionModel-9.0.lib;vtkCommonDataModel-9.0.lib;vtkCommonTransforms-9.0.lib;vtkCommonMath-9.0.lib;vtkCommonMisc-9.0.lib;vtkCommonSystem-9.0.lib;vtkCommonCore-9.0.lib;vtkloguru-9.0.lib;vtksys-9.0.lib;tbbmalloc_static.lib;mkl_intel_ilp64.lib;mkl_core.lib;mkl_sequential.lib;mkl_tbb_thread.lib;tbb_static.lib;embree3.lib;embree_avx.lib;embree_avx2.lib;simd.lib;lexers.lib;sys.lib;math.lib;tasking.lib;webrtc.lib;webrtc_extra.lib;secur32.lib;winmm.lib;dmoguids.lib;wmcodecdspuuid.lib;msdmo.lib;strmiids.lib;civetweb.lib;civetweb-cpp.lib;ippiw.lib;ippicvmt.lib;Open3D_3rdparty_glew.lib;glfw3.lib;fmt.lib;filameshio.lib;filament.lib;filamat_lite.lib;filaflat.lib;filabridge.lib;geometry.lib;backend.lib;bluegl.lib;bluevk.lib;ibl.lib;image.lib;meshoptimizer.lib;smol-v.lib;utils.lib;opengl32.lib;gflags_static.lib;glog.lib;shlwapi.lib</AdditionalDependencies>
+      <AdditionalDependencies>phaser_pre_lib.lib;phaser_common_lib.lib;phaser_core_lib.lib;Open3D.lib;tbb_static.lib;Open3D_3rdparty_qhullcpp.lib;Open3D_3rdparty_qhull_r.lib;Open3D_3rdparty_rply.lib;Open3D_3rdparty_tinyfiledialogs.lib;Open3D_3rdparty_imgui.lib;Open3D_3rdparty_glew.lib;Open3D_3rdparty_embree_sys.lib;libfftw3-3.lib;Open3D_3rdparty_filament_bluegl.lib;Open3D_3rdparty_civetweb_civetweb.lib;Open3D_3rdparty_civetweb_civetweb-cpp.lib;Open3D_3rdparty_glfw3.lib;Open3D_3rdparty_filament_utils.lib;assimp-vc142-mt.lib;Open3D_3rdparty_jsoncpp.lib;kernel32.lib;user32.lib;gdi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;secur32.lib;winmm.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%VCPKG_ROOT%\..\phaser\phaser_core\build\RelWithDebInfo;%VCPKG_ROOT%\..\phaser\phaser_pre\RelWithDebInfo;%VCPKG_ROOT%\..\phaser\phaser_common\RelWithDebInfo;%VCPKG_ROOT%\..\phaser\Open3D_install\lib;%VCPKG_ROOT%\..\phaser\fftw3;%VCPKG_ROOT%\installed\x64-windows-static\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64 /FORCE:MULTIPLE</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -108,6 +108,8 @@
       <ImportLibrary>C:/repo/phaser/phaser_core/build/RelWithDebInfo/phaser_o3d_driver.lib</ImportLibrary>
       <ProgramDataBaseFile>C:/repo/phaser/phaser_core/build/RelWithDebInfo/phaser_o3d_driver.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
+      <IgnoreAllDefaultLibraries>
+      </IgnoreAllDefaultLibraries>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>

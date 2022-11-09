@@ -37,8 +37,8 @@
 #include "open3d/utility/Optional.h"
 
 #include <phaser/common/point-types.h>
-#include <pcl/io/pcd_io.h>
-#include <pcl/io/ply_io.h>
+//#include <pcl/io/pcd_io.h>
+//#include <pcl/io/ply_io.h>
 
 
 #include "open3d/Open3D.h"
