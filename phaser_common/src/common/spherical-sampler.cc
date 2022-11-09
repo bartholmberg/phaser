@@ -1,8 +1,8 @@
 #include "phaser/common/spherical-sampler.h"
-#include <pcl/io/pcd_io.h>
-#include <pcl/io/ply_io.h>
-#include <pcl/point_types.h>
-#include <pcl/visualization/cloud_viewer.h>
+//#include <pcl/io/pcd_io.h>
+//#include <pcl/io/ply_io.h>
+//#include <pcl/point_types.h>
+//#include <pcl/visualization/cloud_viewer.h>
 #include <cmath>
 //#include <glog/logging.h>
 
@@ -20,21 +20,24 @@ void SphericalSampler::initialize(const int bandwith) {
   bandwith_ = bandwith;
 }
 
- void SphericalSampler::sampleUniformly(
+  model::PointCloud SphericalSampler::sampleUniformly(
     const model::PointCloud& cloud, std::vector<model::FunctionValue>* grid) {
   static int cnt = 0;
   //CHECK(is_initialized_);
   grid->clear();
-  model::PointCloud sphere = projection_.convertPointCloudCopy(cloud);
+  //model::PointCloud& sphere = projection_.convertPointCloudCopy(cloud);
+  common::PointCloud_tPtr fooSphere(projection_.convertPointCloudCopy(cloud).getRawCloud());
+  model::PointCloud* sphere = new model::PointCloud(fooSphere);
   //model::PointCloud* sphereP =new model::PointCloud (projection_.convertPointCloudCopy(cloud));
   // BAH, save out spherical projected cloud, 
   //      Note,this function gets scheduled as a Task (in places), and any change to interface
   //      breaks the task (why?).  
 
 
-  sphere.initialize_kd_tree();
-  sphere.getNearestPoints(cartesian_grid_, grid);
-}
+  sphere->initialize_kd_tree();
+  sphere->getNearestPoints(cartesian_grid_, grid);
+  return *sphere;
+  }
 
 std::vector<common::Point_t> SphericalSampler::create2BwGrid(
     const std::size_t bw) {

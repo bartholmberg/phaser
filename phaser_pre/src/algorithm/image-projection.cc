@@ -1,7 +1,7 @@
 #include "phaser_pre/algorithm/image-projection.h"
 
 #include <chrono>
-#include <glog/logging.h>
+//#include <glog/logging.h>
 
 #define USE_SSE2
 #include "phaser_pre/common/sse-mathfun-extension.h"
@@ -190,11 +190,11 @@ void ImageProjection::projectPointCloudSequentialImpl(
     const std::size_t end, common::PointCloud_tPtr full_cloud,
     common::PointCloud_tPtr full_info_cloud, cv::Mat* range_mat,
     cv::Mat* signal_mat) {
-  CHECK_NOTNULL(cloud);
-  CHECK_NOTNULL(full_cloud);
-  CHECK_NOTNULL(full_info_cloud);
-  CHECK_NOTNULL(range_mat);
-  CHECK_NOTNULL(signal_mat);
+  //CHECK_NOTNULL(cloud);
+  //CHECK_NOTNULL(full_cloud);
+  //CHECK_NOTNULL(full_info_cloud);
+  //CHECK_NOTNULL(range_mat);
+  //CHECK_NOTNULL(signal_mat);
 
   AlgorithmSettings settings;
   float verticalAngleSeq, horizonAngleSeq, rangeSeq;

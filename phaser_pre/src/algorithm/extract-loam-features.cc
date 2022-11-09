@@ -1,6 +1,6 @@
 #include "phaser_pre/algorithm/extract-loam-features.h"
 
-#include <glog/logging.h>
+//#include <glog/logging.h>
 
 namespace preproc {
 
@@ -8,21 +8,21 @@ FeatureExtractionResult ExtractLoamFeatures::extractFeatures(
     const SegmentationResult& seg_result, const SmoothnessResult& smooth_result,
     const OcclusionResult& occ_result) {
   FeatureExtractionResult result;
-  common::PointCloud_tPtr corner_points_sharp =
-      CHECK_NOTNULL(result.getCornerPointsSharp());
-  common::PointCloud_tPtr corner_points_less_sharp =
-      CHECK_NOTNULL(result.getCornerPointsLessSharp());
-  common::PointCloud_tPtr surf_points_flat =
-      CHECK_NOTNULL(result.getSurfPointsFlat());
-  common::PointCloud_tPtr surf_points_less_flat =
-      CHECK_NOTNULL(result.getSurfPointsLessFlat());
+  common::PointCloud_tPtr corner_points_sharp = result.getCornerPointsSharp();
+      //CHECK_NOTNULL(result.getCornerPointsSharp());
+  common::PointCloud_tPtr corner_points_less_sharp = result.getCornerPointsLessSharp();
+      //CHECK_NOTNULL(result.getCornerPointsLessSharp());
+  common::PointCloud_tPtr surf_points_flat = result.getSurfPointsFlat();
+      //CHECK_NOTNULL(result.getSurfPointsFlat());
+  common::PointCloud_tPtr surf_points_less_flat = result.getSurfPointsLessFlat();
+      //CHECK_NOTNULL(result.getSurfPointsLessFlat());
 
   const std::vector<int>& start_index = seg_result.getStartRingIndex();
   const std::vector<int>& end_index = seg_result.getEndRingIndex();
   const std::vector<bool>& ground_flag = seg_result.getGroundFlag();
   const std::vector<uint32_t>& col_ind = seg_result.getColumnIndex();
-  common::PointCloud_tPtr seg_cloud =
-      CHECK_NOTNULL(seg_result.getSegmentedCloud());
+  common::PointCloud_tPtr seg_cloud = seg_result.getSegmentedCloud();
+      //CHECK_NOTNULL(seg_result.getSegmentedCloud());
 
   // intentional copy as we modify the two vectors.
   std::vector<int> picked_neighbors = occ_result.getPickedNeighbors();

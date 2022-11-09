@@ -37,8 +37,8 @@
 #include "open3d/utility/Optional.h"
 
 #include <phaser/common/point-types.h>
-#include <pcl/io/pcd_io.h>
-#include <pcl/io/ply_io.h>
+//#include <pcl/io/pcd_io.h>
+//#include <pcl/io/ply_io.h>
 
 
 #include "open3d/Open3D.h"
@@ -60,13 +60,13 @@
 namespace phaser_core {
 
 DEFINE_string(
-    target_cloud, "c:\\repo\\phaser\\phaser_test_data\\test_clouds\\os0\\",
+    target_cloud, "c:\\repo\\apricus\\phaser_test_data\\test_clouds\\os0\\target_4.ply",
     "Defines the path to the target cloud.");
 DEFINE_string(
-    source_cloud, "c:\\repo\\phaser\\phaser_test_data\\test_clouds\\os0\\",
+    source_cloud, "c:\\repo\\apricus\\phaser_test_data\\test_clouds\\os0\\source_4.ply",
     "Defines the path to the source cloud.");
 DEFINE_string(
-    reg_cloud, "c:\\repo\\phaser\\phaser_core\\",
+    reg_cloud, "c:\\repo\\apricus\\phaser_core\\reg_4.ply",
     "Defines the path to the registered cloud.");
 
 // BAH, TBD:set these values to good defaults,
@@ -150,13 +150,28 @@ geom::PointCloud& FixUpO3dColors(geom::PointCloud& pntCld) {
  // MakeModelCloud. Input name of ply cloud.
  // Get 'raw' open3d cloud to construct a PHASER model pnt
  // cloud
- model::PointCloudPtr MakeModelCloud(const std::string & fN) {
+ model::PointCloudPtr MakeModelCloud(const std::string & fN, double voxelSize=0.05) {
+
    geom::PointCloud* gcld= new geom::PointCloud();
    gcld->SetName(fN);
+   //io::ReadPointCloudFromPCD(fN, *gcld, {"XYZI", true, true, true});
    io::ReadPointCloudFromPLY(fN, *gcld, {"XYZI", true, true, true});
+  
    common::PointCloud_tPtr pntCldPntr(&FixUpO3dColors(*gcld));
+   pntCldPntr=pntCldPntr->VoxelDownSample(voxelSize);
    model::PointCloud* mCld = new model::PointCloud(pntCldPntr);
+
+ 
    model::PointCloudPtr mCldPtr(mCld);
+   if (!mCldPtr->getRawCloud()->HasNormals()) {
+     utility::ScopeTimer timer("Normal estimation with KNN10");
+     for (int i = 0; i < 10; i++) {
+       mCldPtr->getRawCloud()->EstimateNormals(
+           geom::KDTreeSearchParamKNN(10));
+       mCldPtr->getRawCloud()->EstimateNormals(
+           geom::KDTreeSearchParamKNN(10));
+     }
+   }
    mCldPtr->setPlyReadDirectory(fN);
    return mCldPtr;
  }
@@ -176,48 +191,34 @@ int main(int argc, char* argv[]) {
   cout << aa<<endl;
  
 
-  model::PointCloudPtr sourceCld = MakeModelCloud(cor::FLAGS_source_cloud);
-  model::PointCloudPtr targetCld = MakeModelCloud(cor::FLAGS_target_cloud);
+  model::PointCloudPtr sourceCld = MakeModelCloud(cor::FLAGS_source_cloud,0.25);
+  model::PointCloudPtr targetCld = MakeModelCloud(cor::FLAGS_target_cloud,0.25);
+
   std::cout << sourceCld->getRawCloud()->GetName() << " " << std::endl;
   double zoom =1.0/5.0;
-  // simple nearest neighbor search example
-  geometry::KDTreeFlann fooKd(*sourceCld->getRawCloud());
-  int nn = std::min(20, (int)sourceCld->getRawCloud()->points_.size() - 1);
-  std::vector<int> iVec(nn);
-  std::vector<double> dVec(nn);
-  // BAH, simple example of o3d nearest neighbor search
-  fooKd.SearchKNN(sourceCld->getRawCloud()->points_[0], nn, iVec, dVec);
+  
   Eigen::Vector3d up = {0.0, -1.0, 0.0};
   Eigen::Vector3d look = {1.0, 1.0, 0.0};
   Eigen::Vector3d front = {0.0, 0.0, -1.0};
-  // clone o3d cloud example
 
-  auto foo =  sourceCld->clone();
-  foo.getRawCloud()->PaintUniformColor({0,0.3,0.4});
-  vis::DrawGeometries({targetCld->getRawCloudScaledColor(),    foo.getRawCloud()}, 
+  common::PointCloud_tPtr fooSrc((sourceCld->clone()).getRawCloud());
+  fooSrc->PaintUniformColor({0.0,0.4,0.5});
+  vis::DrawGeometries(
+      {fooSrc,
+       targetCld->getRawCloudScaledColor()}, 
       "o3d pnt clouds for phaser", 1600, 900, 50,
       50, false, false, false, &look, &up,&front,&zoom);
 
-  // BAH, these are next to fix up with o3d pnt cld instead of PCL
+  
   auto ctrl = std::make_unique<phaser_core::CloudController>("sph-opt");
-  auto tmpFoo = common::getMatrixXfMap(3, 3, 1);
+  
 
-  double fo[10];
-  for (int i = 0; i < 10; i++) {
-    fo[i] = i;
-  }
-  std::cout << Map<Matrix4d>(fo) << tmpFoo << endl;
+
   model::RegistrationResult result =
       ctrl->registerPointCloud(targetCld, sourceCld);
 
-  if (!targetCld->getRawCloud()->HasNormals()) {
-    utility::ScopeTimer timer("Normal estimation with KNN10");
-    for (int i = 0; i < 10; i++) {
-      targetCld->getRawCloud()->EstimateNormals(
-          open3d::geometry::KDTreeSearchParamKNN(10));
-    }
-  }
-
+ 
+  return 0;
   std::cout << targetCld->getRawCloud()->normals_[0] << std::endl;
   std::cout << sourceCld->getRawCloud()->normals_[10] << std::endl;
 
@@ -229,7 +230,13 @@ int main(int argc, char* argv[]) {
 
   std::cout << targetCld->getRawCloud()->normals_[0] << std::endl;
   std::cout << targetCld->getRawCloud()->normals_[10] << std::endl;
-
+  // simple nearest neighbor search example
+  geometry::KDTreeFlann fooKd(*sourceCld->getRawCloud());
+  int nn = std::min(20, (int)sourceCld->getRawCloud()->points_.size() - 1);
+  std::vector<int> iVec(nn);
+  std::vector<double> dVec(nn);
+  // BAH, simple example of o3d nearest neighbor search
+  fooKd.SearchKNN(sourceCld->getRawCloud()->points_[0], nn, iVec, dVec);
   // auto downpcd = targetCld->VoxelDownSample(1.0/8.0);
   auto downpcd = targetCld;
   // 1. test basic pointcloud functions.

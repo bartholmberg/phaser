@@ -1,11 +1,11 @@
 #include "phaser_pre/commands/segment-cloud-cmd.h"
 
-#include <glog/logging.h>
+//#include <glog/logging.h>
 
 namespace preproc {
 
 void SegmentCloudCmd::execute(model::PointCloudPtr cloud) {
-  VLOG(1) << "[PreProcessing] Performing geometric segmentation...";
+  std::cout << "[PreProcessing] Performing geometric segmentation..." <<std::endl;
   const ProjectionResult proj_result = proj_.projectPointCloud(cloud);
   const ClusterResult cluster_result =
       cluster_.cluster(proj_result.getRangeMat(), proj_result.getSignalMat());

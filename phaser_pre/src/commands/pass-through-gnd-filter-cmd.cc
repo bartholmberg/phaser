@@ -1,6 +1,6 @@
 #include "phaser_pre/commands/pass-through-gnd-filter-cmd.h"
 
-#include <glog/logging.h>
+//#include <glog/logging.h>
 
 DEFINE_double(
     phaser_pass_through_gnd_filter_limit_min, -5.0,
@@ -12,7 +12,7 @@ DEFINE_double(
 namespace preproc {
 
 void PassThroughGndFilterCmd::execute(model::PointCloudPtr cloud) {
-  VLOG(1) << "[PreProcessing] Performing pass through GND filtering...";
+  std::cout  << "[PreProcessing] Performing pass through GND filtering..." <<std::endl;
   // BAH, Having troubline linking these get**Cloud() routines
   // BAH, comment out for now
   common::PointCloud_tPtr input_cloud; //= cloud->getRawCloud();

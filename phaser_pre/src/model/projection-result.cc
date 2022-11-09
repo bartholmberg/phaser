@@ -1,6 +1,6 @@
 #include "phaser_pre/model/projection-result.h"
 
-#include <glog/logging.h>
+//#include <glog/logging.h>
 
 namespace preproc {
 
@@ -9,8 +9,8 @@ ProjectionResult::ProjectionResult(
     const cv::Mat& range_mat, const cv::Mat& signal_mat)
     : range_mat_(range_mat),
       signal_mat_(signal_mat),
-      full_cloud_(CHECK_NOTNULL(full_cloud)),
-      full_info_cloud_(CHECK_NOTNULL(full_info_cloud)) {}
+      full_cloud_(full_cloud),
+      full_info_cloud_(full_info_cloud) {}
 
 common::PointCloud_tPtr ProjectionResult::getFullCloud() const {
   return full_cloud_;

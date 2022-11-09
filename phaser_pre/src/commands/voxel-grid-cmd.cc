@@ -1,6 +1,6 @@
 #include "phaser_pre/commands/voxel-grid-cmd.h"
 
-#include <glog/logging.h>
+//#include <glog/logging.h>
 
 DEFINE_double(
     phaser_voxel_grid_leaf_size, 0.25f,
@@ -9,11 +9,11 @@ DEFINE_double(
 namespace preproc {
 
 void VoxelGridCmd::execute(model::PointCloudPtr cloud) {
-  CHECK_NOTNULL(cloud);
-  VLOG(1) << "[PreProcessing] Performing voxel grid filtering...";
+  //CHECK_NOTNULL(cloud);
+  std::cout << "[PreProcessing] Performing voxel grid filtering..." <<std::endl;
   // BAH, Having troubline linking these get**Cloud() routines
   common::PointCloud_tPtr input_cloud;//= cloud->getRawCloud();
-  CHECK_NOTNULL(input_cloud);
+  //CHECK_NOTNULL(input_cloud);
   //BAH, comment out for now
   /*
   voxel_grid_filter_.setInputCloud(input_cloud);
@@ -22,6 +22,7 @@ void VoxelGridCmd::execute(model::PointCloudPtr cloud) {
       FLAGS_phaser_voxel_grid_leaf_size);
   voxel_grid_filter_.filter(*input_cloud);
   */
+  std::cout << "[PreProcessing] Check implementation" << std::endl;
 }
 
 }  // namespace preproc

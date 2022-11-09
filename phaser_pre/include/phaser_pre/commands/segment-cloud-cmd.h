@@ -1,7 +1,7 @@
 #ifndef PHASER_PRE_COMMANDS_SEGMENT_CLOUD_CMD_H_
 #define PHASER_PRE_COMMANDS_SEGMENT_CLOUD_CMD_H_
 
-#include <pcl/filters/voxel_grid.h>
+//#include <pcl/filters/voxel_grid.h>
 
 #include "phaser_pre/algorithm/angle-based-ground-removal.h"
 #include "phaser_pre/algorithm/cloud-segmentation.h"
